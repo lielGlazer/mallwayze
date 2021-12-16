@@ -7,27 +7,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace API.Models
+namespace DAL
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class OpeningHours
+    public partial class WorkingDaysWeek
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public OpeningHours()
+        public WorkingDaysWeek()
         {
-            this.OpeningHoursForDorkingDay = new HashSet<OpeningHoursForDorkingDay>();
-            this.OpeningHoursForDorkingDay1 = new HashSet<OpeningHoursForDorkingDay>();
+            this.OpeningHoursForDorkingDays = new HashSet<OpeningHoursForDorkingDay>();
         }
     
-        public long OpeningTimeCode { get; set; }
-        public Nullable<System.TimeSpan> OpeningHours1 { get; set; }
-        public string ClosingTime { get; set; }
+        public long WorkingDayCode { get; set; }
+        public string NameOfWorkDay { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OpeningHoursForDorkingDay> OpeningHoursForDorkingDay { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OpeningHoursForDorkingDay> OpeningHoursForDorkingDay1 { get; set; }
+        public virtual ICollection<OpeningHoursForDorkingDay> OpeningHoursForDorkingDays { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace API.Models
+namespace DAL
 {
     using System;
     using System.Collections.Generic;
@@ -19,6 +19,6 @@ namespace API.Models
         public bool LikeStor { get; set; }
     
         public virtual Stor Stor { get; set; }
-        public virtual Users Users { get; set; }
+        public virtual User User { get; set; }
     }
 }

@@ -7,24 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace API.Models
+namespace DAL
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class Location
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
+        public Location()
         {
-            this.FavoriteParkingForTheUser = new HashSet<FavoriteParkingForTheUser>();
+            this.Stors = new HashSet<Stor>();
         }
     
-        public long UserCode { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public long LocationCode { get; set; }
+        public Nullable<double> AxisX { get; set; }
+        public Nullable<double> AxisY { get; set; }
+        public Nullable<int> floor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FavoriteParkingForTheUser> FavoriteParkingForTheUser { get; set; }
+        public virtual ICollection<Stor> Stors { get; set; }
     }
 }
