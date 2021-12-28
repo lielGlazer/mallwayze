@@ -11,7 +11,7 @@ namespace DAL
         public DBConection() { }
         public List<T> GetDbSet<T>() where T : class
         {
-            using (DBEntities wm  = new DBEntities())
+            using (wayzeShoopEntities wm  = new wayzeShoopEntities())
             {
                 return wm.GetDbSet<T>().ToList();
             }
@@ -24,7 +24,7 @@ namespace DAL
         }
         public void Execute<T>(T entity, ExecuteActions exAction) where T : class
         {
-            using (DBEntities wm = new DBEntities())
+            using (wayzeShoopEntities wm = new wayzeShoopEntities())
             {
                 var model = wm.Set<T>();
                 switch (exAction)

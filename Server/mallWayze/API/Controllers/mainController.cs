@@ -4,34 +4,35 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using BL;
+using DTO;
+
 
 namespace API.Controllers
 {
-    public class ValuesController : ApiController
+    public class mainController : ApiController
     {
-        // GET api/values
+        
+        // GET: api/main
         public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
 
-        // GET api/values/5
-        public string Get(int id)
-        {
-            return "value";
-        }
+        // GET: api/main/5
+        public List<DTOcategory> GetCategory(int id) { return BL.cateroryManager.GetCategories();}
 
-        // POST api/values
+        // POST: api/main
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT api/values/5
+        // PUT: api/main/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/values/5
+        // DELETE: api/main/5
         public void Delete(int id)
         {
         }

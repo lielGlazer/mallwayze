@@ -20,8 +20,8 @@ namespace DAL
         public Nullable<long> OpeningTimeCode1 { get; set; }
         public Nullable<long> OpeningTimeCode2 { get; set; }
     
-        public virtual OpeningHour OpeningHour { get; set; }
-        public virtual OpeningHour OpeningHour1 { get; set; }
+        public virtual OpeningHours OpeningHours { get; set; }
+        public virtual OpeningHours OpeningHours1 { get; set; }
         public virtual Stor Stor { get; set; }
         public virtual Stor Stor1 { get; set; }
         public virtual WorkingDaysWeek WorkingDaysWeek { get; set; }

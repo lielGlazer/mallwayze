@@ -12,19 +12,20 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Locations
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Locations()
         {
-            this.FavoriteParkingForTheUsers = new HashSet<FavoriteParkingForTheUser>();
+            this.Stor = new HashSet<Stor>();
         }
     
-        public long UserCode { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public long LocationCode { get; set; }
+        public Nullable<double> AxisX { get; set; }
+        public Nullable<double> AxisY { get; set; }
+        public Nullable<int> floor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FavoriteParkingForTheUser> FavoriteParkingForTheUsers { get; set; }
+        public virtual ICollection<Stor> Stor { get; set; }
     }
 }
