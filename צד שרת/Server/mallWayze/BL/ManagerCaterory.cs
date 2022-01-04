@@ -12,13 +12,13 @@ using DAL;
 
 namespace BL
 {
-    public static class cateroryManager
+    public static class ManagerCaterory
     {
         static DBConection db = new DBConection();
-        public static  List<DTOcategory> GetCategories()
+        public static  List<DTOCategory> GetCategories()
         {
-            List<Category> list = db.GetDbSet<Category>();
-            List<DTOcategory> dtoList;
+            List<Category> list = db.GetDbSet<Category>().ToList();
+            List<DTOCategory> dtoList=DTOCategory.DTOlist(list);
             return dtoList;
         }
 

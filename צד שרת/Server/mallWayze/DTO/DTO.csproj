@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{454CB08B-7CAA-4FC4-B5CC-146ECC5EF327}</ProjectGuid>
+    <ProjectGuid>{2FF26E98-A653-4126-AFD5-70A2D2939015}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BL</RootNamespace>
-    <AssemblyName>BL</AssemblyName>
+    <RootNamespace>DTO</RootNamespace>
+    <AssemblyName>DTO</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,18 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="cateroryManager.cs" />
-    <Compile Include="Class2.cs" />
+    <Compile Include="Class1.cs" />
+    <Compile Include="DTOCategory.cs" />
+    <Compile Include="DTOCategoryForStor.cs" />
+    <Compile Include="DTOFavoriteStoresForTheUser.cs" />
+    <Compile Include="DTOLocations.cs" />
+    <Compile Include="DTOOpeningHours.cs" />
+    <Compile Include="DTOOpeningHoursForDorkingDay.cs" />
+    <Compile Include="DTOStor.cs" />
+    <Compile Include="DTOUsers.cs" />
+    <Compile Include="DTOWorkingDaysWeek.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{70b99c9f-8b65-4fb0-90b6-3ca32e30680e}</Project>
       <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DTO\DTO.csproj">
-      <Project>{2ff26e98-a653-4126-afd5-70a2d2939015}</Project>
-      <Name>DTO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
