@@ -16,7 +16,7 @@ namespace DTO
         public DTOUsers()
         {
         }
-        public DTOUsers(Users l)
+        public DTOUsers(User l)
         {
             this.UserCode = l.UserCode;
             this.UserName = l.UserName;
@@ -29,7 +29,7 @@ namespace DTO
             this.UserName = l.UserName;
             this.Password = l.Password;
         }
-        public static List<DTOUsers> DTOlist(List<Users> t)
+        public static List<DTOUsers> DTOlist(List<User> t)
         {
             List<DTOUsers> dtolist = new List<DTOUsers>();
             foreach (var c in t)

@@ -15,7 +15,7 @@ namespace BL
         static DBConection db = new DBConection();
         public static List<DTOLocations> GetLocations()
         {
-            List<Locations> list = db.GetDbSet<Locations>().ToList();
+            List<Location> list = db.GetDbSet<Location>().ToList();
             List<DTOLocations> dtoList = DTOLocations.DTOlist(list);
             return dtoList;
         }

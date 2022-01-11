@@ -17,13 +17,13 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public WorkingDaysWeek()
         {
-            this.OpeningHoursForDorkingDay = new HashSet<OpeningHoursForDorkingDay>();
+            this.OpeningHoursForDorkingDays = new HashSet<OpeningHoursForDorkingDay>();
         }
     
         public long WorkingDayCode { get; set; }
         public string NameOfWorkDay { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OpeningHoursForDorkingDay> OpeningHoursForDorkingDay { get; set; }
+        public virtual ICollection<OpeningHoursForDorkingDay> OpeningHoursForDorkingDays { get; set; }
     }
 }

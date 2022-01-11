@@ -19,6 +19,6 @@ namespace DAL
         public bool LikeStor { get; set; }
     
         public virtual Stor Stor { get; set; }
-        public virtual Users Users { get; set; }
+        public virtual User User { get; set; }
     }
 }

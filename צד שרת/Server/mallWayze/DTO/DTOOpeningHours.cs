@@ -12,27 +12,27 @@ namespace DTO
       
 
         public long OpeningTimeCode { get; set; }
-        public System.TimeSpan OpeningHours { get; set; }
-        public string ClosingTime { get; set; }
+        public DateTime OpeningHours { get; set; }
+        public DateTime ClosingTime { get; set; }
         public DTOOpeningHours()
         {
 
         }
-        public DTOOpeningHours(OpeningHours l)
+        public DTOOpeningHours(OpeningHour l)
         {
             this.OpeningTimeCode = l.OpeningTimeCode;
-            this.OpeningHours = (System.TimeSpan)l.OpeningHours1;
-            this.ClosingTime = l.ClosingTime;
+            this.OpeningHours =(DateTime) l.OpeningHours;
+            this.ClosingTime = (DateTime)l.ClosingTime;
           
 
         }
         public DTOOpeningHours(DTOOpeningHours l)
         {
             this.OpeningTimeCode = l.OpeningTimeCode;
-            this.OpeningHours = (TimeSpan)l.OpeningHours;
+            this.OpeningHours = (DateTime)l.OpeningHours;
             this.ClosingTime = l.ClosingTime;
         }
-        public static List<DTOOpeningHours> DTOlist(List<OpeningHours> t)
+        public static List<DTOOpeningHours> DTOlist(List<OpeningHour> t)
         {
             List<DTOOpeningHours> dtolist = new List<DTOOpeningHours>();
             foreach (var c in t)

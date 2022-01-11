@@ -5,24 +5,24 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using DTO;
-
+using BL;
+using System.Web.Routing;
 
 namespace API.Controllers
 {
     public class CategoryController : ApiController
-    {
-        //api/Category/GetCaterory
+    {   //פונקציה ששולפת את כל הקטגוריות בקניון 
+        [Route("api/Category/GetCaterory")]
+        [HttpGet]
         public List<DTOCategory> GetCaterory()
         {
             List<DTOCategory> u = BL.ManagerCaterory.GetCategories();
             return u;
         }
 
-        // GET: api/Category
-
-
-        // GET: api/Category/5
-        public DTOCategory Get(long id)
+        [Route("api/GetCategoryByID/{id}")]
+        [HttpGet]
+        public DTOCategory GetCategoryByID(long id)
         {
             DTOCategory dc = BL.ManagerCaterory.GetCategories().FirstOrDefault(a=>a.CategoryCode==id);
             return dc;

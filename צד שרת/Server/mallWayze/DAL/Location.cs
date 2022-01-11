@@ -12,22 +12,20 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class OpeningHours
+    public partial class Location
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public OpeningHours()
+        public Location()
         {
-            this.OpeningHoursForDorkingDay = new HashSet<OpeningHoursForDorkingDay>();
-            this.OpeningHoursForDorkingDay1 = new HashSet<OpeningHoursForDorkingDay>();
+            this.Stors = new HashSet<Stor>();
         }
     
-        public long OpeningTimeCode { get; set; }
-        public Nullable<System.TimeSpan> OpeningHours1 { get; set; }
-        public string ClosingTime { get; set; }
+        public long LocationCode { get; set; }
+        public Nullable<double> AxisX { get; set; }
+        public Nullable<double> AxisY { get; set; }
+        public Nullable<int> floor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OpeningHoursForDorkingDay> OpeningHoursForDorkingDay { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OpeningHoursForDorkingDay> OpeningHoursForDorkingDay1 { get; set; }
+        public virtual ICollection<Stor> Stors { get; set; }
     }
 }

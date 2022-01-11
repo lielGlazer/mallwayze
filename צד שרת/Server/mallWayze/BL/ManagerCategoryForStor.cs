@@ -6,9 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace BL
 {
-    class ManagerCategoryForStor
+   public class ManagerCategoryForStor
     {
         static DBConection db = new DBConection();
         public static List<DTOCategoryForStor> GetCategoryForStor()
