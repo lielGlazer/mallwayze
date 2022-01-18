@@ -51,6 +51,7 @@
     <Compile Include="ManagerStor.cs" />
     <Compile Include="ManagerUsers.cs" />
     <Compile Include="ManagerWorkingDaysWeek.cs" />
+    <Compile Include="Models\UserInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

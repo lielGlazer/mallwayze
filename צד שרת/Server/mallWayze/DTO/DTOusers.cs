@@ -23,11 +23,13 @@ namespace DTO
             this.Password = l.Password;
             
         }
-        public DTOUsers(DTOUsers l)
+       public User  ToTable()
         {
-            this.UserCode = l.UserCode;
-            this.UserName = l.UserName;
-            this.Password = l.Password;
+            User table = new User();
+            table.UserCode = this.UserCode;
+            table.UserName = this.UserName;
+            table.Password = this.Password;
+            return table;
         }
         public static List<DTOUsers> DTOlist(List<User> t)
         {
@@ -39,6 +41,7 @@ namespace DTO
             }
             return dtolist;
         }
+        
 
 
     }

@@ -24,11 +24,18 @@ namespace API.Controllers
         }
 
         // POST: api/Users
-        [Route("api/Post/{o}")]
+        [Route("api/Users/Register")]
         [HttpPost]
-        public long Post([FromBody]UserInformation o)
+        public DTOUsers Register(DTOUsers o)
         {
-            return BL.ManagerUsers.RegisterUser(o.UserName,o.UserPassword);
+            return BL.ManagerUsers.RegisterUser(o);
+
+        }
+        [Route("api/Users/Login")]
+        [HttpPost]
+        public DTOUsers Login([FromBody]UserInformation o)
+        {
+            return BL.ManagerUsers.LoginUser(o.UserName, o.UserPassword);
         }
 
         // PUT: api/Users/5

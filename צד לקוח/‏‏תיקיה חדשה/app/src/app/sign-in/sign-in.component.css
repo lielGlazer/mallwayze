@@ -1,0 +1,15 @@
+button{
+    color :white;
+    background-color:cadetblue ;
+}
+button:hover{
+    box-shadow: cadetblue;
+    
+}
+input{
+    color:white;
+    background-color:cadetblue ;
+}
+div{
+    margin: 15%;
+}

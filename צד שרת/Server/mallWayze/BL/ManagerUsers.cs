@@ -20,16 +20,25 @@ namespace BL
             List<DTOUsers> dtoList = DTOUsers.DTOlist(list);
             return dtoList;
         }
-        
-        public static long RegisterUser(string nameU,string passU)
+
+        public static DTOUsers LoginUser(string nameU, string passU)
         {
             List<DTOUsers> userInDB = GetUsers();
-            List<DTOUsers> us = userInDB.Where(s => s.UserName.Equals(nameU)).ToList();
-            User u = new User();
-            u.Password = passU;
-            u.UserName = nameU;
-            db.Execute<User>(u,DBConection.ExecuteActions.Insert);
-            return u.UserCode;
+            DTOUsers us = userInDB.FirstOrDefault(s => s.UserName.Equals(nameU));
+            if (us == null)
+                return null;
+            else if (us.Password != passU)
+                return null;
+            return us;
+
+        }
+        public static DTOUsers RegisterUser(DTOUsers u)
+        {
+            DBConection db = new DBConection();
+            User newLogin = u.ToTable();
+            db.Execute<User>(newLogin, DBConection.ExecuteActions.Insert);
+            u.UserCode = newLogin.UserCode;
+            return u;
         }
     }
 }
