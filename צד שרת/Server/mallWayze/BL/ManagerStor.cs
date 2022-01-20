@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BL
 {
-    class ManagerStor
+  public  class ManagerStor
     {
         static DBConection db = new DBConection();
         public static List<DTOStor> GetStor()
@@ -17,6 +17,6 @@ namespace BL
             List<DTOStor> dtoList = DTOStor.DTOlist(list);
             return dtoList;
         }
-
+        
     }
 }

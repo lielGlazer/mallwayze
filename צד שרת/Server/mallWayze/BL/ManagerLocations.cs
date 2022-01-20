@@ -19,6 +19,15 @@ namespace BL
             List<DTOLocations> dtoList = DTOLocations.DTOlist(list);
             return dtoList;
         }
+        public static DTOLocations LocationForStor(string nameStore)
+        {
+
+           List<DTOStor> l = ManagerStor.GetStor();
+           long location=   l.Where(s => s.NameStor.Equals(nameStore)).Select(a=>a.PlaceCode).FirstOrDefault();
+           return GetLocations().Where(s => s.LocationCode == location).FirstOrDefault();   
+
+
+        }
 
     }
 }

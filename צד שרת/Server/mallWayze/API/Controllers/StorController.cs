@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using DTO;
 
 namespace API.Controllers
 {
@@ -14,11 +15,11 @@ namespace API.Controllers
         {
             return new string[] { "value1", "value2" };
         }
-
-        // GET: api/Stor/5
-        public string Get(int id)
+        [Route("api/stor/getLocationForStore/{name}")]
+       [HttpGet]
+        public  DTOLocations GetLocationForStore(string name)
         {
-            return "value";
+          return  BL.ManagerLocations.LocationForStor(name);
         }
 
         // POST: api/Stor
