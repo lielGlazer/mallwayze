@@ -20,12 +20,15 @@ namespace DTO
             this.NameOfWorkDay =l.NameOfWorkDay;
           
         }
-        public DTOWorkingDaysWeek(DTOWorkingDaysWeek l)
+        public WorkingDaysWeek ToTable(DTOWorkingDaysWeek l)
         {
-            this.WorkingDayCode = l.WorkingDayCode;
-            this.NameOfWorkDay = l.NameOfWorkDay;
-
+            WorkingDaysWeek c = new WorkingDaysWeek();
+            c.WorkingDayCode = l.WorkingDayCode;
+            c.NameOfWorkDay = l.NameOfWorkDay;
+           
+            return c;
         }
+       
         public static List<DTOWorkingDaysWeek> DTOlist(List<WorkingDaysWeek> t)
         {
             List<DTOWorkingDaysWeek> dtolist = new List<DTOWorkingDaysWeek>();

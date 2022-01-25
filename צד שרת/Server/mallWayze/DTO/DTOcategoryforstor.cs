@@ -24,11 +24,13 @@ namespace DTO
             this.categoryName = l.categoryName;
            
         }
-        public DTOCategoryForStor(DTOCategoryForStor l)
+        public CategoryForStor ToTable(DTOCategoryForStor l)
         {
-            this.CodeStor = l.CodeStor;
-            this.categoryCode = l.categoryCode;
-            this.categoryName = l.categoryName;
+            CategoryForStor c = new CategoryForStor();
+            c.CodeStor = l.CodeStor;
+            c.categoryCode = l.categoryCode;
+            c.categoryName = l.categoryName;
+            return c;
         }
         public static List<DTOCategoryForStor> DTOlist(List<CategoryForStor> t)
         {

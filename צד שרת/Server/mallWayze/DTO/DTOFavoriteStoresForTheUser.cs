@@ -23,12 +23,17 @@ namespace DTO
             this.LikeStor = l.LikeStor;
            
         }
-        public DTOFavoriteStoresForTheUser(DTOFavoriteStoresForTheUser l)
+        public FavoriteStoresForTheUser ToTable(DTOFavoriteStoresForTheUser l)
         {
-            this.UserCode = l.UserCode;
-            this.CodeStor = l.CodeStor;
-            this.LikeStor = l.LikeStor;
+            FavoriteStoresForTheUser c = new FavoriteStoresForTheUser();
+            c.UserCode = l.UserCode;
+            c.CodeStor = l.CodeStor;
+            c.LikeStor = l.LikeStor;
+
+            return c;
         }
+
+       
         public static List<DTOFavoriteStoresForTheUser> DTOlist(List<FavoriteStoresForTheUser> t)
         {
             List<DTOFavoriteStoresForTheUser> dtolist = new List<DTOFavoriteStoresForTheUser>();

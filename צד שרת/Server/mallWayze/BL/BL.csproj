@@ -41,6 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dijkstra\Node.cs" />
+    <Compile Include="Dijkstra\PrioQueue.cs" />
+    <Compile Include="Dijkstra\Program.cs" />
+    <Compile Include="Dijkstra\Route.cs" />
     <Compile Include="ManagerCategoryForStor.cs" />
     <Compile Include="ManagerCaterory.cs" />
     <Compile Include="Class2.cs" />

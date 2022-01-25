@@ -27,13 +27,16 @@ namespace DTO
             this.floor = (int)l.floor;
             
         }
-        public DTOLocations(DTOLocations l)
+        public Location ToTable(DTOLocations l)
         {
-            this.LocationCode = l.LocationCode;
-            this.AxisX = (double)l.AxisX;
-            this.AxisY = (double)l.AxisY;
-            this.floor = (int)l.floor;
+            Location c = new Location();
+            c.LocationCode = l.LocationCode;
+            c.AxisX = l.AxisX;
+            c.AxisY = l.AxisY;
+            c.floor = l.floor;
+            return c;
         }
+      
         public static List<DTOLocations> DTOlist(List<Location> t)
         {
             List<DTOLocations> dtolist = new List<DTOLocations>();

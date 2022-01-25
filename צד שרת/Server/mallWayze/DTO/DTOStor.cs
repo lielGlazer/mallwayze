@@ -31,15 +31,18 @@ namespace DTO
             this.Sale = (bool)l.Sale;
            
         }
-        public DTOStor(DTOStor l)
+        public Stor ToTable(DTOStor l)
         {
-            this.CodeStor = (long)l.CodeStor;
-            this.PlaceCode = (long)l.PlaceCode;
-            this.NameStor = (string)l.NameStor;
-            this.OpeningHours = (TimeSpan)l.OpeningHours;
-            this.ClosingHours = (TimeSpan)l.ClosingHours;
-            this.Sale = (bool)l.Sale;
+            Stor c = new Stor();
+            c.CodeStor = l.CodeStor;
+            c.PlaceCode = l.PlaceCode;
+            c.NameStor = l.NameStor;
+            c.OpeningHours = l.OpeningHours;
+            c.ClosingHours = l.ClosingHours;
+            c.Sale = l.Sale;
+            return c;
         }
+       
         public static List<DTOStor> DTOlist(List<Stor> t)
         {
             List<DTOStor> dtolist = new List<DTOStor>();

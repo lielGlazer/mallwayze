@@ -27,14 +27,17 @@ namespace DTO
             this.OpeningTimeCode2 = (long)l.OpeningTimeCode2;
 
         }
-        public DTOOpeningHoursForDorkingDay(DTOOpeningHoursForDorkingDay l)
+        public OpeningHoursForDorkingDay ToTable(DTOOpeningHoursForDorkingDay l)
         {
-            this.OpeningHoursCodeForWorkingDay = l.OpeningHoursCodeForWorkingDay;
-            this.StoreCode = (long)l.StoreCode;
-            this.WorkingDayCode = (long)l.WorkingDayCode;
-            this.OpeningTimeCode1 = (long)l.OpeningTimeCode1;
-            this.OpeningTimeCode2 = (long)l.OpeningTimeCode2;
+            OpeningHoursForDorkingDay c = new OpeningHoursForDorkingDay();
+            c.OpeningHoursCodeForWorkingDay = l.OpeningHoursCodeForWorkingDay;
+            c.StoreCode = l.StoreCode;
+            c.WorkingDayCode = l.WorkingDayCode;
+            c.OpeningTimeCode1 = l.OpeningTimeCode1;
+            c.OpeningTimeCode2 = l.OpeningTimeCode2;
+            return c;
         }
+       
         public static List<DTOOpeningHoursForDorkingDay> DTOlist(List<OpeningHoursForDorkingDay> t)
         {
             List<DTOOpeningHoursForDorkingDay> dtolist = new List<DTOOpeningHoursForDorkingDay>();

@@ -21,12 +21,15 @@ namespace DTO
             this.NameCategory = c.NameCategory;
 
         }
-        public DTOCategory(DTOCategory c)
+        public Category ToTable(DTOCategory l)
         {
-            this.CategoryCode = c.CategoryCode;
-            this.NameCategory = c.NameCategory;
+            Category c = new Category();
+            c.CategoryCode = l.CategoryCode;
+            c.NameCategory = l.NameCategory;
 
+            return c;
         }
+      
         public static List<DTOCategory> DTOlist(List<Category> t)
         {
             List<DTOCategory> dtolist = new List<DTOCategory>();
