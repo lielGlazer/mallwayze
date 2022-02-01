@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DbService } from 'src/app/serves/db.service';
 
 @Component({
   selector: 'app-user',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  constructor(private dbService: DbService) { }
 
   ngOnInit(): void {
+
+    this.dbService.getAllUser().subscribe(users => {
+      console.log(users);
+    })
+
   }
+
+
 
 }

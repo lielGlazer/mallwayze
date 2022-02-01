@@ -7,18 +7,24 @@ using System.Web.Http;
 using BL.Models;
 using BL;
 using DTO;
+using System.Web.Http.Cors;
+
 namespace API.Controllers
 {
+    [EnableCors(origins:"*",headers:"*",methods:"*")]
     public class UsersController : ApiController
     {
-        // GET: api/Users
-        public IEnumerable<string> Get()
+        [Route("api/Users/GetAllUser")]
+        [HttpGet]
+        public List<DTOUsers> GetAllUser()
         {
-            return new string[] { "value1", "value2" };
+            List<DTOUsers> u = BL.ManagerUsers.GetUsers();
+            return u;
         }
+        // GET: api/Users
 
         // GET: api/Users/5
-        public string Get(int id)
+        public string GetAllUser(int id)
         {
             return "value";
         }

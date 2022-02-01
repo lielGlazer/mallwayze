@@ -35,7 +35,7 @@ namespace BL
         public static DTOUsers RegisterUser(DTOUsers u)
         {
             DBConection db = new DBConection();
-            User newLogin = u.ToTable();
+            User newLogin = u.ToTable(u);
             db.Execute<User>(newLogin, DBConection.ExecuteActions.Insert);
             u.UserCode = newLogin.UserCode;
             return u;

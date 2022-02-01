@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { HomeComponent } from './home/home.component';
-import { CateroryComponent } from './caterory/caterory.component';
-import { JoinComponent } from './join/join.component';
+import { UserComponent } from './component/user/user.component';
+import { SignInComponent } from './component/sign-in/sign-in.component';
+import { HomeComponent } from './component/home/home.component';
+import { CateroryComponent } from './component/caterory/caterory.component';
+import { JoinComponent } from './component/join/join.component';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
+  
     AppComponent,
     UserComponent,
     SignInComponent,
@@ -20,7 +22,8 @@ import { JoinComponent } from './join/join.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,  
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

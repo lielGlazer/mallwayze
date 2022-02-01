@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CateroryComponent } from './caterory/caterory.component';
-import { JoinComponent } from './join/join.component';
-import { SignInComponent } from './sign-in/sign-in.component';
-import { UserComponent } from './user/user.component';
+import { CateroryComponent } from './component/caterory/caterory.component';
+import { JoinComponent } from './component/join/join.component';
+import { SignInComponent } from './component/sign-in/sign-in.component';
+import { UserComponent } from './component/user/user.component';
+
 
 const routes: Routes = [
   {path:"SignIn", component:SignInComponent},
