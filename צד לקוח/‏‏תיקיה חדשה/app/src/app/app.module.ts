@@ -8,7 +8,9 @@ import { HomeComponent } from './component/home/home.component';
 import { CateroryComponent } from './component/caterory/caterory.component';
 import { JoinComponent } from './component/join/join.component';
 import { HttpClientModule } from '@angular/common/http';
-import { SingUpComponent } from './component/sing-up/sing-up.component';
+import { SignUpComponent } from './component/sign-up/sign-up.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -20,12 +22,14 @@ import { SingUpComponent } from './component/sing-up/sing-up.component';
     HomeComponent,
     CateroryComponent,
     JoinComponent,
-    SingUpComponent
+    SignUpComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,  
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

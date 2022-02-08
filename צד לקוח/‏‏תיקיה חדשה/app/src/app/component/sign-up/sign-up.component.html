@@ -1,0 +1,17 @@
+<form [formGroup]="signUpForm">
+    <!-- שם פרטי -->
+    <label for="fn">שם משתמש:</label>
+    <input formControlName="userName" class="form-control" type="text" placeholder="ישראל" id="fn">
+ 
+    <label for="pass">סיסמא:</label>
+    <input formControlName="password"   class="form-control" type="password" placeholder="" id="pass">
+
+    <!-- <label for="cpass">אימות סיסמא:</label>
+    <input class="form-control" type="password" placeholder="" id="cpass"> -->
+
+
+    <!-- <input type="checkbox" id="agree"> -->
+    <!-- <label for="agree">אני מאשר את תנאי השימוש באתר זה</label> -->
+    <input class="btn btn-primary" type="submit" (click)="doSignUp()" value="הרשם">
+  
+</form>

@@ -13,7 +13,14 @@ export class DbService {
   getAllUser(): Observable<User[]>  {
     return this.httpClient.get<User[]>("http://localhost:62684/api/Users/GetAllUser");
   }
-  getUserSingUp(){
+  signUp(user:User):Observable<User>{
+
+    return this.httpClient.post<User>("http://localhost:62684/api/Users/Register" , user );
+
+  }
+  singIn(user:User):Observable<User>{
+
+    return this.httpClient.post<User>("http://localhost:62684/api/Users/Login" , user );
 
   }
 }

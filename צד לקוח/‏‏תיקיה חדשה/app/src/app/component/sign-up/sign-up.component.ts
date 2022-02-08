@@ -4,18 +4,18 @@ import { User } from 'src/app/models/User';
 import { DbService } from 'src/app/serves/db.service';
 
 @Component({
-  selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
-  styleUrls: ['./sign-in.component.css']
+  selector: 'app-sign-up',
+  templateUrl: './sign-up.component.html',
+  styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
 
-  signInForm: any;
+  signUpForm: any;
   constructor(private dbService: DbService) { }
 
   ngOnInit(): void {
 
-    this.signInForm = new FormGroup(
+    this.signUpForm = new FormGroup(
       {
         userName: new FormControl('', Validators.compose([Validators.required, Validators.maxLength(8)])),
         password: new FormControl('')
@@ -26,12 +26,12 @@ export class SignUpComponent implements OnInit {
 
 
   doSignUp() {
-    console.log(this.signInForm);
+    console.log(this.signUpForm);
 
     const user: User = {
       UserCode: 0,
-      UserName: this.signInForm.controls.userName.value,
-      Password: this.signInForm.controls.password.value
+      UserName: this.signUpForm.controls.userName.value,
+      Password: this.signUpForm.controls.password.value
     }
 
     console.log(user);
@@ -42,10 +42,11 @@ export class SignUpComponent implements OnInit {
     this.dbService.signUp(user).subscribe(res => {
       console.log(res);
       if (res == null)
-        alert("שגיאת שרת אין אפשרות לחבר אותך מצטערים 😨😱😰");
+        alert("שגיאת שרת אין אפשרות להוסיף משתמשים חדשים נסה אחר");
       else
-        alert("התחברת בהצלחה! הקוד שלך הוא " + res.UserCode);
+        alert("נרשמת בהצלחה! הקוד שלך הוא " + res.UserCode);
     })
 
 
-  }}
+  }
+}
