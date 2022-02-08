@@ -13,4 +13,7 @@ export class DbService {
   getAllUser(): Observable<User[]>  {
     return this.httpClient.get<User[]>("http://localhost:62684/api/Users/GetAllUser");
   }
+  getUserSingUp(){
+
+  }
 }

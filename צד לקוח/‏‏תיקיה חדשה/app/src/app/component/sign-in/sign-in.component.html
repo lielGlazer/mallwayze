@@ -9,4 +9,51 @@
         <button onclick="singIn()">👨‍👩‍👧‍👧התחברות</button>
     </div>
 </form>
+<form [formGroup]="signUpForm">
+    <!-- שם פרטי -->
+    <label for="fn">שם פרטי:</label>
+    <input formControlName="firstName" class="form-control" type="text" placeholder="ישראל" id="fn">
+    <ul *ngIf="signUpForm.controls['firstName'].errors!=null">
+        <li>ערך לא תקין</li>
+        <li *ngIf="signUpForm.controls['firstName'].errors.required!=null">שדה זה חובה</li>
 
+        <li *ngIf="signUpForm.controls['firstName'].errors.pattern!=null">אותיות גדולות וקטנות באנגלית בלבד</li>
+        <li *ngIf="signUpForm.controls['firstName'].errors.maxlength!=null">ארוך מידי</li>
+        <li *ngIf="signUpForm.controls['firstName'].errors.minlength!=null">קצר מידי</li>
+    </ul>
+    <label for="ln">שם משפחה</label>
+    <input class="form-control" type="text" placeholder="ישראלי" id="ln">
+    <label for="age">גיל:</label>
+    <input class="form-control" type="number" placeholder="18-120" id="age">
+    <label for="dt">תאריך לידה:</label>
+    <input class="form-control" type="date" placeholder="12-02-2002" id="dt">
+    <label for="tel">טלפון:</label>
+    <input class="form-control" type="tel" id="tel">
+    <label for="mail">מייל</label>
+    <input class="form-control" type="email" id="mail">
+    <label for="idd">תעודת זהות:</label>
+    <input class="form-control" type="text" id="idd">
+    <label for="un">שם משתמש:</label>
+    <input class="form-control" type="text" placeholder="" id="un">
+    <label for="pass">סיסמא:</label>
+    <input class="form-control" type="password" placeholder="" id="pass">
+
+    <label for="cpass">אימות סיסמא:</label>
+    <input class="form-control" type="password" placeholder="" id="cpass">
+
+
+    <input type="checkbox" id="agree">
+    <label for="agree">אני מאשר את תנאי השימוש באתר זה</label>
+    <input class="btn btn-primary" type="submit" value="הרשם">
+    <!-- שם משפחה -->
+    <!-- גיל  -->
+    <!-- תאריך לידה -->
+    <!--טלפון -->
+    <!-- מייל -->
+    <!-- תז -->
+
+    <!-- שם משתמש לאתר -->
+    <!--סיסמא -->
+    <!--אימות סיסמא -->
+    <!-- אישור תנאי השימוש -->
+</form>

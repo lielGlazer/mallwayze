@@ -8,6 +8,7 @@ import { HomeComponent } from './component/home/home.component';
 import { CateroryComponent } from './component/caterory/caterory.component';
 import { JoinComponent } from './component/join/join.component';
 import { HttpClientModule } from '@angular/common/http';
+import { SingUpComponent } from './component/sing-up/sing-up.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     SignInComponent,
     HomeComponent,
     CateroryComponent,
-    JoinComponent
+    JoinComponent,
+    SingUpComponent
   ],
   imports: [
     BrowserModule,
