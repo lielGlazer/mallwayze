@@ -12,7 +12,7 @@ namespace BL.Models
    public class UserInformation
     {
        public string UserName;
-       public string UserPassword;
+       public string Password;
        public UserInformation()
         {
                 

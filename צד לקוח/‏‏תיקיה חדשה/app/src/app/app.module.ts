@@ -6,10 +6,12 @@ import { UserComponent } from './component/user/user.component';
 import { SignInComponent } from './component/sign-in/sign-in.component';
 import { HomeComponent } from './component/home/home.component';
 import { CateroryComponent } from './component/caterory/caterory.component';
-import { JoinComponent } from './component/join/join.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { EnterComponent } from './component/enter/enter.component';
+import { RouteSelectionComponent } from './component/route-selection/route-selection.component';
+
 
 
 
@@ -21,8 +23,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SignInComponent,
     HomeComponent,
     CateroryComponent,
-    JoinComponent,
-    SignUpComponent
+    SignUpComponent,
+    EnterComponent,
+    RouteSelectionComponent
   ],
   imports: [
     BrowserModule,

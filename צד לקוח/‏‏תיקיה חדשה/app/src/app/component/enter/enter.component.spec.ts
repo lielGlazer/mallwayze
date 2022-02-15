@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { JoinComponent } from './join.component';
+import { EnterComponent } from './enter.component';
 
-describe('JoinComponent', () => {
-  let component: JoinComponent;
-  let fixture: ComponentFixture<JoinComponent>;
+describe('EnterComponent', () => {
+  let component: EnterComponent;
+  let fixture: ComponentFixture<EnterComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ JoinComponent ]
+      declarations: [ EnterComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(JoinComponent);
+    fixture = TestBed.createComponent(EnterComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

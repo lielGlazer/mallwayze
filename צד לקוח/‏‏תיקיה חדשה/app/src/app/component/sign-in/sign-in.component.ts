@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { DbService } from 'src/app/serves/db.service';
 
@@ -8,10 +9,10 @@ import { DbService } from 'src/app/serves/db.service';
   templateUrl: './sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
-export class SignUpComponent implements OnInit {
+export class SignInComponent implements OnInit {
 
   signInForm: any;
-  constructor(private dbService: DbService) { }
+  constructor(private dbService: DbService, private router:Router) { }
 
   ngOnInit(): void {
 
@@ -25,7 +26,7 @@ export class SignUpComponent implements OnInit {
   }
 
 
-  doSignUp() {
+  doSignIn() {
     console.log(this.signInForm);
 
     const user: User = {
@@ -39,13 +40,19 @@ export class SignUpComponent implements OnInit {
 
 
 
-    this.dbService.signUp(user).subscribe(res => {
+    this.dbService.signIn(user).subscribe(res => {
       console.log(res);
       if (res == null)
         alert("שגיאת שרת אין אפשרות לחבר אותך מצטערים 😨😱😰");
-      else
+      else {
         alert("התחברת בהצלחה! הקוד שלך הוא " + res.UserCode);
+        user.UserCode = res.UserCode;
+        this.router.navigate(["route-selection"]);
+
+
+      }
     })
 
 
-  }}
+  }
+}

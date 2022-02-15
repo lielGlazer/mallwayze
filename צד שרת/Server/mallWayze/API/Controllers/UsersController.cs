@@ -28,20 +28,20 @@ namespace API.Controllers
         {
             return "value";
         }
-
-        // POST: api/Users
+        //הוספת משתמש חדש למערכת 
         [Route("api/Users/Register")]
         [HttpPost]
-        public DTOUsers Register(DTOUsers o)
+        public DTOUsers Register([FromBody]DTOUsers o)
         {
             return BL.ManagerUsers.RegisterUser(o);
 
         }
+        //התחברות של המשתמש
         [Route("api/Users/Login")]
         [HttpPost]
         public DTOUsers Login([FromBody]UserInformation o)
         {
-            return BL.ManagerUsers.LoginUser(o.UserName, o.UserPassword);
+            return BL.ManagerUsers.LoginUser(o.UserName, o.Password);
         }
 
         // PUT: api/Users/5

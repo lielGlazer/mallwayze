@@ -20,7 +20,7 @@ namespace BL
             List<DTOUsers> dtoList = DTOUsers.DTOlist(list);
             return dtoList;
         }
-
+        //התחברות של משתמש חדש 
         public static DTOUsers LoginUser(string nameU, string passU)
         {
             List<DTOUsers> userInDB = GetUsers();
@@ -32,6 +32,7 @@ namespace BL
             return us;
 
         }
+        //הרשמה  של המשתמש
         public static DTOUsers RegisterUser(DTOUsers u)
         {
             DBConection db = new DBConection();
