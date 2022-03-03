@@ -15,6 +15,7 @@ namespace API.Controllers
         {
             return new string[] { "value1", "value2" };
         }
+        //
         [Route("api/stor/getLocationForStore/{name}")]
        [HttpGet]
         public  DTOLocations GetLocationForStore(string name)

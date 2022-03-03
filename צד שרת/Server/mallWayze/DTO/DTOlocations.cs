@@ -19,7 +19,7 @@ namespace DTO
         {
 
         }
-        public DTOLocations(Location l)
+        public DTOLocations( Location l)
         {
             this.LocationCode = l.LocationCode;
             this.AxisX = (double)l.AxisX;
@@ -27,9 +27,9 @@ namespace DTO
             this.floor = (int)l.floor;
             
         }
-        public Location ToTable(DTOLocations l)
+        public DTOLocations ToTable(DTOLocations l)
         {
-            Location c = new Location();
+            DTOLocations c = new DTOLocations();
             c.LocationCode = l.LocationCode;
             c.AxisX = l.AxisX;
             c.AxisY = l.AxisY;

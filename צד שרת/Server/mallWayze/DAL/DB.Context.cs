@@ -24,9 +24,6 @@ namespace DAL
             return this.Set<T>();
         }
 
-
-
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

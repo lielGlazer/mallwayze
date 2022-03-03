@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e567e8c331b94b8da4f5de0ff05b9000" Name="Diagram1">
+      <Diagram DiagramId="9004c0b5d005483894ac9cfdc0631677" Name="Diagram1">
         <EntityTypeShape EntityType="wayzeShoopModel.Category" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
         <EntityTypeShape EntityType="wayzeShoopModel.CategoryForStor" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
         <EntityTypeShape EntityType="wayzeShoopModel.FavoriteStoresForTheUser" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />

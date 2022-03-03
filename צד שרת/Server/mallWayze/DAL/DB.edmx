@@ -14,11 +14,11 @@
         </EntityType>
         <EntityType Name="CategoryForStor">
           <Key>
-            <PropertyRef Name="categoryCode" />
+            <PropertyRef Name="CategoryCodeForStore" />
           </Key>
+          <Property Name="CategoryCodeForStore" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="categoryCode" Type="bigint" Nullable="false" />
           <Property Name="CodeStor" Type="bigint" Nullable="false" />
-          <Property Name="categoryCode" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="categoryName" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="FavoriteStoresForTheUser">
           <Key>
@@ -93,7 +93,7 @@
         </EntityType>
         <Association Name="FK_CategoryForStor_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
-          <End Role="CategoryForStor" Type="Self.CategoryForStor" Multiplicity="0..1" />
+          <End Role="CategoryForStor" Type="Self.CategoryForStor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Category">
               <PropertyRef Name="CategoryCode" />
@@ -274,15 +274,15 @@
           </Key>
           <Property Name="CategoryCode" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="CategoryForStor" Relationship="Self.FK_CategoryForStor_Category" FromRole="Category" ToRole="CategoryForStor" />
+          <NavigationProperty Name="CategoryForStors" Relationship="Self.FK_CategoryForStor_Category" FromRole="Category" ToRole="CategoryForStor" />
         </EntityType>
         <EntityType Name="CategoryForStor">
           <Key>
-            <PropertyRef Name="categoryCode" />
+            <PropertyRef Name="CategoryCodeForStore" />
           </Key>
+          <Property Name="CategoryCodeForStore" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="categoryCode" Type="Int64" Nullable="false" />
           <Property Name="CodeStor" Type="Int64" Nullable="false" />
-          <Property Name="categoryCode" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="categoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Category" Relationship="Self.FK_CategoryForStor_Category" FromRole="CategoryForStor" ToRole="Category" />
           <NavigationProperty Name="Stor" Relationship="Self.FK_CategoryForStor_Stor" FromRole="CategoryForStor" ToRole="Stor" />
         </EntityType>
@@ -376,7 +376,7 @@
         </EntityType>
         <Association Name="FK_CategoryForStor_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
-          <End Role="CategoryForStor" Type="Self.CategoryForStor" Multiplicity="0..1" />
+          <End Role="CategoryForStor" Type="Self.CategoryForStor" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Category">
               <PropertyRef Name="CategoryCode" />
@@ -563,9 +563,9 @@
           <EntitySetMapping Name="CategoryForStors">
             <EntityTypeMapping TypeName="wayzeShoopModel.CategoryForStor">
               <MappingFragment StoreEntitySet="CategoryForStor">
-                <ScalarProperty Name="CodeStor" ColumnName="CodeStor" />
+                <ScalarProperty Name="CategoryCodeForStore" ColumnName="CategoryCodeForStore" />
                 <ScalarProperty Name="categoryCode" ColumnName="categoryCode" />
-                <ScalarProperty Name="categoryName" ColumnName="categoryName" />
+                <ScalarProperty Name="CodeStor" ColumnName="CodeStor" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -14,9 +14,9 @@ namespace DAL
     
     public partial class CategoryForStor
     {
-        public long CodeStor { get; set; }
+        public long CategoryCodeForStore { get; set; }
         public long categoryCode { get; set; }
-        public string categoryName { get; set; }
+        public long CodeStor { get; set; }
     
         public virtual Category Category { get; set; }
         public virtual Stor Stor { get; set; }

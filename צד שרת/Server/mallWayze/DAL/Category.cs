@@ -14,9 +14,16 @@ namespace DAL
     
     public partial class Category
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Category()
+        {
+            this.CategoryForStors = new HashSet<CategoryForStor>();
+        }
+    
         public long CategoryCode { get; set; }
         public string NameCategory { get; set; }
     
-        public virtual CategoryForStor CategoryForStor { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CategoryForStor> CategoryForStors { get; set; }
     }
 }

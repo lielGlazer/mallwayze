@@ -19,7 +19,7 @@ namespace API.Controllers
             List<DTOCategory> u = BL.ManagerCaterory.GetCategories();
             return u;
         }
-
+        //  מחזיר את הקטגוריה לפי המספר ID 
         [Route("api/GetCategoryByID/{id}")]
         [HttpGet]
         public DTOCategory GetCategoryByID(long id)
