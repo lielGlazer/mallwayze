@@ -14,15 +14,7 @@ namespace BL
     {
         static DBConection db = new DBConection();
 
-        //פונקציה שמקבלת קטגוריה ונותנת את כל החניות שמכילות את הקטגוריה הנ''ל  
-        public static List<DTOStor> GetAllStorOfXContaining(string nameCategory) {
-            DTOCategory Scode = db.GetDbSet<DTOCategory>().FirstOrDefault(d => d.NameCategory.Equals(nameCategory)); 
-            int code =(int)Scode.CategoryCode;
-            List<DTOCategoryForStor> catOfStor = db.GetDbSet<DTOCategoryForStor>().ToList();
-            catOfStor.Where(s => s.categoryCode == code);
-            return null;
-        }
-
+ 
 
 
         //מיקום של כל החניות ברשימה 

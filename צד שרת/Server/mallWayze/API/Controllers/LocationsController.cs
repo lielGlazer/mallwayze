@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DTO;
+using BL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,6 +9,7 @@ using System.Web.Http;
 
 namespace API.Controllers
 {
+    [Route("api/location")]
     public class LocationsController : ApiController
     {
         // GET: api/Locations
@@ -34,6 +37,12 @@ namespace API.Controllers
         // DELETE: api/Locations/5
         public void Delete(int id)
         {
+        }
+        [HttpGet]
+        [Route("locationForStor/{nameStore}")]
+        public static DTOLocations LocationForStor(string nameStore)
+        {
+          return  ManagerLocations.LocationForStor(nameStore);
         }
     }
 }

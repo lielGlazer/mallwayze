@@ -21,7 +21,7 @@ namespace DTO
         {
             this.CodeStor =l.CodeStor;
             this.categoryCode = l.categoryCode;
-            this.categoryName = l.categoryName;
+          //  this.categoryName = l.categoryName;
            
         }
         public CategoryForStor ToTable(DTOCategoryForStor l)
@@ -29,7 +29,7 @@ namespace DTO
             CategoryForStor c = new CategoryForStor();
             c.CodeStor = l.CodeStor;
             c.categoryCode = l.categoryCode;
-            c.categoryName = l.categoryName;
+           // c.categoryName = l.categoryName;
             return c;
         }
         public static List<DTOCategoryForStor> DTOlist(List<CategoryForStor> t)
