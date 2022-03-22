@@ -17,10 +17,10 @@ namespace DAL
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Stor()
         {
-            this.CategoryForStors = new HashSet<CategoryForStor>();
-            this.FavoriteStoresForTheUsers = new HashSet<FavoriteStoresForTheUser>();
-            this.OpeningHoursForDorkingDays = new HashSet<OpeningHoursForDorkingDay>();
-            this.OpeningHoursForDorkingDays1 = new HashSet<OpeningHoursForDorkingDay>();
+            this.CategoryForStor = new HashSet<CategoryForStor>();
+            this.FavoriteStoresForTheUser = new HashSet<FavoriteStoresForTheUser>();
+            this.OpeningHoursForDorkingDay = new HashSet<OpeningHoursForDorkingDay>();
+            this.OpeningHoursForDorkingDay1 = new HashSet<OpeningHoursForDorkingDay>();
         }
     
         public long CodeStor { get; set; }
@@ -31,13 +31,13 @@ namespace DAL
         public Nullable<bool> Sale { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CategoryForStor> CategoryForStors { get; set; }
+        public virtual ICollection<CategoryForStor> CategoryForStor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FavoriteStoresForTheUser> FavoriteStoresForTheUsers { get; set; }
-        public virtual Location Location { get; set; }
+        public virtual ICollection<FavoriteStoresForTheUser> FavoriteStoresForTheUser { get; set; }
+        public virtual Locations Locations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OpeningHoursForDorkingDay> OpeningHoursForDorkingDays { get; set; }
+        public virtual ICollection<OpeningHoursForDorkingDay> OpeningHoursForDorkingDay { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OpeningHoursForDorkingDay> OpeningHoursForDorkingDays1 { get; set; }
+        public virtual ICollection<OpeningHoursForDorkingDay> OpeningHoursForDorkingDay1 { get; set; }
     }
 }

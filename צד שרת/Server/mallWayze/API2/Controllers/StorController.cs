@@ -23,9 +23,12 @@ namespace API2.Controllers
           return  BL.ManagerLocations.LocationForStor(name);
         }
 
-        // POST: api/Stor
-        public void Post([FromBody]string value)
+        // GET: api/Stor
+        [Route("api/stor/GetStoresByCategory/{category}")]
+        [HttpGet]
+        public List<DTOStor> GetStoresByCategory(string category)
         {
+            return BL.ManagerCategoryForStor.GetAllStorOfXContaining(category);
         }
 
         // PUT: api/Stor/5

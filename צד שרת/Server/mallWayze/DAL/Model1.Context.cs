@@ -19,25 +19,21 @@ namespace DAL
             : base("name=wayzeShoopEntities")
         {
         }
-        public DbSet<T> GetDbSet<T>() where T : class
-        {
-            return this.Set<T>();
-        }
-
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<CategoryForStor> CategoryForStors { get; set; }
-        public virtual DbSet<FavoriteStoresForTheUser> FavoriteStoresForTheUsers { get; set; }
-        public virtual DbSet<Location> Locations { get; set; }
-        public virtual DbSet<OpeningHour> OpeningHours { get; set; }
-        public virtual DbSet<OpeningHoursForDorkingDay> OpeningHoursForDorkingDays { get; set; }
-        public virtual DbSet<Stor> Stors { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<WorkingDaysWeek> WorkingDaysWeeks { get; set; }
+        public virtual DbSet<Category> Category { get; set; }
+        public virtual DbSet<CategoryForStor> CategoryForStor { get; set; }
+        public virtual DbSet<FavoriteStoresForTheUser> FavoriteStoresForTheUser { get; set; }
+        public virtual DbSet<Locations> Locations { get; set; }
+        public virtual DbSet<OpeningHours> OpeningHours { get; set; }
+        public virtual DbSet<OpeningHoursForDorkingDay> OpeningHoursForDorkingDay { get; set; }
+        public virtual DbSet<Stor> Stor { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<WorkingDaysWeek> WorkingDaysWeek { get; set; }
     }
 }

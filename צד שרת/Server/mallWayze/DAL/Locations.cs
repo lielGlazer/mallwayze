@@ -12,12 +12,12 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Location
+    public partial class Locations
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Location()
+        public Locations()
         {
-            this.Stors = new HashSet<Stor>();
+            this.Stor = new HashSet<Stor>();
         }
     
         public long LocationCode { get; set; }
@@ -26,6 +26,6 @@ namespace DAL
         public Nullable<int> floor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Stor> Stors { get; set; }
+        public virtual ICollection<Stor> Stor { get; set; }
     }
 }
