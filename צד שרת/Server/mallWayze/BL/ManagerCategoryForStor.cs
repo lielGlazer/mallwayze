@@ -32,7 +32,11 @@ namespace BL
             List<DTOStor> stores = new List<DTOStor>();
             foreach (var s in h)
             {
+<<<<<<< HEAD
                 stores.Add(new DTOStor(db.GetDbSet<Stor>().Find(store => store.CodeStor == s.CodeStor)));
+=======
+                List<DTOStor> story = db.GetDbSet<DTStor>().ToList();//
+>>>>>>> 72d9872f31ac033a686dc9c47f55d29a42ea9481
             }
             return stores;
         }
