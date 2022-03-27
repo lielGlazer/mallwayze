@@ -31,7 +31,7 @@ namespace BL
             List<DTOCategoryForStor> h = list.Where(s=>Convert.ToInt32(s.categoryCode)==code).ToList();
             foreach (var s in h)
             {
-                List<DTOStor> story = db.GetDbSet<DTStor>().ToList();//
+                List<DTOStor> story = db.GetDbSet<DTStor>().ToList();//.
             }
             
             return null;
