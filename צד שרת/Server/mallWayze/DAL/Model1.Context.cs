@@ -15,6 +15,11 @@ namespace DAL
     
     public partial class wayzeShoopEntities : DbContext
     {
+        public DbSet<T> GetDbSet<T>() where T : class
+        {
+            return this.Set<T>();
+        }
+
         public wayzeShoopEntities()
             : base("name=wayzeShoopEntities")
         {

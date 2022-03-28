@@ -44,6 +44,8 @@ namespace DAL
                         break;
                 }
                 wm.SaveChanges();
+                
+
 
             }
         }
