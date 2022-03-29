@@ -13,7 +13,7 @@ namespace BL
         static DBConection db = new DBConection();
         public static List<DTOOpeningHours> GetLocations()
         {
-            List<OpeningHour> list = db.GetDbSet<OpeningHour>().ToList();
+            List<OpeningHours> list = db.GetDbSet<OpeningHours>().ToList();
             List<DTOOpeningHours> dtoList = DTOOpeningHours.DTOlist(list);
             return dtoList;
         }
