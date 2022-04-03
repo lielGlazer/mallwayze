@@ -8,7 +8,7 @@ namespace BL.Dijkstra
 {
     class Node
     {
-        //שם של 
+        
         public string Name { get; private set; }
         public double Value { get; set; }
         public Node PreviousNode { get; set; }

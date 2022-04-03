@@ -19,7 +19,7 @@ namespace DTO
         {
 
         }
-        public DTOLocations( Location l)
+        public DTOLocations( Locations l)
         {
             this.LocationCode = l.LocationCode;
             this.AxisX = (double)l.AxisX;
@@ -37,7 +37,7 @@ namespace DTO
             return c;
         }
       
-        public static List<DTOLocations> DTOlist(List<Location> t)
+        public static List<DTOLocations> DTOlist(List<Locations> t)
         {
             List<DTOLocations> dtolist = new List<DTOLocations>();
             foreach(var c in t)

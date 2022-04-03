@@ -20,7 +20,7 @@ namespace BL
         //מיקום של כל החניות ברשימה 
         public static List<DTOLocations> GetLocations()
         {
-            List<Location> list = db.GetDbSet<Location>().ToList();
+            List<Locations> list = db.GetDbSet<Locations>().ToList();
             List<DTOLocations> dtoList = DTOLocations.DTOlist(list);
          
             return dtoList;
