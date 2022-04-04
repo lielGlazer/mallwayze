@@ -9,14 +9,17 @@ using BL;
 
 namespace BL.Dijkstra
 {
-    //המסלול שמובנה מלוקשיין 
+    //המסלול עצמו 
     public class Route
     {
-        public DTOLocations From { get; private set; }
-        public DTOLocations To { get; private set; }
+        //צומת אחת קוד
+        public int  From { get; private set; }
+        //צומת שניה קוד
+        public int To { get; private set; }
+        //מרחק בינהם
         public double Distance { get; private set; }
 
-        public Route(DTOLocations from, DTOLocations to, double distance)
+        public Route(int from, int to, double distance)
         {
             this.From = from;
             this.To = to;
