@@ -6,21 +6,7 @@ header{
     font-size: xx-large;
     font-family: serif;
 }
-body
-{
 
-
-    margin-top: 400px;
-    margin-left: 290px;
-    background-image: url("app/img/nice.png");
-    width: 100%;
-    padding: 0;
-    font-family: 'Segoe UI', 'Segoe WP', system-ui, Arial, Sans-Serif;
-    
-    background-repeat: no-repeat;
-    background-clip: border-box;
-   
-}
 element.style{
     background-image: url("app/img/nice.png");
 }

@@ -29,7 +29,6 @@ namespace DTO
             this.OpeningHours = (TimeSpan)l.OpeningHours;
             this.ClosingHours = (TimeSpan)l.ClosingHours;
             this.Sale = (bool)l.Sale;
-           
         }
         public Stor ToTable(DTOStor l)
         {

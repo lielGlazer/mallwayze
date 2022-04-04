@@ -16,7 +16,7 @@ namespace BL
         static DBConection db = new DBConection();
         public static List<DTOUsers> GetUsers()
         {
-            List<User> list = db.GetDbSet<User>().ToList();
+            List<Users> list = db.GetDbSet<Users>().ToList();
             List<DTOUsers> dtoList = DTOUsers.DTOlist(list);
             return dtoList;
         }
@@ -36,8 +36,8 @@ namespace BL
         public static DTOUsers RegisterUser(DTOUsers u)
         {
             DBConection db = new DBConection();
-            User newLogin = u.ToTable(u);
-            db.Execute<User>(newLogin, DBConection.ExecuteActions.Insert);
+            Users newLogin = u.ToTable(u);
+            db.Execute<Users>(newLogin, DBConection.ExecuteActions.Insert);
             u.UserCode = newLogin.UserCode;
             return u;
         }

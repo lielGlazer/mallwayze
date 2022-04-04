@@ -27,20 +27,12 @@ namespace BL
         {
             DTOCategory Scode = db.GetDbSet<DTOCategory>().FirstOrDefault(d => d.NameCategory.Equals(nameCategory));
             long code = Scode.CategoryCode;
-//רשימת הקודים לחניות  
+           //רשימת הקודים לחניות  
             List<DTOCategoryForStor> h = GetCategoryForStor().Where(s=>s.categoryCode==code).ToList();
             List<DTOStor> stores = new List<DTOStor>();
             foreach (var s in h)
             {
-<<<<<<< HEAD
-                List<DTOStor> story = db.GetDbSet<DTStor>().ToList();//.
-=======
-<<<<<<< HEAD
                 stores.Add(new DTOStor(db.GetDbSet<Stor>().Find(store => store.CodeStor == s.CodeStor)));
-=======
-                List<DTOStor> story = db.GetDbSet<DTStor>().ToList();//
->>>>>>> 72d9872f31ac033a686dc9c47f55d29a42ea9481
->>>>>>> c0136e1a07d518e1dcfde2ef28ec426aafec0649
             }
             return stores;
         }

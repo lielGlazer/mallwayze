@@ -17,6 +17,13 @@ namespace API2.Controllers
             List<DTOCategoryForStor> u = BL.ManagerCategoryForStor.GetCategoryForStor();
             return u;
         }
+        [Route("api/CategoryForStor/GetAllStorsToCategory/{nameOfCategory}")]
+        [HttpGet]
+        public List<DTOStor> GetAllStorsToCategory(string nameOfCategory)
+        {
+            List<DTOStor> listOFstor = BL.ManagerCategoryForStor.GetAllStorOfXContaining(nameOfCategory);
+            return listOFstor;
+        }
 
     }
 }

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CateroryComponent } from './caterory.component';
+import { SearchCategorysComponent } from './search-categorys.component';
 
-describe('CateroryComponent', () => {
-  let component: CateroryComponent;
-  let fixture: ComponentFixture<CateroryComponent>;
+describe('SearchCategorysComponent', () => {
+  let component: SearchCategorysComponent;
+  let fixture: ComponentFixture<SearchCategorysComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CateroryComponent ]
+      declarations: [ SearchCategorysComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CateroryComponent);
+    fixture = TestBed.createComponent(SearchCategorysComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

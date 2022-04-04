@@ -18,14 +18,14 @@ namespace DTO
         {
 
         }
-        public DTOOpeningHours(OpeningHour l)
-        {
-            this.OpeningTimeCode = l.OpeningTimeCode;
-            this.OpeningHours =(DateTime) l.OpeningHours;
-            this.ClosingTime = (DateTime)l.ClosingTime;
+        //public DTOOpeningHours(OpeningHour l)
+        //{
+        //    this.OpeningTimeCode = l.OpeningTimeCode;
+        //    this.OpeningHours =(DateTime) l.OpeningHours;
+        //    this.ClosingTime = (DateTime)l.ClosingTime;
           
 
-        }
+        //}
         public OpeningHours ToTable(DTOOpeningHours l)
         {
             OpeningHours c = new OpeningHours();
@@ -38,11 +38,11 @@ namespace DTO
         public static List<DTOOpeningHours> DTOlist(List<OpeningHours> t)
         {
             List<DTOOpeningHours> dtolist = new List<DTOOpeningHours>();
-            foreach (var c in t)
-            {
-                DTOOpeningHours dto = new DTOOpeningHours(c);
-                dtolist.Add(dto);
-            }
+            //foreach (var c in t)
+            //{
+            //    DTOOpeningHours dto = new DTOOpeningHours(c);
+            //    dtolist.Add(dto);
+            //}
             return dtolist;
         }
 

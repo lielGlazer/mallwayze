@@ -16,23 +16,23 @@ namespace DTO
         public DTOUsers()
         {
         }
-        public DTOUsers(User l)
+        public DTOUsers(Users l)
         {
             this.UserCode = l.UserCode;
             this.UserName = l.UserName;
             this.Password = l.Password;
             
         }
-        public User ToTable(DTOUsers l)
+        public Users ToTable(DTOUsers l)
         {
-            User c = new User();
+            Users c = new Users();
             c.UserCode = l.UserCode;
             c.UserName = l.UserName;
             c.Password = l.Password;
             return c;
         }
        
-        public static List<DTOUsers> DTOlist(List<User> t)
+        public static List<DTOUsers> DTOlist(List<Users> t)
         {
             List<DTOUsers> dtolist = new List<DTOUsers>();
             foreach (var c in t)
