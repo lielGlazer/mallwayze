@@ -5,6 +5,7 @@ import { AppComponent } from './app.component';
 import { UserComponent } from './component/user/user.component';
 import { SignInComponent } from './component/sign-in/sign-in.component';
 import { HomeComponent } from './component/home/home.component';
+import { CateroryComponent } from './component/caterory/caterory.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,12 +14,13 @@ import { RouteSelectionComponent } from './component/route-selection/route-selec
 import { SearchComponent } from './component/search/search.component';
 import { SearchStorsComponent } from './component/search-stors/search-stors.component';
 import { SearchCategorysComponent } from './component/search-categorys/search-categorys.component';
+import { BossComponent } from './component/boss/boss.component';
 import { StorsComponent } from './component/stors/stors.component';
-import { CategorysComponent } from './component/categorys/categorys.component';
-import { StorsDetailsComponent } from './component/stors-details/stors-details.component';
-import { HistoryComponent } from './component/history/history.component';
-import { UserInformationComponent } from './component/user-information/user-information.component';
-import { NavComponent } from './component/nav/nav.component';
+import { RouteStorComponent } from './component/route-stor/route-stor.component';
+import { RouteCategoryComponent } from './component/route-category/route-category.component';
+import { RouteSmartComponent } from './component/route-smart/route-smart.component';
+import { StorDataComponent } from './component/stor-data/stor-data.component';
+import { ErrorComponent } from './component/error/error.component';
 
 
 
@@ -30,18 +32,20 @@ import { NavComponent } from './component/nav/nav.component';
     UserComponent,
     SignInComponent,
     HomeComponent,
+    CateroryComponent,
     SignUpComponent,
     EnterComponent,
     RouteSelectionComponent,
     SearchComponent,
     SearchStorsComponent,
     SearchCategorysComponent,
+    BossComponent,
     StorsComponent,
-    CategorysComponent,
-    StorsDetailsComponent,
-    HistoryComponent,
-    UserInformationComponent,
-    NavComponent
+    RouteStorComponent,
+    RouteCategoryComponent,
+    RouteSmartComponent,
+    StorDataComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,

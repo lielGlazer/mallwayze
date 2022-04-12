@@ -1,12 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+
+/* You can add global styles to this file, and also import other style files
 
 header{
-    
-    color: black;
+    background-color: black;
+    color:whitesmoke;
+  
     font-size: xx-large;
     font-family: serif;
+   
 }
+.link-of-hedder{
+    
+}
+body
+{
 
+
+    margin-top: 400px;
+    margin-left: 290px;
+    background-image: url("app/img/nice.png");
+    width: 100%;
+    padding: 0;
+    font-family: 'Segoe UI', 'Segoe WP', system-ui, Arial, Sans-Serif;
+    
+    background-repeat: no-repeat;
+    background-clip: border-box;
+   
+}
 element.style{
     background-image: url("app/img/nice.png");
 }
@@ -22,13 +42,20 @@ element.style{
     font: 12px,large;
     font-family: Georgia, 'Times New Roman', Times, serif;
     /* background-color: whitesmoke; */
-    border-radius: 10%;
+    /* border-radius: 10%;
     border: solid 4px;
     border-color: white;
     width: 150px;
-    height:40px;
+  
     text-align: center;
-}
+     */
+   
+    
+    
+    
+   
+/* }
 .link-home:hover{
     box-shadow:0 16px 24px 0  whitesmoke ;
-}
+    color:cornsilk;
+} */ 
