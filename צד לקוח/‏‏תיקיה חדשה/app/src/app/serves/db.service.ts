@@ -11,17 +11,17 @@ export class DbService {
   constructor(private httpClient:HttpClient) { }
  //מחזיר את כל המשתמשים
   getAllUser(): Observable<User[]>  {
-    return this.httpClient.get<User[]>("http://localhost:62684/api/Users/GetAllUser");
+    return this.httpClient.get<User[]>("http://localhost:64724/api/Users/GetAllUser");
   }
   //רישום
   signUp(user:User):Observable<User>{
-    return this.httpClient.post<User>("http://localhost:62684/api/Users/Register" , user );
+    return this.httpClient.post<User>("http://localhost:64724/api/Users/Register" , user );
 
   }
   //התחברות
   signIn(user:User):Observable<User>{
 
-    return this.httpClient.post<User>("http://localhost:62684/api/Users/Login" , user );
+    return this.httpClient.post<User>("http://localhost:64724/api/Users/Login" , user );
 
   }
 }

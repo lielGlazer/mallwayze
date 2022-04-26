@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+
+  enter: boolean = false
+
+  openSign() {
+    console.log("enter!!!!!!!!!!!");
+    this.enter = !this.enter
+  }
 }
+
+

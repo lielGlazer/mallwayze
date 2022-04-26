@@ -20,34 +20,52 @@ import { UserComponent } from './component/user/user.component';
 
 
 const routes: Routes = [
-//חיפוש//
- {path:'search',component:SearchComponent,children:[
-   {path:'search-stor',component:SearchStorsComponent,children:[
-     {path:'stor-data',component:StorDataComponent}
-   ]},
-   {path:'search-category',component:SearchCategorysComponent}
- ]},
- //כל החניות //
- {path:'all-stor',component:StorsComponent},
- //כניסה.//
-  {path:'enter', component:EnterComponent,children:[
-    //להרשם//
-    {path:'sign-up', component:SignUpComponent},
-    //להתחבר//
-    {path:'sign-in', component:SignInComponent,children:[
-      {path:'roate-smart',component:RouteSmartComponent}
-    ]},
-    {path:'boss',component:BossComponent}
-  ]},
-  {path:'route-selection', component:RouteSelectionComponent,children:[
-    {path:'route-stor',component:RouteStorComponent},
-    {path:'route-category',component:RouteCategoryComponent},
-    {path:'roate-smart',component:RouteSmartComponent}
-  ]},
-  {path:'', component:HomeComponent},
-  {path:'error',component:ErrorComponent}
+  //דף הבית//
+  { path: '', pathMatch: 'full', component: HomeComponent },
+  //חיפוש//
+  {
+    path: 'search', component: SearchComponent, children: [
+      {
+        path: 'search-stor', component: SearchStorsComponent, children: [
+          { path: 'stor-data', component: StorDataComponent }
+        ]
+      },
+      { path: 'search-category', component: SearchCategorysComponent }
+    ]
+  },
+  //כל החניות //
+  { path: 'all-stor', component: StorsComponent },
+  // //כניסה.//
+  // {
+  //   path: 'enter', component: EnterComponent, children: [
+  //     //להרשם//
+  { path: 'sign-up', component: SignUpComponent },
+  //להתחבר//
+  {
+    path: 'sign-in', component: SignInComponent, children: [
+      { path: 'roate-smart', component: RouteSmartComponent }
+    ]
+  },
+  //מנהל//
+  //     { path: 'boss', component: BossComponent }
+  //   ]
+  // },
+  //חישוב מסלול//
+  {
+    path: 'route-selection', component: RouteSelectionComponent, children: [
+      //מסלול לחנות//
+      { path: 'route-stor', component: RouteStorComponent },
+      //מסלול לקטגוריות//
+      { path: 'route-category', component: RouteCategoryComponent },
+      //מסלול חכם//
+      { path: 'roate-smart', component: RouteSmartComponent }
+    ]
+  },
 
- 
+  //טעות//
+  { path: 'error', component: ErrorComponent }
+
+
 ];
 
 @NgModule({
