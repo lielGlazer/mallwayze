@@ -1,6 +1,7 @@
 <h1>😆 לא מוותרים עלייך, מקומך איתנו </h1>
 <h3>📄 טופס התחברות</h3>
-<form [formGroup]="signUpForm">
+<form [formGroup]="signUpForm"di>
+    <div class="gridopt center" style=" width: 30rem;height: fit-content; margin-top: 150px;" >
     <!-- שם פרטי -->
     <label for="fn">שם משתמש:</label>
     <input formControlName="userName" class="form-control" type="text" placeholder="ישראל" id="fn">
@@ -14,6 +15,6 @@
 
     <!-- <input type="checkbox" id="agree"> -->
     <!-- <label for="agree">אני מאשר את תנאי השימוש באתר זה</label> -->
-    <input class="btn btn-primary" type="submit" (click)="doSignUp()" value="הרשם">
-
+    <input class="btn btn-primary" style="text-align: center; align-items: center;" type="submit" (click)="doSignUp()" value="הרשם">
+</div>
 </form>

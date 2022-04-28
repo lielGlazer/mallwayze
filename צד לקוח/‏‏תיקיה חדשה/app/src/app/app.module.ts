@@ -25,6 +25,7 @@ import { ErrorComponent } from './component/error/error.component';
 
 
 
+
 @NgModule({
   declarations: [
   
@@ -45,7 +46,8 @@ import { ErrorComponent } from './component/error/error.component';
     RouteCategoryComponent,
     RouteSmartComponent,
     StorDataComponent,
-    ErrorComponent
+    ErrorComponent,
+  
   ],
   imports: [
     BrowserModule,

@@ -9,7 +9,7 @@ using BL;
 
 namespace BL.Dijkstra
 {
-    //המסלול עצמו 
+    //קשת 
     public class Route
     {
         //צומת אחת קוד

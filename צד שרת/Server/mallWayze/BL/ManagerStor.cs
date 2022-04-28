@@ -17,6 +17,6 @@ namespace BL
             List<DTOStor> dtoList = DTOStor.DTOlist(list);
             return dtoList;
         }
-        
+    
     }
 }

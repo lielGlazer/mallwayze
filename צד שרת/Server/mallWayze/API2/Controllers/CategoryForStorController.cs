@@ -11,12 +11,13 @@ using BL;
 namespace API2.Controllers
 {
     public class CategoryForStorController : ApiController
-    {
+    {//ממחזיר את כל הקטגוריות לחנות
         public List<DTOCategoryForStor> GetCaterory()
         {
             List<DTOCategoryForStor> u = BL.ManagerCategoryForStor.GetCategoryForStor();
             return u;
         }
+        //מחזיר רשימת חנוית לפי שם קטגוריה 
         [Route("api/CategoryForStor/GetAllStorsToCategory/{nameOfCategory}")]
         [HttpGet]
         public List<DTOStor> GetAllStorsToCategory(string nameOfCategory)

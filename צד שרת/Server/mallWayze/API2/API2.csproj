@@ -292,7 +292,6 @@
     <Compile Include="Controllers\CategoryForStorController.cs" />
     <Compile Include="Controllers\FavoriteStoresForTheUserController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\OpeningHoursController.cs" />
     <Compile Include="Controllers\OpeningHoursForDorkingDayController.cs" />

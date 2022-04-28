@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BL.Dijkstra
-{
+{//תור עדיפות
     class PrioQueue : LinkedList<Node>
     {
         public void AddNodeWithPriority(Node node)

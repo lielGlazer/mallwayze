@@ -10,19 +10,30 @@ namespace API2.Controllers
 {
     public class StorController : ApiController
     {
-        // GET: api/Stor
-        public IEnumerable<string> Get()
+        // הפונקציה מקבלת שמות של חנויות (רשימת שמות )ומחזירה רשימת מיקומים בהתאם
+        [Route("api/stor/ListLocationsForListStors/{}")]
+        [HttpPost]
+        public List<DTOLocations> ListLocationsForListStors(List<string>names)
         {
-            return new string[] { "value1", "value2" };
+            List<DTOLocations> loc=new List<DTOLocations>();
+            foreach(var v in names)
+            {
+                loc.Add(GetLocationForStore(v));
+            
+            }
+            return loc;
         }
-        //
+
+
+
+        //מחזיר מיקום על פי שם של חנות 
         [Route("api/stor/getLocationForStore/{name}")]
-       [HttpGet]
+        [HttpGet]
         public  DTOLocations GetLocationForStore(string name)
         {
           return  BL.ManagerLocations.LocationForStor(name);
         }
-
+        //מחזיר רשימה של חניות לפי קטגוריה מסויימת
         // GET: api/Stor
         [Route("api/stor/GetStoresByCategory/{category}")]
         [HttpGet]
@@ -31,14 +42,6 @@ namespace API2.Controllers
             return BL.ManagerCategoryForStor.GetAllStorOfXContaining(category);
         }
 
-        // PUT: api/Stor/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Stor/5
-        public void Delete(int id)
-        {
-        }
+       
     }
 }

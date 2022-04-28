@@ -6,7 +6,7 @@ import { DbService } from 'src/app/serves/db.service';
 
 @Component({
   selector: 'app-sign-in',
-  templateUrl: './sign-in.component.html',
+  templateUrl:'./sign-in.component.html',
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {

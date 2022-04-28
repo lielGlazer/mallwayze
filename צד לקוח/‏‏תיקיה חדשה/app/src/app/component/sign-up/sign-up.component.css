@@ -1,0 +1,15 @@
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 50%;
+}
+.gridopt{
+    background-color: rgba(245, 245, 245, 0.685);
+      border-radius: 15px;
+      width: 400px;;
+      height: 400px;
+     
+  }

@@ -1,17 +1,33 @@
-button{
+button {}
 
-}
-button:hover{
+button:hover {
     box-shadow: cadetblue;
-    
-}
-input{
 
 }
-div{
 
-}
-body{
+input {}
+
+div {}
+
+body {
     direction: ltr;
+
+}
+
+.center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 50%;
+}
+
+.gridopt {
     
+    border-radius: 15px;
+    width: 500px;
+    
+    height: 700px;
+
 }
