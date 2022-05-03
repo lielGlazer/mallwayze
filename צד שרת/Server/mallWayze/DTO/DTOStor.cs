@@ -17,6 +17,7 @@ namespace DTO
         public System.TimeSpan OpeningHours { get; set; }
         public System.TimeSpan ClosingHours { get; set; }
         public bool Sale { get; set; }
+        public  DTOLocations Locations { get; set; }
         public DTOStor()
         {
 
@@ -29,6 +30,7 @@ namespace DTO
             this.OpeningHours = (TimeSpan)l.OpeningHours;
             this.ClosingHours = (TimeSpan)l.ClosingHours;
             this.Sale = (bool)l.Sale;
+            this.Locations =new DTOLocations( l.Locations);
         }
         public Stor ToTable(DTOStor l)
         {
