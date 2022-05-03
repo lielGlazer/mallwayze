@@ -9,43 +9,43 @@
 </head>
 
 <body style="margin-top: 0%;">
-  <header style="margin-bottom: 0;" >
+  <header style="margin-bottom: 0;">
 
-    <nav style="background-color:rgb(38, 35, 35)!important; color:red" class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container-fluid" >
-        <a style="color:white" class="navbar-brand"[routerLink]="['/enter']">Navbar</a>
-        <button style="background-color:whitesmoke;" class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span  class="navbar-toggler-icon"></span>
+    <nav style="background-color:rgb(38, 35, 35)!important; color:red"
+      class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a style="color:white" class="navbar-brand" [routerLink]="['/enter']">Navbar</a>
+        <button style="background-color:whitesmoke;" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-            <a style="color:white" class="nav-link active" aria-current="page" [routerLink]="['/all-stor']" >Home</a>
-            <a style="color:white" class="nav-link" [routerLink]="['/search']" >Search</a>
+            <a style="color:white" class="nav-link active" aria-current="page" [routerLink]="['/all-stor']">Home</a>
+            <a style="color:white" class="nav-link" [routerLink]="['/search']">Search</a>
             <a style="color:white" class="nav-link" [routerLink]="['/route-selection']">Pricing</a>
             <a style="color:white" class="nav-link disabled" [routerLink]="['/']">Home</a>
+            <div *ngIf="enter" style="border: 1rem black; width: 10rem; height: 10rem; background-color: white;">
+              <a class="nav-link active" [routerLink]="['sign-in']">Sign In</a>
+              <a class="nav-link active" [routerLink]="['sign-up']">Sign Up</a>
+  
+            </div>
           </div>
         </div>
       </div>
     </nav>
-z
-
-
-
-
-
-
-
-    <!-- <nav  class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <div class="container-fluid" >
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container-fluid">
         <a class="navbar-brand" [routerLink]="['/enter']" id="navbarDropdownMenuLink" role="button"
           data-bs-toggle="dropdown" aria-expanded="false">Enter</a>
-        
-        <button class="navbar-toggler"id="bot" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+
+        <button class="navbar-toggler" id="bot" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
           aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
-          <ul class="navbar-nav me-auto mb-2 mb-md-0">
+          <!-- <ul class="navbar-nav me-auto mb-2 mb-md-0">
             <li class="nav-item">
               <a class="nav-link active" [routerLink]="['/all-stor']" routerLinkActive="router-link-active"
                 aria-current="page">All Stor</a>
@@ -61,29 +61,30 @@ z
               <a class="nav-link active" [routerLink]="['/']">Home
               </a>
             </li>
-          </ul>
+          </ul> -->
 
 
-           <div class="input-group">
+          <div class="input-group">
             <div class="input-group-text" id="btnGroupAddon2">@</div>
-            <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example" aria-describedby="btnGroupAddon2">
+            <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example"
+              aria-describedby="btnGroupAddon2">
           </div> -->
-          <!-- <form class="d-flex">
+          <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
-          </form>-->
-          <!-- <div href="#" (click)="openSign()" style="color: aliceblue;">enterrr</div>
+          </form>
+          <div href="#" (click)="openSign()" style="color: aliceblue;">enterrr</div>
           <div *ngIf="enter" style="border: 1rem black; width: 10rem; height: 10rem; background-color: white;">
             <a class="nav-link active" [routerLink]="['sign-in']">Sign In</a>
             <a class="nav-link active" [routerLink]="['sign-up']">Sign Up</a>
 
-          </div> 
+          </div>
         </div>
       </div>
       <img [src]=image id="logo">
-    </nav> -->
+    </nav>
   </header>
-  <!-- <app-home></app-home>   -->
+  <app-home></app-home>
 
 
 </body>

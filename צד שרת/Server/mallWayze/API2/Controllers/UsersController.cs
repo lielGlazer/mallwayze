@@ -32,7 +32,7 @@ namespace API2.Controllers
         [Route("api/Users/Register")]
         [HttpPost]
         public DTOUsers Register([FromBody]DTOUsers o)
-        {
+        { 
             return BL.ManagerUsers.RegisterUser(o);
 
         }
