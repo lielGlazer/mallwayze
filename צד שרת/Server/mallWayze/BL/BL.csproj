@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dijkstra\Dijkstra.cs" />
     <Compile Include="Dijkstra\Node.cs" />
     <Compile Include="Dijkstra\PrioQueue.cs" />
     <Compile Include="Dijkstra\Program.cs" />
@@ -67,6 +68,9 @@
       <Project>{2ff26e98-a653-4126-afd5-70a2d2939015}</Project>
       <Name>DTO</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Dijkstra\routes.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

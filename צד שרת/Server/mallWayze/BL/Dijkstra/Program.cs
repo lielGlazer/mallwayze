@@ -15,7 +15,7 @@ namespace BL.Dijkstra
 
         DBConection db = new DBConection();
 
-        string graphFilePath = "../../../../routes.txt";
+        static string graphFilePath = "../../../../routes.txt";
 
         //רשימת קשתות של כל מיקום לחנויות בקומה 1
         List<Route> Routes = new List<Route>();
@@ -86,32 +86,32 @@ namespace BL.Dijkstra
 
 
 
-        private static void initGraph()
-        {
-            if (!File.Exists(graphFilePath))
-            {
-                throw new FileNotFoundException("File not found");
-            }
+        //private static void initGraph()
+        //{
+        //    if (!File.Exists(graphFilePath))
+        //    {
+        //        throw new FileNotFoundException("File not found");
+        //    }
 
-            using (var fileStream = File.OpenRead(graphFilePath))
-            {
-                using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, 128))
-                {
-                    String line;
-                    while ((line = streamReader.ReadLine()) != null)
-                    {
-                        var values = line.Split(",");
-                        var (from, to, distance) = (values[0], values[1], double.Parse(values[2]));
-                        if (!nodeDict.ContainsKey(from)) { nodeDict.Add(from, new Node(from)); }
-                        if (!nodeDict.ContainsKey(to)) { nodeDict.Add(to, new Node(to)); }
-                        unvisited.Add(from);
-                        unvisited.Add(to);
+        //    using (var fileStream = File.OpenRead(graphFilePath))
+        //    {
+        //        using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, 128))
+        //        {
+        //            String line;
+        //            while ((line = streamReader.ReadLine()) != null)
+        //            {
+        //                var values = line.Split(",");
+        //                var (from, to, distance) = (values[0], values[1], double.Parse(values[2]));
+        //                if (!nodeDict.ContainsKey(from)) { nodeDict.Add(from, new Node(from)); }
+        //                if (!nodeDict.ContainsKey(to)) { nodeDict.Add(to, new Node(to)); }
+        //                unvisited.Add(from);
+        //                unvisited.Add(to);
 
-                        routes.Add(new Route(from, to, distance));
-                    }
-                }
-            }
-        }
+        //                routes.Add(new Route(from, to, distance));
+        //            }
+        //        }
+        //    }
+        //}
 
         private static void PrintOverview()
         {

@@ -17,6 +17,13 @@ namespace BL
             List<DTOStor> dtoList = DTOStor.DTOlist(list);
             return dtoList;
         }
-    
+        public static List<DTOStor> CreatePath(List<DTOStor> stores)
+        {
+            //להפעיל את הפונקציה המורכבת של הדיאקסטרה
+            List<DTOStor> mapStores = Dijkstra.Dijkstra.MapSelectedStores(stores);
+            return null;
+        }
+
+
     }
 }
