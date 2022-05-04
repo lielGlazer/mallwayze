@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  image = 'assets/green.png' 
+  image = 'assets/love.png' 
   imagRenanim='assets/renanim.png'
   title = 'app';
 
