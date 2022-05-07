@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BL.Dijkstra
 {//תור עדיפות
-    class PrioQueue : LinkedList<Node>
+    class PrioQueue : LinkedList<Node>//יורש מרישמה מרשימה מקושרת 
     {
         public void AddNodeWithPriority(Node node)
         {
@@ -20,7 +20,7 @@ namespace BL.Dijkstra
                 {
                     this.AddLast(node);
                 }
-                else
+                else           
                 {
                     for (LinkedListNode<Node> it = this.First; it != null; it = it.Next)
                     {
@@ -34,13 +34,13 @@ namespace BL.Dijkstra
             }
         }
 
-        //public bool HasLetter(string letter)
-        //{
-        //    for (LinkedListNode<Node> it = this.First; it != null; it = it.Next)
-        //    {
-        //        if (it.Value.Name == letter) { return true; }
-        //    }
-        //    return false;
-        //}
+        public bool HasLetter(Node n)
+        {
+            for (LinkedListNode<Node> it = this.First; it != null; it = it.Next)
+            {
+                if (it.Value == n) { return true; }
+            }
+            return false;
+        }
     }
 }

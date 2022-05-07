@@ -9,6 +9,7 @@ import { DbService } from 'src/app/serves/db.service';
   styleUrls: ['./sign-up.component.css']
 })
 export class SignUpComponent implements OnInit {
+  image = 'assets/build.png' 
 
   signUpForm: any;
   constructor(private dbService: DbService) { }

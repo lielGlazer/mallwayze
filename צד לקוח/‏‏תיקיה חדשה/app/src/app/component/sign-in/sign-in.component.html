@@ -1,17 +1,58 @@
-<h1 style="text-align: center;">  welcome to lg.waze family </h1>
+<!-- <h1 style="text-align: center;">  welcome to lg.waze family </h1> -->
 
-<form  [formGroup]="signInForm" class="center " style=" width: 30rem;height: fit-content;">
+<!-- <form  [formGroup]="signInForm" class="center " style=" width: 30rem;height: fit-content;">
     <div>
 
         <label for="fn">שם משתמש:</label>
-        <input formControlName="userName" class="form-control" type="text" placeholder="ישראל" id="fn">
+        <input  class="form-control" type="text" placeholder="ישראל" id="fn">
         <br/>
         
         <label for="pass">סיסמא</label>
-        <input formControlName="password"   class="form-control" type="password" placeholder="" id="pass">
+        <input   class="form-control" type="password" placeholder="" id="pass">
        
-        <input class="btn btn-primary" type="submit" (click)="doSignIn()" value="התחברות">
+        <input class="btn btn-primary" type="submit"  value="התחברות">
 
        
     </div>
-</form>
+</form> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body  >
+    <div style="padding-top: 1rem!important; padding-bottom: 1rem !important;" class="container col-xl-10 col-xxl-8 px-4 ">
+        <div class="row align-items-center g-lg-5">
+          <div style="padding-top: 1rem!important; padding-bottom: 1rem !important;" class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 mb-3"> sign-in form</h1>
+            <!-- <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
+          </div>
+          <div class="col-md-10 mx-auto col-lg-5">
+            <form   style="  border-radius: 10px;  background-image: url(assets/bu.png); background-repeat: no-repeat;background-size: 562px 441px;"[formGroup]="signInForm" class="p-4 p-md-5">
+              <div  class="form-floating mb-3">
+                <input formControlName="userName" type="email" class="form-control" id="fn" placeholder="name@example.com">
+                <label for="fn" >Email address</label>
+              </div>
+              <div class="form-floating mb-3">
+                <input  formControlName="password" type="password" class="form-control" id="pass" placeholder="Password">
+                <label for="pass">Password</label>
+              </div>
+              <div class="checkbox mb-3">
+                <label>
+                  <input type="checkbox" value="remember-me"> Remember me
+                </label>
+              </div>
+              <button style="background-color: black;color:white" class="w-100 btn btn-lg btn-primary" (click)="doSignIn()" type="submit">Sign in</button>
+              <hr class="my-4">
+              <small class="text-muted">By clicking Sign up, you agree to the terms of use.</small>
+            </form>
+          </div>
+        </div>
+      </div>
+    
+</body>
+</html>
+

@@ -13,13 +13,13 @@ namespace BL.Dijkstra
     public class Route
     {
         //צומת אחת קוד
-        public int  From { get; private set; }
+        public Node  From { get;  set; }
         //צומת שניה קוד
-        public int To { get; private set; }
+        public Node To { get;  set; }
         //מרחק בינהם
-        public double Distance { get; private set; }
+        public double Distance { get;  set; }
 
-        public Route(int from, int to, double distance)
+        public Route(Node from, Node to, double distance)
         {
             this.From = from;
             this.To = to;

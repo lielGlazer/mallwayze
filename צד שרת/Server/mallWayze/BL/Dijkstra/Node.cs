@@ -7,7 +7,7 @@ using DTO;
 
 namespace BL.Dijkstra
 {
-    class Node
+    public class Node
     {
         //שם חנות
         public DTOStor Store { get; private set; } //שם החנות

@@ -1,203 +1,203 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.IO;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-//using DTO;
-//using DAL;
-//using BL;
+﻿using system;
+using system.collections.generic;
+using system.io;
+using system.linq;
+using system.text;
+using system.threading.tasks;
+using dto;
+using dal;
+using bl;
 
-//namespace BL.Dijkstra
-//{
-//    class Program
-//    {
+namespace bl.dijkstra
+{
+    class program
+    {
 
-//        DBConection db = new DBConection();
+        dbconection db = new dbconection();
 
-//        static string graphFilePath = "../../../../routes.txt";
+        static string graphfilepath = "../../../../routes.txt";
 
-//        //רשימת קשתות של כל מיקום לחנויות בקומה 1
-//        List<Route> Routes = new List<Route>();
-//        //רשימת חניות שבהם הלקוח רוצה לבקר
-//        List<DTOStor> StoresWanted = new List<DTOStor>();
-//        //רשימת צמתים
-//        List<Node> nodes = new List<Node>();
+        רשימת קשתות של כל מיקום לחנויות בקומה 1
+        list<route> routes = new list<route>();
+        רשימת חניות שבהם הלקוח רוצה לבקר
+        list<dtostor> storeswanted = new list<dtostor>();
+        רשימת צמתים
+        list<node> nodes = new list<node>();
 
-//        static void Main(string[] args)
-//        {
-//            //try
-//            //{
-//            //    initGraph();
-//            //}
-//            //catch (FileNotFoundException ex)
-//            //{
-//            //    Console.WriteLine(ex.Message);
-//            //    return;
-//            //}
+        static void main(string[] args)
+        {
+            try
+            {
+                initgraph();
+            }
+            catch (filenotfoundexception ex)
+            {
+                console.writeline(ex.message);
+                return;
+            }
 
-//            //Console.Clear();
-//            //PrintOverview();
+            console.clear();
+            printoverview();
 
-//            //var (startNode, destNode) = GetStartAndEnd();
+            var (startnode, destnode) = getstartandend();
 
-//            //// Set our start node. The start node has to have a value
-//            //// of 0 because we're already there.
-//            //nodeDict[startNode].Value = 0;
+            // set our start node. the start node has to have a value
+            // of 0 because we're already there.
+            nodedict[startnode].value = 0;
 
-//            //var queue = new PrioQueue();
-//            //queue.AddNodeWithPriority(nodeDict[startNode]);
+            var queue = new prioqueue();
+            queue.addnodewithpriority(nodedict[startnode]);
 
-//            //// Do the calculations to find the shortest path to every node
-//            //// in the graph starting from our starting node.
-//            //CheckNode(queue, destNode);
+            // do the calculations to find the shortest path to every node
+            // in the graph starting from our starting node.
+            checknode(queue, destnode);
 
-//            //// Print out the result
-//            //PrintShortestPath(startNode, destNode);
-//        }
+            // print out the result
+            printshortestpath(startnode, destnode);
+        }
 
-//        //הפונקציה יוצרת רשימת קשתות
-//        public void FillRoutes()
-//        {
-//            string graphFilePath = "../../../../routes.txt";
-//            using (var reader = new StreamReader(graphFilePath, Encoding.Default))
-//            {
-//                List<Route> routes = new List<Route>();
-//                for (int i = 0, countWord = 0; !reader.EndOfStream; i++, countWord = 0)
-//                {
-//                    var line = reader.ReadLine();
-//                    var values = line.Split(',');
-//                    routes.Add(new Route(int.Parse(values[0]), int.Parse(values[1]), int.Parse(values[2])));
-//                }
-//            }
-//        }
+        הפונקציה יוצרת רשימת קשתות
+        public void fillroutes()
+        {
+            string graphfilepath = "../../../../routes.txt";
+            using (var reader = new streamreader(graphfilepath, encoding.default))
+            {
+                list<route> routes = new list<route>();
+                for (int i = 0, countword = 0; !reader.endofstream; i++, countword = 0)
+                {
+                    var line = reader.readline();
+                    var values = line.split(',');
+                    routes.add(new route(int.parse(values[0]), int.parse(values[1]), int.parse(values[2])));
+                }
+            }
+        }
 
-//        //ליצור רשימת צמתים
-//        public void createNodesList()
-//        {
-//            foreach (var s in db.GetDbSet<Stor>().ToList())
-//            {
-//                DTOStor store = new DTOStor(s);
-//                nodes.Add(new Node(store));
-//            }
-//        }
-
-
+        ליצור רשימת צמתים
+        public void createnodeslist()
+        {
+            foreach (var s in db.getdbset<stor>().tolist())
+            {
+                dtostor store = new dtostor(s);
+                nodes.add(new node(store));
+            }
+        }
 
 
 
-//        //private static void initGraph()
-//        //{
-//        //    if (!File.Exists(graphFilePath))
-//        //    {
-//        //        throw new FileNotFoundException("File not found");
-//        //    }
-
-//        //    using (var fileStream = File.OpenRead(graphFilePath))
-//        //    {
-//        //        using (var streamReader = new StreamReader(fileStream, Encoding.UTF8, true, 128))
-//        //        {
-//        //            String line;
-//        //            while ((line = streamReader.ReadLine()) != null)
-//        //            {
-//        //                var values = line.Split(",");
-//        //                var (from, to, distance) = (values[0], values[1], double.Parse(values[2]));
-//        //                if (!nodeDict.ContainsKey(from)) { nodeDict.Add(from, new Node(from)); }
-//        //                if (!nodeDict.ContainsKey(to)) { nodeDict.Add(to, new Node(to)); }
-//        //                unvisited.Add(from);
-//        //                unvisited.Add(to);
-
-//        //                routes.Add(new Route(from, to, distance));
-//        //            }
-//        //        }
-//        //    }
-//        //}
-
-//        //private static void PrintOverview()
-//        //{
-//        //    Console.WriteLine("Nodes:");
-//        //    foreach (Node node in nodeDict.Values)
-//        //    {
-//        //        Console.WriteLine("\t" + node.Name);
-//        //    }
-
-//        //    Console.WriteLine("\nRoutes:");
-//        //    foreach (Route route in routes)
-//        //    {
-//        //        Console.WriteLine("\t" + route.From + " -> " + route.To + " Distance: " + route.Distance);
-//        //    }
-//        //}
-
-//        //// קבל קלט משתמש עבור צמתי ההתחלה והיעד.
-//        //private static int GetStartAndEnd()
-//        //{
-//        //    Console.WriteLine("\nEnter the start node: ");
-//        //    string startNode = Console.ReadLine();
-//        //    Console.WriteLine("Enter the destination node: ");
-//        //    string destNode = Console.ReadLine();
-//        //    return (startNode, destNode);
-//        //}
 
 
-//        //private static void CheckNode(PrioQueue queue, string destinationNode)
-//        //{
-//        //    // If there are no nodes left to check in our queue, we're done.
-//        //    if (queue.Count == 0)
-//        //    {
-//        //        return;
-//        //    }
+        private static void initgraph()
+        {
+            if (!file.exists(graphfilepath))
+            {
+                throw new filenotfoundexception("file not found");
+            }
 
-////            foreach (var route in routes.FindAll(r => r.From == queue.First.Value.Name))
-////            {
-////                Skip routes to nodes that have already been visited.
-////                if (!unvisited.Contains(route.To))
-////                {
-////                    continue;
-////                }
+            using (var filestream = file.openread(graphfilepath))
+            {
+                using (var streamreader = new streamreader(filestream, encoding.utf8, true, 128))
+                {
+                    string line;
+                    while ((line = streamreader.readline()) != null)
+                    {
+                        var values = line.split(",");
+                        var (from, to, distance) = (values[0], values[1], double.parse(values[2]));
+                        if (!nodedict.containskey(from)) { nodedict.add(from, new node(from)); }
+                        if (!nodedict.containskey(to)) { nodedict.add(to, new node(to)); }
+                        unvisited.add(from);
+                        unvisited.add(to);
 
-////                double travelledDistance = nodeDict[queue.First.Value.Name].Value + route.Distance;
+                        routes.add(new route(from, to, distance));
+                    }
+                }
+            }
+        }
 
-////                We only look at nodes we haven't visited yet and we only
-////                 update the node's values if the distance of the path we're
-////                 currently checking is shorter than the one we found before.
-////                if (travelledDistance < nodeDict[route.To].Value)
-////                {
-////                    nodeDict[route.To].Value = travelledDistance;
-////                    nodeDict[route.To].PreviousNode = nodeDict[queue.First.Value.Name];
-////                }
+        private static void printoverview()
+        {
+            console.writeline("nodes:");
+            foreach (node node in nodedict.values)
+            {
+                console.writeline("\t" + node.name);
+            }
 
-////                We don't add the 'to' node to the queue if it has already been
-////                 visited and we don't allow duplicates.
-////                if (!queue.HasLetter(route.To))
-////                {
-////                    queue.AddNodeWithPriority(nodeDict[route.To]);
-////                }
-////            }
-////            unvisited.Remove(queue.First.Value.Name);
-////            queue.RemoveFirst();
+            console.writeline("\nroutes:");
+            foreach (route route in routes)
+            {
+                console.writeline("\t" + route.from + " -> " + route.to + " distance: " + route.distance);
+            }
+        }
 
-////            CheckNode(queue, destinationNode);
-////        }
+        // קבל קלט משתמש עבור צמתי ההתחלה והיעד.
+        private static int getstartandend()
+        {
+            console.writeline("\nenter the start node: ");
+            string startnode = console.readline();
+            console.writeline("enter the destination node: ");
+            string destnode = console.readline();
+            return (startnode, destnode);
+        }
 
 
-////        private static void PrintShortestPath(string startNode, string destNode)
-////        {
-////            var pathList = new List<String> { destNode };
+        private static void checknode(prioqueue queue, string destinationnode)
+        {
+            // if there are no nodes left to check in our queue, we're done.
+            if (queue.count == 0)
+            {
+                return;
+            }
 
-////            Node currentNode = nodeDict[destNode];
-////            while (currentNode != nodeDict[startNode])
-////            {
-////                pathList.Add(currentNode.PreviousNode.Name);
-////                currentNode = currentNode.PreviousNode;
-////            }
+            foreach (var route in routes.findall(r => r.from == queue.first.value.name))
+            {
+                //skip routes to nodes that have already been visited.
+                if (!unvisited.contains(route.to))//אם קוד היעד לא נמצא ברשימה שצריך לבקר בה סימן שביקרו בו - נדלג עליו
+                {
+                    continue;
+                }
 
-////            pathList.Reverse();
-////            for (int i = 0; i < pathList.Count; i++)
-////            {
-////                Console.Write(pathList[i] + (i < pathList.Count - 1 ? " -> " : "\n"));
-////            }
-////            Console.WriteLine("Overall distance: " + nodeDict[destNode].Value);
-////        }
-////    }
+                double travelleddistance = nodedict[queue.first.value.name].value + route.distance;
 
-////}
+                //we only look at nodes we haven't visited yet and we only
+                // update the node's values if the distance of the path we're
+                 //currently checking is shorter than the one we found before.
+                if (travelleddistance < nodedict[route.to].value)
+                {
+                    nodedict[route.to].value = travelleddistance;
+                    nodedict[route.to].previousnode = nodedict[queue.first.value.name];
+                }
+
+                //we don't add the 'to' node to the queue if it has already been
+                // visited and we don't allow duplicates.
+                if (!queue.hasletter(route.to))
+                {
+                    queue.addnodewithpriority(nodedict[route.to]);
+                }
+            }
+            unvisited.remove(queue.first.value.name);
+            queue.removefirst();
+
+            checknode(queue, destinationnode);
+        }
+
+
+        private static void printshortestpath(string startnode, string destnode)
+        {
+            var pathlist = new list<string> { destnode };
+
+            node currentnode = nodedict[destnode];
+            while (currentnode != nodedict[startnode])
+            {
+                pathlist.add(currentnode.previousnode.name);
+                currentnode = currentnode.previousnode;
+            }
+
+            pathlist.reverse();
+            for (int i = 0; i < pathlist.count; i++)
+            {
+                console.write(pathlist[i] + (i < pathlist.count - 1 ? " -> " : "\n"));
+            }
+            console.writeline("overall distance: " + nodedict[destnode].value);
+        }
+    }
+
+}
