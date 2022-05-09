@@ -5,36 +5,36 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BL.Dijkstra
-{//תור עדיפות
+{// על פי ערך של הצומת (במשקל ) תור עדיפות
     class PrioQueue : LinkedList<Node>//יורש מרישמה מרשימה מקושרת 
     {
-        public void AddNodeWithPriority(Node node)
+        public void AddNodeWithPriority(Node node)//פונקציה שמקבלת צומת ומוסיפה אותה לתור על פי עדיפות 
         {
-            if (this.Count == 0)
+            if (this.Count == 0)//אם התור ריק
             {
-                this.AddFirst(node);
+                this.AddFirst(node);//תוסיף להתחילת התור את הצומת שקבלת 
             }
-            else
+            else//זאת אומרת יש בתור צמתים קודמים- אם יש כבר משהו בתור
             {
-                if (node.Value >= this.Last.Value.Value)
+                if (node.Value >= this.Last.Value.Value)//תבדוק האם הערך של הצומת שקבלתי גדול או שווה לערכה של הצומת שבסוף התור
                 {
-                    this.AddLast(node);
+                    this.AddLast(node);//אם כן תוסיף את הצומת שקבלתי שפונקציה לסוף התור
                 }
-                else           
+                else  //אם ערכה של הצומת קטנה מערכה של הצומת השוכנת בסוף בתור         
                 {
-                    for (LinkedListNode<Node> it = this.First; it != null; it = it.Next)
+                    for (LinkedListNode<Node> it = this.First; it != null; it = it.Next)//נעבור בלולאה מתחילת התור ועד סופו
                     {
-                        if (node.Value <= it.Value.Value)
+                        if (node.Value <= it.Value.Value)  //אם מצאת צומת תוכדי מעבר גדולה יותר ממי שקבלת
                         {
-                            this.AddBefore(it, node);
-                            break;
+                            this.AddBefore(it, node);//תכניס את הצומת שקיבלתי לפני הצומת הגדולה שמצאת
+                            break;//תשבור תלולאה
                         }
                     }
                 }
             }
         }
 
-        public bool HasLetter(Node n)
+        public bool HasLetter(Node n) 
         {
             for (LinkedListNode<Node> it = this.First; it != null; it = it.Next)
             {

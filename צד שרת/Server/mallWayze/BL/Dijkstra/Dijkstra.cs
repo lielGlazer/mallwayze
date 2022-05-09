@@ -12,15 +12,14 @@ namespace BL.Dijkstra
     class Dijkstra
     {
 
-        static DBConection db = new DBConection();
-        static string graphFilePath = @"C:\Users\student\Desktop\routes.txt";
-        static List<Route> mallGraphRoutes = null;
-        static Dictionary<string, Node> mallGraphNodes = new Dictionary<string, Node>();
+        static DBConection db = new DBConection();//הדאטה ביס של כל המערכת 
+        static string graphFilePath = @"C:\Users\student\Desktop\routes.txt";//הניתוב של הגרף
+        static List<Route> mallGraphRoutes = null;//אתחול רשימת הקשתות של הקומהה הראשונה בקניון 
+        static Dictionary<string, Node> mallGraphNodes = new Dictionary<string, Node>();//אתחול המילון שמורכב משם צומת וצומת
+        static List<Route> selectedStoresGraphRoutes = new List<Route>();// אתחול רשימת הצמים בגרף החדש שניצור יהנו המסלול 
+        static Dictionary<string, Node> selectedStoresGraphNodes = new Dictionary<string, Node>();//אתחול המילון הצמתים של הגרף החדש
 
-        static List<Route> selectedStoresGraphRoutes = new List<Route>();
-        static Dictionary<string, Node> selectedStoresGraphNodes = new Dictionary<string, Node>();
-
-        public static List<DTOStor> MapSelectedStores(List<DTOStor> stores)
+        public static List<DTOStor> MapSelectedStores(List<DTOStor> stores)//מיפוי 
         {
             //יצירת גרף של כל הקניון - קריאת הקשתות מקובץ  
             mallGraphRoutes = createMallRoutes(graphFilePath);
@@ -34,9 +33,9 @@ namespace BL.Dijkstra
         }
 
         //יוצרת גרף של כל החנויות בקניון
-        public static List<Route> createMallRoutes(string path)
+        public static List<Route> createMallRoutes(string path)//
         {
-            List<Route> routes = new List<Route>();
+            List<Route> routes = new List<Route>();//
             using (var reader = new StreamReader(graphFilePath, Encoding.Default))
             {
                 for (int i = 0, countWord = 0; !reader.EndOfStream; i++, countWord = 0)

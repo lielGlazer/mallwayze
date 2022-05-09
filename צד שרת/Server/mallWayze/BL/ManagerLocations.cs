@@ -13,16 +13,11 @@ namespace BL
     public static class ManagerLocations
     {
         static DBConection db = new DBConection();
-
- 
-
-
         //מיקום של כל החניות ברשימה 
         public static List<DTOLocations> GetLocations()
         {
             List<Locations> list = db.GetDbSet<Locations>().ToList();
             List<DTOLocations> dtoList = DTOLocations.DTOlist(list);
-         
             return dtoList;
         }
         //החזרת מיקום החנות על ידי הקשת שמה 

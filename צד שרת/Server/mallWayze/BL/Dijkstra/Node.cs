@@ -10,13 +10,13 @@ namespace BL.Dijkstra
     public class Node
     {
         //שם חנות
-        public DTOStor Store { get; private set; } //שם החנות
+        public DTOStor Store { get; private set; } //החנות בעצמה
 
         //המשקל של הצומת
-        public double Value { get; set; }
+        public double Value { get; set; }//(המשקל של הצומת (מה היה המרחק הכי קצר עד לצומת הנוכחית 
         //צומת קודם
-        public Node PreviousNode { get; set; }
-
+        public Node PreviousNode { get; set; }//(הצומת הקודמת (שעל ידה נדע מהו המסלול הקצר ביותר בסוף האלגוריתם 
+        //פעולה בונה צומת
         public Node(DTOStor store, double value = int.MaxValue, Node previousNode = null)
         {
             this.Store = store;
