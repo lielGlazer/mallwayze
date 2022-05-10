@@ -14,15 +14,20 @@ namespace API2.Controllers
     //[Route("api/location")]
     public class LocationsController : ApiController
     {
-      
-        [HttpGet]
-        //מקבל שם חנות ולבסוף מחזיר את המיקום שלה 
-       
-        
-        [Route("locationForStor/{nameStore}")]
-        public DTOLocations LocationForStor(string nameStore)
+
+        //יהנו מסלול הפונקציה מקבלת שמות של חנויות(רשימת שמות)ומחזירה רשימת מיקומים בהתאם
+        [Route("api/Locations/CreateSelectedStoresMap/{}")]
+        [HttpPost]
+        public List<DTOStor> CreateSelectedStoresMap(List<DTOStor> stores)
         {
-            return ManagerLocations.LocationForStor(nameStore);
+            return BL.ManagerStor.CreatePath(stores);
+        }
+        //מחזיר מיקום על פי שם של חנות 
+        [Route("api/Locations/GetLocationForStore/{name}")]
+        [HttpGet]
+        public DTOLocations GetLocationForStore(string name)
+        {
+            return BL.ManagerLocations.LocationForStor(name);
         }
     }
 }

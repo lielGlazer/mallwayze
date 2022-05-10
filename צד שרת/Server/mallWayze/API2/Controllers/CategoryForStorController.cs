@@ -11,20 +11,28 @@ using BL;
 namespace API2.Controllers
 {
     public class CategoryForStorController : ApiController
-    {//ממחזיר את כל הקטגוריות לחנות
+    {   //ממחזיר את כל הקטגוריות לחנות
+        [Route("api/CategoryForStor/GetCaterory")]
+        [HttpGet]
         public List<DTOCategoryForStor> GetCaterory()
         {
             List<DTOCategoryForStor> u = BL.ManagerCategoryForStor.GetCategoryForStor();
             return u;
         }
-        //מחזיר רשימת חנוית לפי שם קטגוריה 
-        [Route("api/CategoryForStor/GetAllStorsToCategory/{nameOfCategory}")]
+        //מחזיר רשימה של חניות לפי קטגוריה מסויימת
+        [Route("api/Stor/GetStoresByCategory/{category}")]
         [HttpGet]
-        public List<DTOStor> GetAllStorsToCategory(string nameOfCategory)
+        public List<DTOStor> GetStoresByCategory(string category)
         {
-            List<DTOStor> listOFstor = BL.ManagerCategoryForStor.GetAllStorOfXContaining(nameOfCategory);
-            return listOFstor;
+            return BL.ManagerCategoryForStor.GetAllStorOfXContaining(category);
         }
 
+        //מחזיר רשימת של קטגוריות לחנות
+        [Route("api/Stor/GetAllCategorysForStor/{stor}")]
+        [HttpGet]
+        public List<DTOCategory> GetAllCategorysForStor(string stor)
+        {
+            return BL.ManagerCategoryForStor.GetAllCtegoryForStor(stor)
+        }
     }
 }

@@ -23,7 +23,7 @@ namespace BL
         {
             //להפעיל את הפונקציה המורכבת של הדיאקסטרה
             List<DTOStor> mapStores = Dijkstra.Dijkstra.MapSelectedStores(stores);
-            return null;
+            return mapStores;
         }
 
 

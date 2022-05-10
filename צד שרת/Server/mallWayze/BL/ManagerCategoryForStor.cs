@@ -14,7 +14,7 @@ namespace BL
     {
         //הדאטה בייס בעצמו 
         static DBConection db = new DBConection();
-        //רשימה של כל הקטגוריןת לחניות 
+        // המיידע מהדאטה בייס רשימה של כל הקטגוריןת לחניות 
         static List<CategoryForStor> list = db.GetDbSet<CategoryForStor>().ToList();
         //מחזירה את כל הרשימה של קטגוריה לחנות 
         public static List<DTOCategoryForStor> GetCategoryForStor()
@@ -35,6 +35,20 @@ namespace BL
                 stores.Add(new DTOStor(db.GetDbSet<Stor>().Find(store => store.CodeStor == s.CodeStor)));
             }
             return stores;
+        }
+        //פןנקציה שמקבלת שם  חנות ומביאה את כל בקטגוריות שלה 
+        public static List<DTOCategory> GetAllCtegoryForStor(string nameStor)
+        {
+            DTOStor Scode = db.GetDbSet<DTOStor>().FirstOrDefault(d => d.NameStor.Equals(nameStor));
+            long code = Scode.CodeStor;
+            //רשימת הקודים של הקטגוריות לחנות שהתקבלה   
+            List<DTOCategoryForStor> h = GetCategoryForStor().Where(s => s.CodeStor == code).ToList();
+            List<DTOCategory> categor = new List<DTOCategory>();
+            foreach (var s in h)
+            {
+                categor.Add(new DTOCategory(db.GetDbSet<Category>().Find(categor => categor.CategoryCode == s.CategoryCode)));
+            }
+            return categor;
         }
 
     }

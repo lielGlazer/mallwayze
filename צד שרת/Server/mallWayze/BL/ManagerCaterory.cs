@@ -14,6 +14,7 @@ namespace BL
     public static class ManagerCaterory
     {
         static DBConection db = new DBConection();
+        //מחזיר את רשימת כל הקטגוריות
         public static  List<DTOCategory> GetCategories()
         {
             List<Category> list = db.GetDbSet<Category>().ToList();

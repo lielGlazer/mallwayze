@@ -21,13 +21,7 @@ namespace API2.Controllers
             List<DTOUsers> u = BL.ManagerUsers.GetUsers();
             return u;
         }
-        // GET: api/Users
 
-        // GET: api/Users/5
-        public string GetAllUser(int id)
-        {
-            return "value";
-        }
         //הוספת משתמש חדש למערכת 
         [Route("api/Users/Register")]
         [HttpPost]

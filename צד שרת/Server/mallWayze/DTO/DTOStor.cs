@@ -10,12 +10,9 @@ namespace DTO
     public class DTOStor
     {
 
-
         public long CodeStor { get; set; }
         public long PlaceCode { get; set; }
         public string NameStor { get; set; }
-        public System.TimeSpan OpeningHours { get; set; }
-        public System.TimeSpan ClosingHours { get; set; }
         public bool Sale { get; set; }
         public  DTOLocations Locations { get; set; }
         public DTOStor()

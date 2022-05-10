@@ -7,6 +7,8 @@ using System.Web.Http;
 using DTO;
 using BL;
 using System.Web.Routing;
+using System.Web.Http.Cors;
+
 
 namespace API2.Controllers
 {
@@ -20,7 +22,7 @@ namespace API2.Controllers
             return u;
         }
         //  מחזיר את הקטגוריה לפי המספר ID 
-        [Route("api/GetCategoryByID/{id}")]
+        [Route("api/Category/GetCategoryByID/{id}")]
         [HttpGet]
         public DTOCategory GetCategoryByID(long id)
         {
@@ -28,19 +30,5 @@ namespace API2.Controllers
             return dc;
         }
 
-        // POST: api/Category
-        public void Post([FromBody]string value)
-        {
-        }
-
-        // PUT: api/Category/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Category/5
-        public void Delete(int id)
-        {
-        }
     }
 }

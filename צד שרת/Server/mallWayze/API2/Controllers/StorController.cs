@@ -11,47 +11,24 @@ namespace API2.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class StorController : ApiController
-    {
-        // הפונקציה מקבלת שמות של חנויות (רשימת שמות )ומחזירה רשימת מיקומים בהתאם
-        //[Route("api/stor/ListLocationsForListStors/{}")]
-        //[HttpPost]
-        //public List<DTOLocations> ListLocationsForListStors(List<string> names)
-        //{
-        //    List<DTOLocations> loc = new List<DTOLocations>();
-        //    foreach (var v in names)
-        //    {
-        //        loc.Add(GetLocationForStore(v));
-
-        //    }
-        //    return loc;
-        //}
-
-        // הפונקציה מקבלת שמות של חנויות(רשימת שמות)ומחזירה רשימת מיקומים בהתאם
-        [Route("api/stor/CreateSelectedStoresMap")]
-        [HttpPost]
-        public List<DTOStor> CreateSelectedStoresMap(List<DTOStor> stores)
-        {
-            return BL.ManagerStor.CreatePath(stores);
-        }
-
-        public List<DTOStor> GetListALL;
-
-        //מחזיר מיקום על פי שם של חנות 
-        [Route("api/stor/getLocationForStore/{name}")]
+    {  
+        //מחזיר חנות על פי קוד
+        [Route("api/Stor/GetCategoryByID/{id}")]
         [HttpGet]
-        public DTOLocations GetLocationForStore(string name)
+        public DTOStor GetStorByID(long id)
         {
-            return BL.ManagerLocations.LocationForStor(name);
+            DTOStor dc = BL.ManagerStor.GetStor().FirstOrDefault(a => a.CodeStor == id);
+            return dc;
         }
-        //מחזיר רשימה של חניות לפי קטגוריה מסויימת
-        // GET: api/Stor
-        [Route("api/stor/GetStoresByCategory/{category}")]
-        [HttpGet]
-        public List<DTOStor> GetStoresByCategory(string category)
+        //פונקציה שמחזירה רשימה של כל החניות בקניון
+        [Route("api/Stor/GetAllStor")]
+        [httpGet]
+        public List<DTOStor> GetAllStor()
         {
-            return BL.ManagerCategoryForStor.GetAllStorOfXContaining(category);
+            return BL.ManagerStor.GetStor();
         }
-
+       
+      
 
     }
 }
