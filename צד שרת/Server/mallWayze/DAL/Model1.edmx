@@ -20,13 +20,17 @@
           <Property Name="categoryCode" Type="bigint" Nullable="false" />
           <Property Name="CodeStor" Type="bigint" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'wayzeShoop.dbo.FavoriteStoresForTheUser' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="FavoriteStoresForTheUser">
           <Key>
-            <PropertyRef Name="LikeStor" />
+            <PropertyRef Name="FavoriteCode" />
+            <PropertyRef Name="CodeStor" />
+            <PropertyRef Name="UserCode" />
           </Key>
-          <Property Name="UserCode" Type="bigint" Nullable="false" />
+          <Property Name="FavoriteCode" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CodeStor" Type="bigint" Nullable="false" />
-          <Property Name="LikeStor" Type="bit" Nullable="false" />
+          <Property Name="UserCode" Type="bigint" Nullable="false" />
         </EntityType>
         <EntityType Name="Locations">
           <Key>
@@ -36,24 +40,6 @@
           <Property Name="AxisX" Type="float" />
           <Property Name="AxisY" Type="float" />
           <Property Name="floor" Type="int" />
-        </EntityType>
-        <EntityType Name="OpeningHours">
-          <Key>
-            <PropertyRef Name="OpeningTimeCode" />
-          </Key>
-          <Property Name="OpeningTimeCode" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OpeningHours" Type="datetime" />
-          <Property Name="ClosingTime" Type="datetime" />
-        </EntityType>
-        <EntityType Name="OpeningHoursForDorkingDay">
-          <Key>
-            <PropertyRef Name="OpeningHoursCodeForWorkingDay" />
-          </Key>
-          <Property Name="OpeningHoursCodeForWorkingDay" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StoreCode" Type="bigint" />
-          <Property Name="WorkingDayCode" Type="bigint" />
-          <Property Name="OpeningTimeCode1" Type="bigint" />
-          <Property Name="OpeningTimeCode2" Type="bigint" />
         </EntityType>
         <EntityType Name="Stor">
           <Key>
@@ -84,13 +70,6 @@
           <Property Name="UserName" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="WorkingDaysWeek">
-          <Key>
-            <PropertyRef Name="WorkingDayCode" />
-          </Key>
-          <Property Name="WorkingDayCode" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameOfWorkDay" Type="varchar" MaxLength="50" />
-        </EntityType>
         <Association Name="FK_CategoryForStor_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="CategoryForStor" Type="Self.CategoryForStor" Multiplicity="*" />
@@ -139,66 +118,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_OpeningHoursForDorkingDay_OpeningHours">
-          <End Role="OpeningHours" Type="Self.OpeningHours" Multiplicity="0..1" />
-          <End Role="OpeningHoursForDorkingDay" Type="Self.OpeningHoursForDorkingDay" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OpeningHours">
-              <PropertyRef Name="OpeningTimeCode" />
-            </Principal>
-            <Dependent Role="OpeningHoursForDorkingDay">
-              <PropertyRef Name="OpeningTimeCode1" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OpeningHoursForDorkingDay_OpeningHours3">
-          <End Role="OpeningHours" Type="Self.OpeningHours" Multiplicity="0..1" />
-          <End Role="OpeningHoursForDorkingDay" Type="Self.OpeningHoursForDorkingDay" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OpeningHours">
-              <PropertyRef Name="OpeningTimeCode" />
-            </Principal>
-            <Dependent Role="OpeningHoursForDorkingDay">
-              <PropertyRef Name="OpeningTimeCode1" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OpeningHoursForDorkingDay_Stor">
-          <End Role="Stor" Type="Self.Stor" Multiplicity="0..1" />
-          <End Role="OpeningHoursForDorkingDay" Type="Self.OpeningHoursForDorkingDay" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Stor">
-              <PropertyRef Name="CodeStor" />
-            </Principal>
-            <Dependent Role="OpeningHoursForDorkingDay">
-              <PropertyRef Name="StoreCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OpeningHoursForDorkingDay_Stor1">
-          <End Role="Stor" Type="Self.Stor" Multiplicity="0..1" />
-          <End Role="OpeningHoursForDorkingDay" Type="Self.OpeningHoursForDorkingDay" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Stor">
-              <PropertyRef Name="CodeStor" />
-            </Principal>
-            <Dependent Role="OpeningHoursForDorkingDay">
-              <PropertyRef Name="StoreCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OpeningHoursForDorkingDay_WorkingDaysWeek">
-          <End Role="WorkingDaysWeek" Type="Self.WorkingDaysWeek" Multiplicity="0..1" />
-          <End Role="OpeningHoursForDorkingDay" Type="Self.OpeningHoursForDorkingDay" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WorkingDaysWeek">
-              <PropertyRef Name="WorkingDayCode" />
-            </Principal>
-            <Dependent Role="OpeningHoursForDorkingDay">
-              <PropertyRef Name="WorkingDayCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Stor_Locations">
           <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
           <End Role="Stor" Type="Self.Stor" Multiplicity="*" />
@@ -214,14 +133,17 @@
         <EntityContainer Name="wayzeShoopModelStoreContainer">
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CategoryForStor" EntityType="Self.CategoryForStor" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="FavoriteStoresForTheUser" EntityType="Self.FavoriteStoresForTheUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OpeningHours" EntityType="Self.OpeningHours" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="OpeningHoursForDorkingDay" EntityType="Self.OpeningHoursForDorkingDay" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stor" EntityType="Self.Stor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="WorkingDaysWeek" EntityType="Self.WorkingDaysWeek" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavoriteStoresForTheUser" EntityType="Self.FavoriteStoresForTheUser" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [FavoriteStoresForTheUser].[FavoriteCode] AS [FavoriteCode], 
+    [FavoriteStoresForTheUser].[CodeStor] AS [CodeStor], 
+    [FavoriteStoresForTheUser].[UserCode] AS [UserCode]
+    FROM [dbo].[FavoriteStoresForTheUser] AS [FavoriteStoresForTheUser]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_CategoryForStor_Category" Association="Self.FK_CategoryForStor_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="CategoryForStor" EntitySet="CategoryForStor" />
@@ -237,26 +159,6 @@
           <AssociationSet Name="FK_FavoriteParkingForTheUser_Users" Association="Self.FK_FavoriteParkingForTheUser_Users">
             <End Role="Users" EntitySet="Users" />
             <End Role="FavoriteStoresForTheUser" EntitySet="FavoriteStoresForTheUser" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OpeningHoursForDorkingDay_OpeningHours" Association="Self.FK_OpeningHoursForDorkingDay_OpeningHours">
-            <End Role="OpeningHours" EntitySet="OpeningHours" />
-            <End Role="OpeningHoursForDorkingDay" EntitySet="OpeningHoursForDorkingDay" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OpeningHoursForDorkingDay_OpeningHours3" Association="Self.FK_OpeningHoursForDorkingDay_OpeningHours3">
-            <End Role="OpeningHours" EntitySet="OpeningHours" />
-            <End Role="OpeningHoursForDorkingDay" EntitySet="OpeningHoursForDorkingDay" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OpeningHoursForDorkingDay_Stor" Association="Self.FK_OpeningHoursForDorkingDay_Stor">
-            <End Role="Stor" EntitySet="Stor" />
-            <End Role="OpeningHoursForDorkingDay" EntitySet="OpeningHoursForDorkingDay" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OpeningHoursForDorkingDay_Stor1" Association="Self.FK_OpeningHoursForDorkingDay_Stor1">
-            <End Role="Stor" EntitySet="Stor" />
-            <End Role="OpeningHoursForDorkingDay" EntitySet="OpeningHoursForDorkingDay" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OpeningHoursForDorkingDay_WorkingDaysWeek" Association="Self.FK_OpeningHoursForDorkingDay_WorkingDaysWeek">
-            <End Role="WorkingDaysWeek" EntitySet="WorkingDaysWeek" />
-            <End Role="OpeningHoursForDorkingDay" EntitySet="OpeningHoursForDorkingDay" />
           </AssociationSet>
           <AssociationSet Name="FK_Stor_Locations" Association="Self.FK_Stor_Locations">
             <End Role="Locations" EntitySet="Locations" />
@@ -286,16 +188,6 @@
           <NavigationProperty Name="Category" Relationship="Self.FK_CategoryForStor_Category" FromRole="CategoryForStor" ToRole="Category" />
           <NavigationProperty Name="Stor" Relationship="Self.FK_CategoryForStor_Stor" FromRole="CategoryForStor" ToRole="Stor" />
         </EntityType>
-        <EntityType Name="FavoriteStoresForTheUser">
-          <Key>
-            <PropertyRef Name="LikeStor" />
-          </Key>
-          <Property Name="UserCode" Type="Int64" Nullable="false" />
-          <Property Name="CodeStor" Type="Int64" Nullable="false" />
-          <Property Name="LikeStor" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Stor" Relationship="Self.FK_FavoriteParkingForTheUser_Stor" FromRole="FavoriteStoresForTheUser" ToRole="Stor" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_FavoriteParkingForTheUser_Users" FromRole="FavoriteStoresForTheUser" ToRole="Users" />
-        </EntityType>
         <EntityType Name="Locations">
           <Key>
             <PropertyRef Name="LocationCode" />
@@ -305,31 +197,6 @@
           <Property Name="AxisY" Type="Double" />
           <Property Name="floor" Type="Int32" />
           <NavigationProperty Name="Stor" Relationship="Self.FK_Stor_Locations" FromRole="Locations" ToRole="Stor" />
-        </EntityType>
-        <EntityType Name="OpeningHours">
-          <Key>
-            <PropertyRef Name="OpeningTimeCode" />
-          </Key>
-          <Property Name="OpeningTimeCode" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OpeningHours1" Type="DateTime" Precision="3" />
-          <Property Name="ClosingTime" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="OpeningHoursForDorkingDay" Relationship="Self.FK_OpeningHoursForDorkingDay_OpeningHours" FromRole="OpeningHours" ToRole="OpeningHoursForDorkingDay" />
-          <NavigationProperty Name="OpeningHoursForDorkingDay1" Relationship="Self.FK_OpeningHoursForDorkingDay_OpeningHours3" FromRole="OpeningHours" ToRole="OpeningHoursForDorkingDay" />
-        </EntityType>
-        <EntityType Name="OpeningHoursForDorkingDay">
-          <Key>
-            <PropertyRef Name="OpeningHoursCodeForWorkingDay" />
-          </Key>
-          <Property Name="OpeningHoursCodeForWorkingDay" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StoreCode" Type="Int64" />
-          <Property Name="WorkingDayCode" Type="Int64" />
-          <Property Name="OpeningTimeCode1" Type="Int64" />
-          <Property Name="OpeningTimeCode2" Type="Int64" />
-          <NavigationProperty Name="OpeningHours" Relationship="Self.FK_OpeningHoursForDorkingDay_OpeningHours" FromRole="OpeningHoursForDorkingDay" ToRole="OpeningHours" />
-          <NavigationProperty Name="OpeningHours1" Relationship="Self.FK_OpeningHoursForDorkingDay_OpeningHours3" FromRole="OpeningHoursForDorkingDay" ToRole="OpeningHours" />
-          <NavigationProperty Name="Stor" Relationship="Self.FK_OpeningHoursForDorkingDay_Stor" FromRole="OpeningHoursForDorkingDay" ToRole="Stor" />
-          <NavigationProperty Name="Stor1" Relationship="Self.FK_OpeningHoursForDorkingDay_Stor1" FromRole="OpeningHoursForDorkingDay" ToRole="Stor" />
-          <NavigationProperty Name="WorkingDaysWeek" Relationship="Self.FK_OpeningHoursForDorkingDay_WorkingDaysWeek" FromRole="OpeningHoursForDorkingDay" ToRole="WorkingDaysWeek" />
         </EntityType>
         <EntityType Name="Stor">
           <Key>
@@ -342,10 +209,8 @@
           <Property Name="ClosingHours" Type="Time" Precision="7" />
           <Property Name="Sale" Type="Boolean" />
           <NavigationProperty Name="CategoryForStor" Relationship="Self.FK_CategoryForStor_Stor" FromRole="Stor" ToRole="CategoryForStor" />
-          <NavigationProperty Name="FavoriteStoresForTheUser" Relationship="Self.FK_FavoriteParkingForTheUser_Stor" FromRole="Stor" ToRole="FavoriteStoresForTheUser" />
           <NavigationProperty Name="Locations" Relationship="Self.FK_Stor_Locations" FromRole="Stor" ToRole="Locations" />
-          <NavigationProperty Name="OpeningHoursForDorkingDay" Relationship="Self.FK_OpeningHoursForDorkingDay_Stor" FromRole="Stor" ToRole="OpeningHoursForDorkingDay" />
-          <NavigationProperty Name="OpeningHoursForDorkingDay1" Relationship="Self.FK_OpeningHoursForDorkingDay_Stor1" FromRole="Stor" ToRole="OpeningHoursForDorkingDay" />
+          <NavigationProperty Name="FavoriteStoresForTheUser" Relationship="Self.FK_FavoriteParkingForTheUser_Stor" FromRole="Stor" ToRole="FavoriteStoresForTheUser" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -366,13 +231,17 @@
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="FavoriteStoresForTheUser" Relationship="Self.FK_FavoriteParkingForTheUser_Users" FromRole="Users" ToRole="FavoriteStoresForTheUser" />
         </EntityType>
-        <EntityType Name="WorkingDaysWeek">
+        <EntityType Name="FavoriteStoresForTheUser">
           <Key>
-            <PropertyRef Name="WorkingDayCode" />
+            <PropertyRef Name="FavoriteCode" />
+            <PropertyRef Name="CodeStor" />
+            <PropertyRef Name="UserCode" />
           </Key>
-          <Property Name="WorkingDayCode" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameOfWorkDay" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="OpeningHoursForDorkingDay" Relationship="Self.FK_OpeningHoursForDorkingDay_WorkingDaysWeek" FromRole="WorkingDaysWeek" ToRole="OpeningHoursForDorkingDay" />
+          <Property Name="FavoriteCode" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CodeStor" Type="Int64" Nullable="false" />
+          <Property Name="UserCode" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Stor" Relationship="Self.FK_FavoriteParkingForTheUser_Stor" FromRole="FavoriteStoresForTheUser" ToRole="Stor" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_FavoriteParkingForTheUser_Users" FromRole="FavoriteStoresForTheUser" ToRole="Users" />
         </EntityType>
         <Association Name="FK_CategoryForStor_Category">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
@@ -395,6 +264,18 @@
             </Principal>
             <Dependent Role="CategoryForStor">
               <PropertyRef Name="CodeStor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Stor_Locations">
+          <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+          <End Role="Stor" Type="Self.Stor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="LocationCode" />
+            </Principal>
+            <Dependent Role="Stor">
+              <PropertyRef Name="PlaceCode" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -422,89 +303,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Stor_Locations">
-          <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
-          <End Role="Stor" Type="Self.Stor" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Locations">
-              <PropertyRef Name="LocationCode" />
-            </Principal>
-            <Dependent Role="Stor">
-              <PropertyRef Name="PlaceCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OpeningHoursForDorkingDay_OpeningHours">
-          <End Role="OpeningHours" Type="Self.OpeningHours" Multiplicity="0..1" />
-          <End Role="OpeningHoursForDorkingDay" Type="Self.OpeningHoursForDorkingDay" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OpeningHours">
-              <PropertyRef Name="OpeningTimeCode" />
-            </Principal>
-            <Dependent Role="OpeningHoursForDorkingDay">
-              <PropertyRef Name="OpeningTimeCode1" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OpeningHoursForDorkingDay_OpeningHours3">
-          <End Role="OpeningHours" Type="Self.OpeningHours" Multiplicity="0..1" />
-          <End Role="OpeningHoursForDorkingDay" Type="Self.OpeningHoursForDorkingDay" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="OpeningHours">
-              <PropertyRef Name="OpeningTimeCode" />
-            </Principal>
-            <Dependent Role="OpeningHoursForDorkingDay">
-              <PropertyRef Name="OpeningTimeCode1" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OpeningHoursForDorkingDay_Stor">
-          <End Role="Stor" Type="Self.Stor" Multiplicity="0..1" />
-          <End Role="OpeningHoursForDorkingDay" Type="Self.OpeningHoursForDorkingDay" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Stor">
-              <PropertyRef Name="CodeStor" />
-            </Principal>
-            <Dependent Role="OpeningHoursForDorkingDay">
-              <PropertyRef Name="StoreCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OpeningHoursForDorkingDay_Stor1">
-          <End Role="Stor" Type="Self.Stor" Multiplicity="0..1" />
-          <End Role="OpeningHoursForDorkingDay" Type="Self.OpeningHoursForDorkingDay" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Stor">
-              <PropertyRef Name="CodeStor" />
-            </Principal>
-            <Dependent Role="OpeningHoursForDorkingDay">
-              <PropertyRef Name="StoreCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_OpeningHoursForDorkingDay_WorkingDaysWeek">
-          <End Role="WorkingDaysWeek" Type="Self.WorkingDaysWeek" Multiplicity="0..1" />
-          <End Role="OpeningHoursForDorkingDay" Type="Self.OpeningHoursForDorkingDay" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="WorkingDaysWeek">
-              <PropertyRef Name="WorkingDayCode" />
-            </Principal>
-            <Dependent Role="OpeningHoursForDorkingDay">
-              <PropertyRef Name="WorkingDayCode" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="wayzeShoopEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="wayzeShoopEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Category" EntityType="Self.Category" />
           <EntitySet Name="CategoryForStor" EntityType="Self.CategoryForStor" />
-          <EntitySet Name="FavoriteStoresForTheUser" EntityType="Self.FavoriteStoresForTheUser" />
           <EntitySet Name="Locations" EntityType="Self.Locations" />
-          <EntitySet Name="OpeningHours" EntityType="Self.OpeningHours" />
-          <EntitySet Name="OpeningHoursForDorkingDay" EntityType="Self.OpeningHoursForDorkingDay" />
           <EntitySet Name="Stor" EntityType="Self.Stor" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <EntitySet Name="WorkingDaysWeek" EntityType="Self.WorkingDaysWeek" />
+          <EntitySet Name="FavoriteStoresForTheUser" EntityType="Self.FavoriteStoresForTheUser" />
           <AssociationSet Name="FK_CategoryForStor_Category" Association="Self.FK_CategoryForStor_Category">
             <End Role="Category" EntitySet="Category" />
             <End Role="CategoryForStor" EntitySet="CategoryForStor" />
@@ -512,6 +318,10 @@
           <AssociationSet Name="FK_CategoryForStor_Stor" Association="Self.FK_CategoryForStor_Stor">
             <End Role="Stor" EntitySet="Stor" />
             <End Role="CategoryForStor" EntitySet="CategoryForStor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Stor_Locations" Association="Self.FK_Stor_Locations">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="Stor" EntitySet="Stor" />
           </AssociationSet>
           <AssociationSet Name="FK_FavoriteParkingForTheUser_Stor" Association="Self.FK_FavoriteParkingForTheUser_Stor">
             <End Role="Stor" EntitySet="Stor" />
@@ -521,37 +331,13 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="FavoriteStoresForTheUser" EntitySet="FavoriteStoresForTheUser" />
           </AssociationSet>
-          <AssociationSet Name="FK_Stor_Locations" Association="Self.FK_Stor_Locations">
-            <End Role="Locations" EntitySet="Locations" />
-            <End Role="Stor" EntitySet="Stor" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OpeningHoursForDorkingDay_OpeningHours" Association="Self.FK_OpeningHoursForDorkingDay_OpeningHours">
-            <End Role="OpeningHours" EntitySet="OpeningHours" />
-            <End Role="OpeningHoursForDorkingDay" EntitySet="OpeningHoursForDorkingDay" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OpeningHoursForDorkingDay_OpeningHours3" Association="Self.FK_OpeningHoursForDorkingDay_OpeningHours3">
-            <End Role="OpeningHours" EntitySet="OpeningHours" />
-            <End Role="OpeningHoursForDorkingDay" EntitySet="OpeningHoursForDorkingDay" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OpeningHoursForDorkingDay_Stor" Association="Self.FK_OpeningHoursForDorkingDay_Stor">
-            <End Role="Stor" EntitySet="Stor" />
-            <End Role="OpeningHoursForDorkingDay" EntitySet="OpeningHoursForDorkingDay" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OpeningHoursForDorkingDay_Stor1" Association="Self.FK_OpeningHoursForDorkingDay_Stor1">
-            <End Role="Stor" EntitySet="Stor" />
-            <End Role="OpeningHoursForDorkingDay" EntitySet="OpeningHoursForDorkingDay" />
-          </AssociationSet>
-          <AssociationSet Name="FK_OpeningHoursForDorkingDay_WorkingDaysWeek" Association="Self.FK_OpeningHoursForDorkingDay_WorkingDaysWeek">
-            <End Role="WorkingDaysWeek" EntitySet="WorkingDaysWeek" />
-            <End Role="OpeningHoursForDorkingDay" EntitySet="OpeningHoursForDorkingDay" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="wayzeShoopModelStoreContainer" CdmEntityContainer="wayzeShoopEntities">
+        <EntityContainerMapping StorageEntityContainer="wayzeShoopModelStoreContainer" CdmEntityContainer="wayzeShoopEntities1">
           <EntitySetMapping Name="Category">
             <EntityTypeMapping TypeName="wayzeShoopModel.Category">
               <MappingFragment StoreEntitySet="Category">
@@ -569,15 +355,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="FavoriteStoresForTheUser">
-            <EntityTypeMapping TypeName="wayzeShoopModel.FavoriteStoresForTheUser">
-              <MappingFragment StoreEntitySet="FavoriteStoresForTheUser">
-                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
-                <ScalarProperty Name="CodeStor" ColumnName="CodeStor" />
-                <ScalarProperty Name="LikeStor" ColumnName="LikeStor" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Locations">
             <EntityTypeMapping TypeName="wayzeShoopModel.Locations">
               <MappingFragment StoreEntitySet="Locations">
@@ -585,26 +362,6 @@
                 <ScalarProperty Name="AxisX" ColumnName="AxisX" />
                 <ScalarProperty Name="AxisY" ColumnName="AxisY" />
                 <ScalarProperty Name="floor" ColumnName="floor" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OpeningHours">
-            <EntityTypeMapping TypeName="wayzeShoopModel.OpeningHours">
-              <MappingFragment StoreEntitySet="OpeningHours">
-                <ScalarProperty Name="OpeningTimeCode" ColumnName="OpeningTimeCode" />
-                <ScalarProperty Name="OpeningHours1" ColumnName="OpeningHours" />
-                <ScalarProperty Name="ClosingTime" ColumnName="ClosingTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OpeningHoursForDorkingDay">
-            <EntityTypeMapping TypeName="wayzeShoopModel.OpeningHoursForDorkingDay">
-              <MappingFragment StoreEntitySet="OpeningHoursForDorkingDay">
-                <ScalarProperty Name="OpeningHoursCodeForWorkingDay" ColumnName="OpeningHoursCodeForWorkingDay" />
-                <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
-                <ScalarProperty Name="WorkingDayCode" ColumnName="WorkingDayCode" />
-                <ScalarProperty Name="OpeningTimeCode1" ColumnName="OpeningTimeCode1" />
-                <ScalarProperty Name="OpeningTimeCode2" ColumnName="OpeningTimeCode2" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -640,11 +397,12 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="WorkingDaysWeek">
-            <EntityTypeMapping TypeName="wayzeShoopModel.WorkingDaysWeek">
-              <MappingFragment StoreEntitySet="WorkingDaysWeek">
-                <ScalarProperty Name="WorkingDayCode" ColumnName="WorkingDayCode" />
-                <ScalarProperty Name="NameOfWorkDay" ColumnName="NameOfWorkDay" />
+          <EntitySetMapping Name="FavoriteStoresForTheUser">
+            <EntityTypeMapping TypeName="wayzeShoopModel.FavoriteStoresForTheUser">
+              <MappingFragment StoreEntitySet="FavoriteStoresForTheUser">
+                <ScalarProperty Name="FavoriteCode" ColumnName="FavoriteCode" />
+                <ScalarProperty Name="CodeStor" ColumnName="CodeStor" />
+                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -46,11 +46,8 @@
     <Compile Include="DTOCategoryForStor.cs" />
     <Compile Include="DTOFavoriteStoresForTheUser.cs" />
     <Compile Include="DTOLocations.cs" />
-    <Compile Include="DTOOpeningHours.cs" />
-    <Compile Include="DTOOpeningHoursForDorkingDay.cs" />
     <Compile Include="DTOStor.cs" />
     <Compile Include="DTOUsers.cs" />
-    <Compile Include="DTOWorkingDaysWeek.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -51,11 +51,8 @@
     <Compile Include="Class2.cs" />
     <Compile Include="ManagerFavoriteStoresForTheUser.cs" />
     <Compile Include="ManagerLocations.cs" />
-    <Compile Include="ManagerOpeningHours.cs" />
-    <Compile Include="ManagerOpeningHoursForDorkingDay.cs" />
     <Compile Include="ManagerStor.cs" />
     <Compile Include="ManagerUsers.cs" />
-    <Compile Include="ManagerWorkingDaysWeek.cs" />
     <Compile Include="Models\UserInformation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

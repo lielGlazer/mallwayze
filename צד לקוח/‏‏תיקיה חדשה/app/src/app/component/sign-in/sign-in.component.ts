@@ -48,8 +48,6 @@ export class SignInComponent implements OnInit {
         alert("התחברת בהצלחה! הקוד שלך הוא " + res.UserCode);
         user.UserCode = res.UserCode;
         this.router.navigate(["route-selection"]);
-
-
       }
     })
 

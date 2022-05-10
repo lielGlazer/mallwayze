@@ -19,8 +19,6 @@ namespace DAL
         {
             this.CategoryForStor = new HashSet<CategoryForStor>();
             this.FavoriteStoresForTheUser = new HashSet<FavoriteStoresForTheUser>();
-            this.OpeningHoursForDorkingDay = new HashSet<OpeningHoursForDorkingDay>();
-            this.OpeningHoursForDorkingDay1 = new HashSet<OpeningHoursForDorkingDay>();
         }
     
         public long CodeStor { get; set; }
@@ -32,12 +30,8 @@ namespace DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CategoryForStor> CategoryForStor { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<FavoriteStoresForTheUser> FavoriteStoresForTheUser { get; set; }
         public virtual Locations Locations { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OpeningHoursForDorkingDay> OpeningHoursForDorkingDay { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<OpeningHoursForDorkingDay> OpeningHoursForDorkingDay1 { get; set; }
+        public virtual ICollection<FavoriteStoresForTheUser> FavoriteStoresForTheUser { get; set; }
     }
 }

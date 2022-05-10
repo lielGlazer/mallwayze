@@ -14,7 +14,6 @@ import { RouteSelectionComponent } from './component/route-selection/route-selec
 import { SearchComponent } from './component/search/search.component';
 import { SearchStorsComponent } from './component/search-stors/search-stors.component';
 import { SearchCategorysComponent } from './component/search-categorys/search-categorys.component';
-import { BossComponent } from './component/boss/boss.component';
 import { StorsComponent } from './component/stors/stors.component';
 import { RouteStorComponent } from './component/route-stor/route-stor.component';
 import { RouteCategoryComponent } from './component/route-category/route-category.component';
@@ -40,7 +39,6 @@ import { ErrorComponent } from './component/error/error.component';
     SearchComponent,
     SearchStorsComponent,
     SearchCategorysComponent,
-    BossComponent,
     StorsComponent,
     RouteStorComponent,
     RouteCategoryComponent,

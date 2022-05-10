@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { BossComponent } from './component/boss/boss.component';
 import { CateroryComponent } from './component/caterory/caterory.component';
 import { EnterComponent } from './component/enter/enter.component';
 import { ErrorComponent } from './component/error/error.component';
@@ -46,10 +45,9 @@ const routes: Routes = [
       { path: 'roate-smart', component: RouteSmartComponent }
     ]
   },
-  //מנהל//
-  //     { path: 'boss', component: BossComponent }
-  //   ]
-  // },
+  
+    
+  
   //חישוב מסלול//
   {
     path: 'route-selection', component: RouteSelectionComponent, children: [

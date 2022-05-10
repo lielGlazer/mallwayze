@@ -36,13 +36,13 @@
             <!-- <p class="col-lg-10 fs-4">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p> -->
           </div>
           <div class="col-md-10 mx-auto col-lg-5">
-            <form    style="  border-radius: 10px;  background-image: url(assets/build.png); background-repeat: no-repeat;background-size: 562px 441px;"[formGroup]="signUpForm" class="p-4 p-md-5">
+            <form  FormGroup="signUpForm" style="border-radius: 10px;  background-image: url(assets/build.png); background-repeat: no-repeat;background-size: 562px 441px;" class="p-4 p-md-5">
               <div  class="form-floating mb-3">
-                <input type="email" class="form-control" id="fn" placeholder="name@example.com">
+                <input type="email"form-control="userName" class="form-control" id="fn" placeholder="name@example.com">
                 <label for="fn" >Email address</label>
               </div>
               <div class="form-floating mb-3">
-                <input type="password" class="form-control" id="pass" placeholder="Password">
+                <input type="password" form-control="password" class="form-control" id="pass" placeholder="Password">
                 <label for="pass">Password</label>
               </div>
               <div class="checkbox mb-3">

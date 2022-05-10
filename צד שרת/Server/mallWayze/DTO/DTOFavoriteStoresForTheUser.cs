@@ -11,7 +11,7 @@ namespace DTO
     {
         public long UserCode { get; set; }
         public long CodeStor { get; set; }
-        public bool LikeStor { get; set; }
+        public long FavoriteCode { get; set; }
         public DTOFavoriteStoresForTheUser()
         {
 
@@ -20,7 +20,7 @@ namespace DTO
         {
             this.UserCode = l.UserCode;
             this.CodeStor = l.CodeStor;
-            this.LikeStor = l.LikeStor;
+            this.FavoriteCode = l.FavoriteCode;
            
         }
         public FavoriteStoresForTheUser ToTable(DTOFavoriteStoresForTheUser l)
@@ -28,7 +28,7 @@ namespace DTO
             FavoriteStoresForTheUser c = new FavoriteStoresForTheUser();
             c.UserCode = l.UserCode;
             c.CodeStor = l.CodeStor;
-            c.LikeStor = l.LikeStor;
+            c.FavoriteCode = l.FavoriteCode;
 
             return c;
         }

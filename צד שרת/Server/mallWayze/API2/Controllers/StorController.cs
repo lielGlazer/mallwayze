@@ -34,7 +34,7 @@ namespace API2.Controllers
             return BL.ManagerStor.CreatePath(stores);
         }
 
-
+        public List<DTOStor> GetListALL;
 
         //מחזיר מיקום על פי שם של חנות 
         [Route("api/stor/getLocationForStore/{name}")]

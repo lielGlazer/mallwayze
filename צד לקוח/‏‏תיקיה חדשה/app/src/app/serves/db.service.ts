@@ -16,12 +16,9 @@ export class DbService {
   //רישום
   signUp(user:User):Observable<User>{
     return this.httpClient.post<User>("http://localhost:64724/api/Users/Register" , user );
-
   }
   //התחברות
   signIn(user:User):Observable<User>{
-
     return this.httpClient.post<User>("http://localhost:64724/api/Users/Login" , user );
-
   }
 }

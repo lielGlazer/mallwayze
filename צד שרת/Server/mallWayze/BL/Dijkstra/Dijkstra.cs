@@ -32,7 +32,7 @@ namespace BL.Dijkstra
             return null;
         }
 
-        //יוצרת גרף של כל החנויות בקניון
+        //המרחקים הקשתות יוצרת גרף של כל המרחקים בקניון
         public static List<Route> createMallRoutes(string path)//
         {
             List<Route> routes = new List<Route>();//
@@ -50,6 +50,7 @@ namespace BL.Dijkstra
             }
             return routes;
         }
+        //הצמתים יוצרת גרף של כל החנויות בקניון
         public static Dictionary<string, Node> createMallNodes()
         {
             Dictionary<string, Node> nodes = new Dictionary<string, Node>();
@@ -68,15 +69,15 @@ namespace BL.Dijkstra
 
             for (int i = 0; i < stores.Count(); i++)//לכל חנות ברשימה הנבחרת
             {
-                DTOStor from = stores[i];
+                DTOStor from = stores[i];//מאיפה להגיע מאיזה מקור
 
-                selectedStoresGraphNodes.Add(from.NameStor, new Node(from));
+                selectedStoresGraphNodes.Add(from.NameStor, new Node(from));//מוסיפה אותו לרשימת הצמתים בגרף החדש
 
                 for (int j = 0; j < stores.Count(); j++)//ניצור קשתות לשאר החנויות ברשימה
                 {
                     if (i == j)//כדי למנוע כפילויות - נדלג על החנות הנוכחית
                         continue;
-                    DTOStor to = stores[j];
+                    DTOStor to = stores[j];//לאיפה אני מגיעה
 
                     Node start = new Node(from); //נגדיר חנות נוכחית בתור התחלה
                     Node end = new Node(to);//נגדיר חנות אחרת ברשימה בתור יעד
@@ -87,17 +88,18 @@ namespace BL.Dijkstra
                     //השמת ערך 0 על הנקודה שבה אנחנו מתחילים 
                     mallGraphNodes[start.Store.NameStor].Value = 0;
 
-                    PrioQueue queue = new PrioQueue();
-                    queue.AddNodeWithPriority(mallGraphNodes[start.Store.NameStor]);
-
-                    List<Node> unvisited = new List<Node>();
-                    foreach (var n in mallGraphNodes.Values)
+                    PrioQueue queue = new PrioQueue();//בונה תור עדיפות למרחקים קצרים
+                    queue.AddNodeWithPriority(mallGraphNodes[start.Store.NameStor]);//מוסיפה לתור את הצומת התחלה 
+                    List<Node> unvisited = new List<Node>();//מגדירה רשימת צמתים שלא בקרתי בהם 
+                    foreach (var n in mallGraphNodes.Values)//מעבר בלולאה כל הצמתים בקומה  
                     {
-                        unvisited.Add(n);
+                        unvisited.Add(n);//מוסיפה לרשימה את כל החניות בקומה 
                     }
-
+                    //מקבלת  את המרחק הקצר שחוזר 
                     double shortestDistance = CheckNode(mallGraphRoutes, mallGraphNodes, queue, unvisited, end);
+                    //אתחול משקל הקשת למרחק הקצר שחזר
                     newRoute.Distance = shortestDistance;
+                    //הוספה לרשימת הקשתות של הגרף החדש  את הקשת שחשבנו
                     selectedStoresGraphRoutes.Add(newRoute);
 
                 }

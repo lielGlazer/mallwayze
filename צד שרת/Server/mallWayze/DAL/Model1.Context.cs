@@ -13,15 +13,10 @@ namespace DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class wayzeShoopEntities : DbContext
+    public partial class wayzeShoopEntities1 : DbContext
     {
-        public DbSet<T> GetDbSet<T>() where T : class
-        {
-            return this.Set<T>();
-        }
-
-        public wayzeShoopEntities()
-            : base("name=wayzeShoopEntities")
+        public wayzeShoopEntities1()
+            : base("name=wayzeShoopEntities1")
         {
         }
     
@@ -32,13 +27,10 @@ namespace DAL
     
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<CategoryForStor> CategoryForStor { get; set; }
-        public virtual DbSet<FavoriteStoresForTheUser> FavoriteStoresForTheUser { get; set; }
         public virtual DbSet<Locations> Locations { get; set; }
-        public virtual DbSet<OpeningHours> OpeningHours { get; set; }
-        public virtual DbSet<OpeningHoursForDorkingDay> OpeningHoursForDorkingDay { get; set; }
         public virtual DbSet<Stor> Stor { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<WorkingDaysWeek> WorkingDaysWeek { get; set; }
+        public virtual DbSet<FavoriteStoresForTheUser> FavoriteStoresForTheUser { get; set; }
     }
 }

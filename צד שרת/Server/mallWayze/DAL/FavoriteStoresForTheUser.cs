@@ -14,9 +14,9 @@ namespace DAL
     
     public partial class FavoriteStoresForTheUser
     {
-        public long UserCode { get; set; }
+        public long FavoriteCode { get; set; }
         public long CodeStor { get; set; }
-        public bool LikeStor { get; set; }
+        public long UserCode { get; set; }
     
         public virtual Stor Stor { get; set; }
         public virtual Users Users { get; set; }
