@@ -1,0 +1,45 @@
+﻿
+body {
+    margin: 80px;
+    text-align-last: center;
+}
+.my1 {
+    box-shadow: 16px 24px;
+    width: 10rem;
+    height: 15rem;
+    padding: 0;
+    display: inline-block;
+    margin: 20px;
+}
+
+.my {
+    box-shadow:16px 24px ;
+    width: 10rem;
+    height: 15rem;
+    padding: 0;
+    display: inline-block;
+    margin: 20px;
+}
+.my:hover {
+    box-shadow: 16px 24px cadetblue; 
+
+}
+
+img {
+    height: 8rem;
+}
+
+a {
+    margin-top: 3px;
+    display: inline-block;
+    align-self: center;
+    width: 100px;
+    color: white;
+    background-image: url(img/גינס.png);
+}
+
+p {
+    margin-top: 20px;
+}
+
+
