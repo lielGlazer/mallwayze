@@ -17,14 +17,15 @@ namespace API2.Controllers
         //מחזיר את כל הרשימה
         public List<DTOFavoriteStoresForTheUser> GetCaterory()
         {
-            List<DTOFavoriteStoresForTheUser> u = BL.ManagerFavoriteStoresForTheUser.GetFavoriteStoresForTheUser();
-            return u;
+            return  BL.ManagerFavoriteStoresForTheUser.GetFavoriteStoresForTheUser();  
         }
         //מחזיר רשימת חניות מודפות למשמתש
+        [Route("api/FavoriteStoresForTheUser/GetAllStor/{}")]
+        [HttpGet]
         public List<DTOStor> GetAllStor(DTOUsers user)
         {
-            List<DTOStor> u = BL.ManagerFavoriteStoresForTheUserGetAllStorForUser(user);
-            return u;
+            return  BL.ManagerFavoriteStoresForTheUser.GetAllStorForUser(user);  
         }
+        
     }
 }
