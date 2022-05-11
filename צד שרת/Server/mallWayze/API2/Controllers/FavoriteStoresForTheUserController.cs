@@ -20,9 +20,9 @@ namespace API2.Controllers
             return  BL.ManagerFavoriteStoresForTheUser.GetFavoriteStoresForTheUser();  
         }
         //מחזיר רשימת חניות מודפות למשמתש
-        [Route("api/FavoriteStoresForTheUser/GetAllStor/{}")]
+        [Route("api/FavoriteStoresForTheUser/GetAllStorFavoraite/{}")]
         [HttpGet]
-        public List<DTOStor> GetAllStor(DTOUsers user)
+        public List<DTOStor> GetAllStorFavoraite(DTOUsers user)
         {
             return  BL.ManagerFavoriteStoresForTheUser.GetAllStorForUser(user);  
         }
