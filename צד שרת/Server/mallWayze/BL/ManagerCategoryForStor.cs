@@ -42,11 +42,13 @@ namespace BL
             DTOStor Scode = db.GetDbSet<DTOStor>().FirstOrDefault(d => d.NameStor.Equals(nameStor));
             long code = Scode.CodeStor;
             //רשימת הקודים של הקטגוריות לחנות שהתקבלה   
-            List<DTOCategoryForStor> h = GetCategoryForStor().Where(s => s.CodeStor == code).ToList();
-            List<DTOCategory> categor = new List<DTOCategory>();
+            List<DTOCategoryForStor> h = GetCategoryForStor().Where(s => s.CodeStor == code).ToList();//רשימת כל הקודים של הקטגורייות
+            List<DTOCategory> categor = new List<DTOCategory>();//רשימה ריקה של קטגוריות
             foreach (var s in h)
             {
-                categor.Add(new DTOCategory(db.GetDbSet<Category>().Find(categor => categor.CategoryCode == s.CategoryCode)));
+              List <Category> all = db.GetDbSet<Category>().ToList();
+              List<DTOCategory> dtoList = DTOCategory.DTOlist(all);//רשימה של כל הקטגוריות בקניון 
+              categor.Add(dtoList.Find(store => store.CategoryCode == s.categoryCode));
             }
             return categor;
         }

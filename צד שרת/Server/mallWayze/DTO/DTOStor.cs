@@ -24,8 +24,6 @@ namespace DTO
             this.CodeStor =(long)l.CodeStor;
             this.PlaceCode = (long)l.PlaceCode;
             this.NameStor = (string)l.NameStor;
-            this.OpeningHours = (TimeSpan)l.OpeningHours;
-            this.ClosingHours = (TimeSpan)l.ClosingHours;
             this.Sale = (bool)l.Sale;
             this.Locations =new DTOLocations( l.Locations);
         }
@@ -35,8 +33,6 @@ namespace DTO
             c.CodeStor = l.CodeStor;
             c.PlaceCode = l.PlaceCode;
             c.NameStor = l.NameStor;
-            c.OpeningHours = l.OpeningHours;
-            c.ClosingHours = l.ClosingHours;
             c.Sale = l.Sale;
             return c;
         }

@@ -11,21 +11,30 @@ namespace BL.Dijkstra
 {
     class Dijkstra
     {
-
-        static DBConection db = new DBConection();//הדאטה ביס של כל המערכת 
-        static string graphFilePath = @"C:\Users\student\Desktop\routes.txt";//הניתוב של הגרף
-        static List<Route> mallGraphRoutes = null;//אתחול רשימת הקשתות של הקומהה הראשונה בקניון 
-        static Dictionary<string, Node> mallGraphNodes = new Dictionary<string, Node>();//אתחול המילון שמורכב משם צומת וצומת
-        static List<Route> selectedStoresGraphRoutes = new List<Route>();// אתחול רשימת הצמים בגרף החדש שניצור יהנו המסלול 
-        static Dictionary<string, Node> selectedStoresGraphNodes = new Dictionary<string, Node>();//אתחול המילון הצמתים של הגרף החדש
-
-        public static List<DTOStor> MapSelectedStores(List<DTOStor> stores)//מיפוי 
+        //הדאטה ביס של כל המערכת 
+        static DBConection db = new DBConection();
+        //הניתוב של הגרף
+        static string graphFilePath = @"C:\Users\student\Desktop\routes.txt";
+        //אתחול רשימת הקשתות של הקומהה הראשונה בקניון 
+        static List<Route> mallGraphRoutes = null;
+        //אתחול המילון שמורכב משם צומת וצומת
+        static Dictionary<string, Node> mallGraphNodes = new Dictionary<string, Node>();
+        // אתחול רשימת הצמים בגרף החדש שניצור יהנו המסלול 
+        static List<Route> selectedStoresGraphRoutes = new List<Route>();
+        //אתחול המילון הצמתים של הגרף החדש
+        static Dictionary<string, Node> selectedStoresGraphNodes = new Dictionary<string, Node>();
+        //מקבלת רשימה של חניות למעבר ומחזירה את הרשימה הטובה =היעילה ביותר 
+        public static List<DTOStor> MapSelectedStores(List<DTOStor> stores)
         {
             //יצירת גרף של כל הקניון - קריאת הקשתות מקובץ  
+
             mallGraphRoutes = createMallRoutes(graphFilePath);
+            //יצירת הצמתים שנמצאים בכל הקניון
             mallGraphNodes = createMallNodes();
             //יצירת גרף חדש של הקשתות בין החנויות הנבחרות  -  הפעלת הדיאקסטרה לכל חנות ברשימה ( שאר החנויות כיעד)
 
+            //יצית הגרף החדש - המסלול הקצר 
+            createSelectedStoresGraph(stores);
             //הפעלת הדיאקסטרה על הגרף החדש.
 
 
@@ -62,38 +71,44 @@ namespace BL.Dijkstra
             }
             return nodes;
         }
-
+        //יצירת הגרף החדש =המסלול 
         public static void createSelectedStoresGraph(List<DTOStor> stores)
         {
 
-
-            for (int i = 0; i < stores.Count(); i++)//לכל חנות ברשימה הנבחרת
-            {
-                DTOStor from = stores[i];//מאיפה להגיע מאיזה מקור
-
-                selectedStoresGraphNodes.Add(from.NameStor, new Node(from));//מוסיפה אותו לרשימת הצמתים בגרף החדש
-
-                for (int j = 0; j < stores.Count(); j++)//ניצור קשתות לשאר החנויות ברשימה
+            //לכל חנות ברשימה הנבחרת
+            for (int i = 0; i < stores.Count(); i++)
+            {   //מאיפה להגיע מאיזה מקור
+                DTOStor from = stores[i];
+                //מוסיפה אותו לרשימת הצמתים בגרף החדש
+                selectedStoresGraphNodes.Add(from.NameStor, new Node(from));
+                //ניצור קשתות לשאר החנויות ברשימה
+                for (int j = 0; j < stores.Count(); j++)
                 {
-                    if (i == j)//כדי למנוע כפילויות - נדלג על החנות הנוכחית
+                    //כדי למנוע כפילויות - נדלג על החנות הנוכחית
+                    if (i == j)
                         continue;
-                    DTOStor to = stores[j];//לאיפה אני מגיעה
-
-                    Node start = new Node(from); //נגדיר חנות נוכחית בתור התחלה
-                    Node end = new Node(to);//נגדיר חנות אחרת ברשימה בתור יעד
+                    //לאיפה אני מגיעה
+                    DTOStor to = stores[j];
+                    //נגדיר חנות נוכחית בתור התחלה
+                    Node start = new Node(from);
+                    //נגדיר חנות אחרת ברשימה בתור יעד
+                    Node end = new Node(to);
                     //ניצור קשת - אבל - נאתחל את המרחק ב-0 כי עדיין לא ברור מה המרחק הכי קצר - צריך חישוב
                     Route newRoute = new Route(start, end, 0);
 
                     //חישוב המרחק הקצר ע''י דייקסטרה
                     //השמת ערך 0 על הנקודה שבה אנחנו מתחילים 
                     mallGraphNodes[start.Store.NameStor].Value = 0;
-
-                    PrioQueue queue = new PrioQueue();//בונה תור עדיפות למרחקים קצרים
-                    queue.AddNodeWithPriority(mallGraphNodes[start.Store.NameStor]);//מוסיפה לתור את הצומת התחלה 
-                    List<Node> unvisited = new List<Node>();//מגדירה רשימת צמתים שלא בקרתי בהם 
-                    foreach (var n in mallGraphNodes.Values)//מעבר בלולאה כל הצמתים בקומה  
-                    {
-                        unvisited.Add(n);//מוסיפה לרשימה את כל החניות בקומה 
+                    //בונה תור עדיפות למרחקים קצרים
+                    PrioQueue queue = new PrioQueue();
+                    //מוסיפה לתור את הצומת התחלה 
+                    queue.AddNodeWithPriority(mallGraphNodes[start.Store.NameStor]);
+                    //מגדירה רשימת צמתים שלא בקרתי בהם 
+                    List<Node> unvisited = new List<Node>();
+                    //מעבר בלולאה כל הצמתים בקומה  
+                    foreach (var n in mallGraphNodes.Values)
+                    {//מוסיפה לרשימה את כל החניות בקומה 
+                        unvisited.Add(n);
                     }
                     //מקבלת  את המרחק הקצר שחוזר 
                     double shortestDistance = CheckNode(mallGraphRoutes, mallGraphNodes, queue, unvisited, end);
@@ -113,20 +128,24 @@ namespace BL.Dijkstra
 
             DTOStor entrance = new DTOStor();
             entrance.NameStor = "כניסה";
-           
-            Node start = new Node( entrance); //נגדיר כניסה בתור התחלה
-            Node end = null;//אין יעד - רוצים לעבור בין כל החנויות שנבחרו
+            //נגדיר כניסה בתור התחלה
+            Node start = new Node( entrance);
+            //אין יעד - רוצים לעבור בין כל החנויות שנבחרו
+            Node end = null;
                               
             //חישוב המרחק הקצר ע''י דייקסטרה
             //השמת ערך 0 על הנקודה שבה אנחנו מתחילים 
             mallGraphNodes[start.Store.NameStor].Value = 0;
-
+            //אתחול התור -שממין את המרחקים הקצרים ביותר 
             PrioQueue queue = new PrioQueue();
+            //ההתחליתית מוסיפה לתור את הצומת 
             queue.AddNodeWithPriority(selectedStoresGraphNodes[start.Store.NameStor]);
-
+            //רשימה של צמתים שלא ביקרנו בהם עדיין 
             List<Node> unvisited = new List<Node>();
+            //מוסיפה לרשימה הזאת את כל הצמתים כי בנתיים אנו בהתחלה -לא ביקרנו בשום מקום 
             foreach (var n in selectedStoresGraphNodes.Values)
             {
+                //
                 unvisited.Add(n);
             }
 
@@ -134,29 +153,32 @@ namespace BL.Dijkstra
         }
 
 
-
+        //מחזירה את המרחק הקצר ביותר
         private static double CheckNode(List<Route> routes, Dictionary<string, Node> nodes, PrioQueue queue, List<Node> unvisited, Node destinationNode)
         {
-            if (queue.Count == 0)  //תנאי עצירה בחיפוש מסלול קצר בין כל הנקודות בגרף
+            //תנאי עצירה בחיפוש מסלול קצר בין כל הנקודות בגרף
+            if (queue.Count == 0)  
             {
                 return 0;
             }
-            if (queue.First.Value == destinationNode)//תנאי עצירה בחיפוש מסלול קצר בין מקור ליעד
+            //תנאי עצירה בחיפוש מסלול קצר בין מקור ליעד
+            if (queue.First.Value == destinationNode)
             {
                 return destinationNode.Value;
             }
             List<Route> neighborRoutes = routes.Where(s => s.From == queue.First.Value).ToList();
             foreach (var r in neighborRoutes)
             {
-                if (!unvisited.Contains(r.To))//אם קוד היעד לא נמצא ברשימה שצריך לבקר בה סימן שביקרו בו - נדלג עליו
+                //אם קוד היעד לא נמצא ברשימה שצריך לבקר בה סימן שביקרו בו - נדלג עליו
+                if (!unvisited.Contains(r.To))
                 {
                     continue;
                 }
-
+                //מעדכנת מה המרחק עד לצומת הנוכחית - מה היה המרחק עד הגעה לצומת הנוחכית 
                 double travelDistance = nodes[queue.First.Value.Store.NameStor].Value + r.Distance;
-
+                //בדיקה האם מה שחישבתי עכשיו יותר קצר ממה שקיים בצומת עד עכשיו 
                 if (travelDistance < nodes[r.To.Store.NameStor].Value)
-                {
+                {//אם כן -תעדכן 
                     nodes[r.To.Store.NameStor].Value = travelDistance;
                     nodes[r.To.Store.NameStor].PreviousNode = r.From;
                 }

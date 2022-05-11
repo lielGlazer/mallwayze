@@ -22,13 +22,17 @@ namespace API2.Controllers
         }
         //פונקציה שמחזירה רשימה של כל החניות בקניון
         [Route("api/Stor/GetAllStor")]
-        [httpGet]
+        
         public List<DTOStor> GetAllStor()
         {
             return BL.ManagerStor.GetStor();
         }
-       
-      
-
+        //מחזירה רשימה של כל החניות בקנייון שיש להם מבצעים 
+        [Route("api/Stor/GetSaleStor")]
+        [HttpGet]
+        public List<DTOStor> GetSaleStor()
+        {
+            return BL.ManagerStor.GetStorSale();
+        }
     }
 }

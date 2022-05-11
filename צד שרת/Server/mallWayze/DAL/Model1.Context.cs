@@ -24,7 +24,15 @@ namespace DAL
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
+        
+            public DbSet<T> GetDbSet<T>() where T : class
+            {
+                return this.Set<T>();
+            }
+
+        
+
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<CategoryForStor> CategoryForStor { get; set; }
         public virtual DbSet<Locations> Locations { get; set; }

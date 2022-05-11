@@ -25,7 +25,22 @@ namespace BL
             List<DTOStor> mapStores = Dijkstra.Dijkstra.MapSelectedStores(stores);
             return mapStores;
         }
+        //מחזירה רשימה של כל החניות שיש בהם מבצעים
+        public static List<DTOStor> GetStorSale()
+        {   //רשימה של כל החניות הקניון 
+            List<DTOStor> ALLSTOR = GetStor();
+            //רשימה שתכיל את כל החניות שיש בהם מבצעים 
+            List<DTOStor> SALESTOR = GetStor();
+          
+            foreach (var s in ALLSTOR)
+            {
+                if (s.Sale)
+                {
+                    SALESTOR.Add(s);
+                }
+            }
+            return SALESTOR;
 
-
+        }
     }
 }

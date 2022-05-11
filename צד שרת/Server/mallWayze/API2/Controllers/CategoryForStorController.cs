@@ -32,7 +32,7 @@ namespace API2.Controllers
         [HttpGet]
         public List<DTOCategory> GetAllCategorysForStor(string stor)
         {
-            return BL.ManagerCategoryForStor.GetAllCtegoryForStor(stor)
+            return BL.ManagerCategoryForStor.GetAllCtegoryForStor(stor);
         }
     }
 }
