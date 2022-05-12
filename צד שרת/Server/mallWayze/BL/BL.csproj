@@ -69,5 +69,8 @@
   <ItemGroup>
     <Content Include="Dijkstra\routes.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="CBL.cd" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

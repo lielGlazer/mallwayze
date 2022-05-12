@@ -7,7 +7,7 @@ using DTO;
 using DAL;
 using BL;
 
-namespace BL.Dijkstra
+namespace BL.BL
 {
     //קשת 
     public class Route

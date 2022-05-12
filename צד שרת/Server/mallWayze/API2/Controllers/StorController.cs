@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Cors;
+using BL.BL;
 using DTO;
 
 namespace API2.Controllers
@@ -32,6 +33,7 @@ namespace API2.Controllers
         [HttpGet]
         public List<DTOStor> GetSaleStor()
         {
+            Dijkstra dijkstra = new Dijkstra( BL.ManagerStor.GetStorSale());
             return BL.ManagerStor.GetStorSale();
         }
     }

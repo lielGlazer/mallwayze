@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DTO;
 
-namespace BL.Dijkstra
+namespace BL.BL
 {
     public class Node
     {

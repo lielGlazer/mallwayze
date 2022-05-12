@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BL.Dijkstra
+namespace BL.BL
 {// על פי ערך של הצומת (במשקל ) תור עדיפות
     class PrioQueue : LinkedList<Node>//יורש מרישמה מרשימה מקושרת 
     {

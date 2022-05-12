@@ -7,14 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BL.Dijkstra
+namespace BL.BL
 {
-    class Dijkstra
+  public  class Dijkstra
     {
+        public  Dijkstra(List<DTOStor> stores)
+        {
+            mallGraphNodes= createMallNodes();
+            mallGraphRoutes= createMallRoutes(graphFilePath);
+            createSelectedStoresGraph(stores);
+            createShortestPathForSelectedStores();
+
+        }
         //הדאטה ביס של כל המערכת 
         static DBConection db = new DBConection();
         //הניתוב של הגרף
-        static string graphFilePath = @"C:\Users\student\Desktop\routes.txt";
+        static string graphFilePath = @"C:\Users\student\Desktop\liel\צד שרת\routes.txt";// @"..\..\BL\Dijkstra\routes.txt";
         //אתחול רשימת הקשתות של הקומהה הראשונה בקניון 
         static List<Route> mallGraphRoutes = null;
         //אתחול המילון שמורכב משם צומת וצומת
@@ -166,6 +174,7 @@ namespace BL.Dijkstra
             {
                 return destinationNode.Value;
             }
+            //רשימת שכנים של צומת 
             List<Route> neighborRoutes = routes.Where(s => s.From == queue.First.Value).ToList();
             foreach (var r in neighborRoutes)
             {
@@ -190,6 +199,7 @@ namespace BL.Dijkstra
 
             }
             unvisited.Remove(queue.First.Value);
+            //
             queue.RemoveFirst();
             CheckNode(routes, nodes, queue, unvisited, destinationNode);
             return 0;

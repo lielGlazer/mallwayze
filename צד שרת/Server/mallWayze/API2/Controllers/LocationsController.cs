@@ -16,7 +16,7 @@ namespace API2.Controllers
     {
 
         //יהנו מסלול הפונקציה מקבלת שמות של חנויות(רשימת שמות)ומחזירה רשימת מיקומים בהתאם
-        [Route("api/Locations/CreateSelectedStoresMap/{}")]
+        [Route("api/Locations/CreateSelectedStoresMap")]
         [HttpPost]
         public List<DTOStor> CreateSelectedStoresMap(List<DTOStor> stores)
         {

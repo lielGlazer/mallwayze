@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DTO.DTOCategory">
+    <Position X="7.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAABACAAgAAAA=</HashCode>
+      <FileName>DTOCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.DTOCategoryForStor">
+    <Position X="6" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAIEAAAAAACAAgAAAA=</HashCode>
+      <FileName>DTOCategoryForStor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.DTOFavoriteStoresForTheUser">
+    <Position X="4.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAABAAAAAAAAAAAAAAIAAAAAAACAAgAAAA=</HashCode>
+      <FileName>DTOFavoriteStoresForTheUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.DTOLocations">
+    <Position X="9.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAIAAAAAAAAACEAAAACAAgAAAA=</HashCode>
+      <FileName>DTOLocations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.DTOStor">
+    <Position X="11.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAgIAAAAAAAAAAAAIAAAAAAAAIAAAAAAACAAgAAAA=</HashCode>
+      <FileName>DTOStor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DTO.DTOUsers">
+    <Position X="7.75" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAAAAAAACAQACAAgAAAA=</HashCode>
+      <FileName>DTOUsers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

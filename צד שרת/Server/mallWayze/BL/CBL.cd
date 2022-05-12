@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="BL.BL.Dijkstra">
+    <Position X="12.75" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEQBACQAAAAAAQAAAAAAAAAADAAAAACAAAAECA=</HashCode>
+      <FileName>Dijkstra\Dijkstra.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BL.BL.Node">
+    <Position X="9.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAgAQAAAAA=</HashCode>
+      <FileName>Dijkstra\Node.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BL.BL.PrioQueue">
+    <Position X="11" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>Dijkstra\PrioQueue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BL.BL.Route">
+    <Position X="11" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAIAABAAAAAAAAAAAA=</HashCode>
+      <FileName>Dijkstra\Route.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BL.ManagerCategoryForStor">
+    <Position X="3.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAQAgAAAAAAAAAAAAAAAAAAASAAAAAAAAA=</HashCode>
+      <FileName>ManagerCategoryForStor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BL.ManagerCaterory">
+    <Position X="5.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ManagerCaterory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BL.ManagerFavoriteStoresForTheUser">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQQAAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ManagerFavoriteStoresForTheUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BL.ManagerLocations">
+    <Position X="5.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAACAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ManagerLocations.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BL.ManagerStor">
+    <Position X="3.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAgAAQAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ManagerStor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BL.ManagerUsers">
+    <Position X="2" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>ManagerUsers.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="BL.Models.UserInformation">
+    <Position X="8.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAACAQAAAAAAAAA=</HashCode>
+      <FileName>Models\UserInformation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

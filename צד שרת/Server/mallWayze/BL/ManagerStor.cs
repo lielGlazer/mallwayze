@@ -22,7 +22,7 @@ namespace BL
         public static List<DTOStor> CreatePath(List<DTOStor> stores)
         {
             //להפעיל את הפונקציה המורכבת של הדיאקסטרה
-            List<DTOStor> mapStores = Dijkstra.Dijkstra.MapSelectedStores(stores);
+            List<DTOStor> mapStores= BL.Dijkstra.MapSelectedStores(stores);
             return mapStores;
         }
         //מחזירה רשימה של כל החניות שיש בהם מבצעים

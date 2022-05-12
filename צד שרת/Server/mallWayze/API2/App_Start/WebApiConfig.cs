@@ -13,14 +13,16 @@ namespace API2
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-            config.EnableCors();
+           // config.EnableCors();
 
-          
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional, type = RouteParameter.Optional }
+                defaults: new { id = RouteParameter.Optional }
             );
+
+    
         }
     }
 }
