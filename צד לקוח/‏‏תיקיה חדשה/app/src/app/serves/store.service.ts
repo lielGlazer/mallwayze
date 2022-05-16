@@ -11,10 +11,11 @@ export class StoreService {
   constructor(private http: HttpClient) { }
 
 //todo: Store.ts in model
-
+  //מחזיר את כל החניות
   GetAllStor(): Observable<Store[]>  {
     return this.http.get<Store[]>("http://localhost:64724/api/Stor/GetAllStor");
   }
     
   
 }
+

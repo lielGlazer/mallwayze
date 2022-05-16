@@ -20,7 +20,7 @@ import { RouteCategoryComponent } from './component/route-category/route-categor
 import { RouteSmartComponent } from './component/route-smart/route-smart.component';
 import { StorDataComponent } from './component/stor-data/stor-data.component';
 import { ErrorComponent } from './component/error/error.component';
-import { OneStoreComponent } from './component/one-store/one-store.component';
+// import { OneStoreComponent } from './component/one-store/one-store.component';
 
 
 
@@ -46,7 +46,7 @@ import { OneStoreComponent } from './component/one-store/one-store.component';
     RouteSmartComponent,
     StorDataComponent,
     ErrorComponent,
-    OneStoreComponent,
+    // OneStoreComponent,
   
   ],
   imports: [

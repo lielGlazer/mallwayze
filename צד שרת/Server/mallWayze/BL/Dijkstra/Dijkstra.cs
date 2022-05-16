@@ -118,7 +118,7 @@ namespace BL.BL
                     {//מוסיפה לרשימה את כל החניות בקומה 
                         unvisited.Add(n);
                     }
-                    //מקבלת  את המרחק הקצר שחוזר 
+                    //מקבלת  את המרחק הקצר שחוזר  - פב מתחילה הריקורסיה של הדיאקסטרה
                     double shortestDistance = CheckNode(mallGraphRoutes, mallGraphNodes, queue, unvisited, end);
                     //אתחול משקל הקשת למרחק הקצר שחזר
                     newRoute.Distance = shortestDistance;
@@ -129,7 +129,7 @@ namespace BL.BL
             }
 
         }
-
+        //מציאת
 
         public static void createShortestPathForSelectedStores()
         {
@@ -174,7 +174,7 @@ namespace BL.BL
             {
                 return destinationNode.Value;
             }
-            //רשימת שכנים של צומת 
+            //רשימת קשתות של צומת 
             List<Route> neighborRoutes = routes.Where(s => s.From == queue.First.Value).ToList();
             foreach (var r in neighborRoutes)
             {
@@ -185,11 +185,11 @@ namespace BL.BL
                 }
                 //מעדכנת מה המרחק עד לצומת הנוכחית - מה היה המרחק עד הגעה לצומת הנוחכית 
                 double travelDistance = nodes[queue.First.Value.Store.NameStor].Value + r.Distance;
-                //בדיקה האם מה שחישבתי עכשיו יותר קצר ממה שקיים בצומת עד עכשיו 
+                //בדיקה האם מה שחישבתי עכשיו יותר קצר ממה שקיים בצומת היעד עד עכשיו 
                 if (travelDistance < nodes[r.To.Store.NameStor].Value)
                 {//אם כן -תעדכן 
                     nodes[r.To.Store.NameStor].Value = travelDistance;
-                    nodes[r.To.Store.NameStor].PreviousNode = r.From;
+                    nodes[r.To.Store.NameStor].PreviousNode = r.From;\\הקודם
                 }
 
                 if (!queue.HasLetter(r.To))
