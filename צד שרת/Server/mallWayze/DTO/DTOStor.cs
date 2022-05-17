@@ -19,6 +19,7 @@ namespace DTO
         {
 
         }
+  
         public DTOStor(Stor l)
         {
             this.CodeStor =(long)l.CodeStor;
