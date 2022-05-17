@@ -1,0 +1,7 @@
+https://echarts.apache.org/examples/en/editor.html?c=heatmap-bmap
+
+
+
+
+bbbbbbuggg
+System.InvalidOperationException: 'The entity type DTOCategory is not part of the model for the current context.'

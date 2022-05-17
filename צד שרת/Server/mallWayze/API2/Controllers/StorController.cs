@@ -33,7 +33,7 @@ namespace API2.Controllers
         [HttpGet]
         public List<DTOStor> GetSaleStor()
         {
-            Dijkstra dijkstra = new Dijkstra( BL.ManagerStor.GetStorSale());
+   //         Dijkstra dijkstra = MapSelectedStores( BL.ManagerStor.GetStorSale());
             return BL.ManagerStor.GetStorSale();
         }
     }

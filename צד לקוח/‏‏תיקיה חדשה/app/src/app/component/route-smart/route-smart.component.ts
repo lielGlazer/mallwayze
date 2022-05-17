@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./route-smart.component.css']
 })
 export class RouteSmartComponent implements OnInit {
-
+ imageCanvas="assets/one.png"
   constructor() { }
 
   ngOnInit(): void {

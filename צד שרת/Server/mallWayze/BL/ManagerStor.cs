@@ -22,7 +22,7 @@ namespace BL
         public static List<DTOStor> CreatePath(List<DTOStor> stores)
         {
             //להפעיל את הפונקציה המורכבת של הדיאקסטרה
-            List<DTOStor> mapStores= BL.Dijkstra.MapSelectedStores(stores);
+       List<DTOStor> mapStores= BL.Dijkstra.MapSelectedStores(stores);
             return mapStores;
         }
         //מחזירה רשימה של כל החניות שיש בהם מבצעים
@@ -30,11 +30,11 @@ namespace BL
         {   //רשימה של כל החניות הקניון 
             List<DTOStor> ALLSTOR = GetStor();
             //רשימה שתכיל את כל החניות שיש בהם מבצעים 
-            List<DTOStor> SALESTOR = GetStor();
+            List<DTOStor> SALESTOR =new List<DTOStor>();
           
             foreach (var s in ALLSTOR)
             {
-                if (s.Sale)
+                if (s.Sale==true)
                 {
                     SALESTOR.Add(s);
                 }

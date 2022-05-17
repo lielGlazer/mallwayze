@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-route-selection',
@@ -7,15 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RouteSelectionComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
   }
   route(){
-//לחבר לחישןב מסלול 
+//לחבר לחישוב מסלול 
   }
   categoriesPage(){
 //לחבר לדף הקטגוריות
+  }
+  routing(nav:string){
+    this.router.navigate(['route-selection'+nav])
   }
 
 }
