@@ -17,7 +17,6 @@ namespace BL.BL
             mallGraphRoutes= createMallRoutes(graphFilePath);
             createSelectedStoresGraph(stores);
             createShortestPathForSelectedStores();
-
         }
         //הדאטה ביס של כל המערכת 
         static DBConection db = new DBConection();
@@ -153,7 +152,7 @@ namespace BL.BL
             //מוסיפה לרשימה הזאת את כל הצמתים כי בנתיים אנו בהתחלה -לא ביקרנו בשום מקום 
             foreach (var n in selectedStoresGraphNodes.Values)
             {
-                //
+                //מה של
                 unvisited.Add(n);
             }
 
@@ -189,7 +188,8 @@ namespace BL.BL
                 if (travelDistance < nodes[r.To.Store.NameStor].Value)
                 {//אם כן -תעדכן 
                     nodes[r.To.Store.NameStor].Value = travelDistance;
-                    nodes[r.To.Store.NameStor].PreviousNode = r.From;\\הקודם
+                //הקודם 
+                    nodes[r.To.Store.NameStor].PreviousNode = r.From;
                 }
 
                 if (!queue.HasLetter(r.To))

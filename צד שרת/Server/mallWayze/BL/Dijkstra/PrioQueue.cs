@@ -5,7 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace BL.BL
-{// על פי ערך של הצומת (במשקל ) תור עדיפות
+{  
+    // על פי ערך של הצומת (במשקל ) תור עדיפות
     class PrioQueue : LinkedList<Node>//יורש מרישמה מרשימה מקושרת 
     {
         public void AddNodeWithPriority(Node node)//פונקציה שמקבלת צומת ומוסיפה אותה לתור על פי עדיפות 
