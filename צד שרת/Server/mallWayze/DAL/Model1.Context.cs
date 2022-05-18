@@ -13,10 +13,10 @@ namespace DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class wayzeShoopEntities1 : DbContext
+    public partial class wayzeShoopEntities : DbContext
     {
-        public wayzeShoopEntities1()
-            : base("name=wayzeShoopEntities1")
+        public wayzeShoopEntities()
+            : base("name=wayzeShoopEntities")
         {
         }
     
@@ -24,15 +24,7 @@ namespace DAL
         {
             throw new UnintentionalCodeFirstException();
         }
-
-        
-            public DbSet<T> GetDbSet<T>() where T : class
-            {
-                return this.Set<T>();
-            }
-
-        
-
+    
         public virtual DbSet<Category> Category { get; set; }
         public virtual DbSet<CategoryForStor> CategoryForStor { get; set; }
         public virtual DbSet<Locations> Locations { get; set; }
@@ -40,5 +32,10 @@ namespace DAL
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<FavoriteStoresForTheUser> FavoriteStoresForTheUser { get; set; }
+        public DbSet<T> GetDbSet<T>() where T : class
+        {
+            return this.Set<T>();
+        }
+
     }
 }

@@ -10,8 +10,7 @@
 <!-- <div>
  <app-one-store *ngFor="let s of allStores" thisStore="s"></app-one-store>
 </div> -->
-
-    <!-- <div class="row" style="position: relative; height: 8525.54px;">
+<!-- <div class="row" style="position: relative; height: 8525.54px;">
 	
 		   
         <div class="col-sm-12 line" data-cats="" id="l0" style="position: absolute; display: none;">P</div><div class="col-sm-4" data-cats="fun,kids,sport" data-aleph="PLAY PARK  פליי פארק" style="position: absolute; left: 0px; top: 0px;"><a href="https://www.renanim.co.il/store/play-park-%d7%a4%d7%9c%d7%99%d7%99-%d7%a4%d7%90%d7%a8%d7%a7/" title="PLAY PARK  פליי פארק"><span class="hover"><span class="store_name">PLAY PARK  פליי פארק</span><span class="more">כניסה לחנות</span><img src="https://www.renanim.co.il/wp-content/uploads/2022/04/logo-jumpclimb-small.png" alt="PLAY PARK  פליי פארק" class="attachment-full"></span><span class="image"><img src="https://www.renanim.co.il/wp-content/uploads/2022/04/logo-jumpclimb-small-1.png" alt="PLAY PARK  פליי פארק" class="attachment-full"></span></a></div>
@@ -365,5 +364,11 @@
 
 </div> -->
     
+<input type="button" value="Today's surgeries" (click)="shoeSurgeryFromCurrentDate()">
+<p *ngFor="let s of allStores">{{s}}</p>
+<input type="button" value="add surgery"  >
+<div>
+<app-one-store [thisStore]="myStore"></app-one-store>
+</div>
 </body>
 </html>

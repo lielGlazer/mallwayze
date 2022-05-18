@@ -9,6 +9,8 @@ using BL;
 using DTO;
 using System.Web.Http.Cors;
 using BL.BL;
+using Newtonsoft.Json;
+using System.Web;
 
 namespace API2.Controllers
 {
@@ -26,9 +28,17 @@ namespace API2.Controllers
         //הוספת משתמש חדש למערכת 
         [Route("api/Users/Register")]
         [HttpPost]
-        public DTOUsers Register([FromBody]DTOUsers o)
-        { 
-            return BL.ManagerUsers.RegisterUser(o);
+        //public DTOUsers Register([FromBody]DTOUsers o)
+        //{
+        //    return BL.ManagerUsers.RegisterUser(o);
+
+        //}
+
+        public DTOUsers Register()
+        {
+          DTOUsers user=  JsonConvert.DeserializeObject<DTOUsers>(HttpContext.Current.Request["user"]);
+            return BL.ManagerUsers.RegisterUser(user);
+         //   return BL.ManagerUsers.RegisterUser(o);
 
         }
         //התחברות של המשתמש

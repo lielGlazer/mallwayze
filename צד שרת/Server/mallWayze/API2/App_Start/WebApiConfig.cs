@@ -13,7 +13,7 @@ namespace API2
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-           // config.EnableCors();
+            config.EnableCors();
 
 
             config.Routes.MapHttpRoute(

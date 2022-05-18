@@ -303,7 +303,7 @@ warning 6002: The table/view 'wayzeShoop.dbo.FavoriteStoresForTheUser' does not 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="wayzeShoopEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="wayzeShoopEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Category" EntityType="Self.Category" />
           <EntitySet Name="CategoryForStor" EntityType="Self.CategoryForStor" />
           <EntitySet Name="Locations" EntityType="Self.Locations" />
@@ -337,7 +337,7 @@ warning 6002: The table/view 'wayzeShoop.dbo.FavoriteStoresForTheUser' does not 
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="wayzeShoopModelStoreContainer" CdmEntityContainer="wayzeShoopEntities1">
+        <EntityContainerMapping StorageEntityContainer="wayzeShoopModelStoreContainer" CdmEntityContainer="wayzeShoopEntities">
           <EntitySetMapping Name="Category">
             <EntityTypeMapping TypeName="wayzeShoopModel.Category">
               <MappingFragment StoreEntitySet="Category">

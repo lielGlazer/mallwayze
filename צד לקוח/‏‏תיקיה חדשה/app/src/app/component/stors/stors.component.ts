@@ -12,6 +12,7 @@ export class StorsComponent implements OnInit {
   constructor( private shopService:StoreService ) { 
 
   }
+myStore=new Store(1,1,'liel',false)
 
   ngOnInit(): void {
 

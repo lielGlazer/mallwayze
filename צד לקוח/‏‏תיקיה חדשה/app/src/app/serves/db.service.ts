@@ -19,6 +19,10 @@ export class DbService {
   }
   //התחברות
   signIn(user:User):Observable<User>{
-    return this.httpClient.post<User>("http://localhost:64724/api/Users/Login" , user );
+    const data=new FormData();
+    data.append('user',JSON.stringify(user));
+    console.log(data.get('user'));
+    
+    return this.httpClient.post<User>("http://localhost:64724/api/Users/Login" , data );
   }
 }
