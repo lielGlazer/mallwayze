@@ -1,0 +1,43 @@
+body{
+    background-color:silver;
+    margin: 100px;
+    text-align: -webkit-center;
+}
+.myBtn{
+    border: darksalmon 2px solid;
+    border-radius: 10px;
+    display: inline-block;
+    width: 50px;
+    font-size: 30px;
+    background-color: darksalmon;
+    color:white;
+    box-shadow: darksalmon;
+    text-align: center;
+    margin: 2px;
+    cursor: pointer;
+}
+.myBtn:hover{
+    font-size: 35px;
+    background-color:white;
+    color:darksalmon;
+}
+#screen{
+    background-color: darksalmon;
+    width: 230px;
+    height: 150px;
+    border: darksalmon 2px solid;
+    border-radius: 5px;
+    font-size: 30px;
+    color:white;
+    margin: 5px;
+}
+#allCalc{
+    box-shadow:white;
+    border-radius: 10px;
+    border: darksalmon px solid;
+    border-radius: 5px;
+    width: 245px;
+    padding: 10px;
+    background-color: white ;
+
+}

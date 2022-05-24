@@ -1,0 +1,30 @@
+.squre{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 2px solid black;
+    font-size: xx-large;
+    text-align: center;
+}
+
+.close{
+    background-color:rgb(124, 218, 171) ;
+}
+
+.open{
+    /* position: absolute; */
+    background-color: wheat;
+    text-align: center; 
+     font-size: 30px; 
+    color:tomato;
+
+}
+
+#allBtns{
+    text-align: center;
+    position: relative;
+    
+}
+.bomb{
+    background-color:tomato;
+}
