@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body style="margin-top:0px ;">
 <!-- <div>
  <app-one-store *ngFor="let s of allStores" thisStore="s"></app-one-store>
 </div> -->
@@ -364,9 +364,8 @@
 
 </div> -->
     
-<input type="button" value="Today's surgeries" (click)="shoeSurgeryFromCurrentDate()">
 <p *ngFor="let s of allStores">{{s}}</p>
-<input type="button" value="add surgery"  >
+<!-- <input type="button" value="add surgery"  > -->
 <div>
 <app-one-store [thisStore]="myStore"></app-one-store>
 </div>

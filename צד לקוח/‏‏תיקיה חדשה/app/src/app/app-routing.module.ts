@@ -4,6 +4,7 @@ import { CateroryComponent } from './component/caterory/caterory.component';
 import { EnterComponent } from './component/enter/enter.component';
 import { ErrorComponent } from './component/error/error.component';
 import { HomeComponent } from './component/home/home.component';
+import { OneStoreComponent } from './component/one-store/one-store.component';
 import { RouteCategoryComponent } from './component/route-category/route-category.component';
 import { RouteSelectionComponent } from './component/route-selection/route-selection.component';
 import { RouteSmartComponent } from './component/route-smart/route-smart.component';
@@ -33,7 +34,7 @@ const routes: Routes = [
     ]
   },
   //כל החניות //
-  { path: 'all-stor', component: StorsComponent },
+  { path: 'all-stor', component: OneStoreComponent },
   // //כניסה.//
   // {
   //   path: 'enter', component: EnterComponent, children: [
