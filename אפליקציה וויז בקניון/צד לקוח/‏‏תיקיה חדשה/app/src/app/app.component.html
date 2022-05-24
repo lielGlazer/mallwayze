@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body style="margin-top: 0%;">
+  <header style="margin-bottom: 0;">
+    <nav style="background-color:rgb(38, 35, 35)!important; color:red"
+      class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a style="color:white" class="navbar-brand" routerLink="['/enter']">lg.waze</a>
+        <button style="background-color: white;border-color: white;" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+          data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a style="color:white" class="nav-link" [routerLink]="['/all-stor']">Stor</a>
+            <a style="color:white" class="nav-link" [routerLink]="['/search']">Search</a>
+            <a style="color:white" class="nav-link" [routerLink]="['/route-selection']">Route-selection</a>
+            <a style="color:white" class="nav-link" [routerLink]="['/']">Home</a>
+            <a style="color:white" class="nav-link" [routerLink]="['/sign-in']">Sign In</a>
+            <a style="color:white" class="nav-link" [routerLink]="['/sign-up']">Sign Up</a>
+            
+            <form class="d-flex">
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            </form>
+            <!-- <img [src]=image id="logo"> -->
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <!-- <footer  id="foot">כל הזכיות לליאל</footer> -->
+</body>
+</html>
+<router-outlet></router-outlet>
+         
+ 
+  <!-- <div class="input-group">
+    <div class="input-group-text" id="btnGroupAddon2">@</div>
+    <input type="text" class="form-control" placeholder="Input group example" aria-label="Input group example"
+      aria-describedby="btnGroupAddon2">
+  </div>  -->
+  <!-- <div href="#" (click)="openSign()" style="color: aliceblue;">enterrr</div> -->
+  <!-- <div *ngIf="enter" style="border: 1rem black; width: 10rem; height: 10rem; background-color: white;">
+            <a class="nav-link active" [routerLink]="['sign-in']">Sign In</a>
+            <a class="nav-link active" [routerLink]="['sign-up']">Sign Up</a>
+  </div> -->
+
+    
+        
+        <!-- <div class="collapse navbar-collapse" id="navbarCollapse"> -->
+          <!-- <ul class="navbar-nav me-auto mb-2 mb-md-0">
+            <li class="nav-item">
+              <a class="nav-link active" [routerLink]="['/all-stor']" routerLinkActive="router-link-active"
+                aria-current="page">All Stor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" [routerLink]="['/search']">Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" [routerLink]="['/route-selection']">Route calculation
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" [routerLink]="['/']">Home
+              </a>
+            </li>
+          </ul> -->
+
+
+
+         
+        
+          
+       
+   
