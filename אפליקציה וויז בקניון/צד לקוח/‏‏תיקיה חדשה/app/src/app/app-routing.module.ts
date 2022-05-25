@@ -6,8 +6,8 @@ import { ErrorComponent } from './component/error/error.component';
 import { HomeComponent } from './component/home/home.component';
 import { OneStoreComponent } from './component/one-store/one-store.component';
 import { RouteCategoryComponent } from './component/route-category/route-category.component';
+import { RouteOneStorComponent } from './component/route-one-stor/route-one-stor.component';
 import { RouteSelectionComponent } from './component/route-selection/route-selection.component';
-import { RouteSmartComponent } from './component/route-smart/route-smart.component';
 import { RouteStorComponent } from './component/route-stor/route-stor.component';
 import { SearchCategorysComponent } from './component/search-categorys/search-categorys.component';
 import { SearchStorsComponent } from './component/search-stors/search-stors.component';
@@ -43,21 +43,24 @@ const routes: Routes = [
   //להתחבר//
   {
     path: 'sign-in', component: SignInComponent, children: [
-      { path: 'roate-smart', component: RouteSmartComponent }
+      { path: 'route-stor', component: RouteStorComponent },
+      { path: 'route-category', component: RouteCategoryComponent },
+
     ]
   },
-  
-    
-  
+
+
+
   //חישוב מסלול//
   {
-    path: 'route-selection', component: RouteSelectionComponent, children: [
-      //מסלול לחנות//
+    path: 'route-selection', children: [
+      {path:'', pathMatch:'full' , component: RouteSelectionComponent},
+      // מסלול לחנויות//
       { path: 'route-stor', component: RouteStorComponent },
       //מסלול לקטגוריות//
       { path: 'route-category', component: RouteCategoryComponent },
-      //מסלול חכם//
-      { path: 'roate-smart', component: RouteSmartComponent }
+      //מסלול לחנות בודדת//
+      { path: 'route-one-stor', component: RouteOneStorComponent }
     ]
   },
 

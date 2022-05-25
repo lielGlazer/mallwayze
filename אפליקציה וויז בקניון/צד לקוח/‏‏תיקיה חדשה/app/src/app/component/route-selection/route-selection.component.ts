@@ -19,7 +19,8 @@ export class RouteSelectionComponent implements OnInit {
 //לחבר לדף הקטגוריות
   }
   routing(nav:string){
-    this.router.navigate(['route-selection'+nav])
+    let fullpath='route-selection/'+nav
+    this.router.navigate([fullpath])
   }
 
 }

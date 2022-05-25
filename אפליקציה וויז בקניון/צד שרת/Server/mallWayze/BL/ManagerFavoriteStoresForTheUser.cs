@@ -19,10 +19,14 @@ namespace BL
             return dtoList;
         }
         //רשימת כל החניות המועדפות תחילה על ידי המשתמש
-        public static List<DTOStor> GetAllStorForUser(DTOUsers user)
+        public static List<DTOStor> GetAllStorForUser(string nameUser,string password)
 
         {
-            List<DTOFavoriteStoresForTheUser> h= GetFavoriteStoresForTheUser().Where(s => s.UserCode == user.UserCode).ToList();
+            List<Users> list = db.GetDbSet<Users>();
+            Users S = list.FirstOrDefault(d => d.Password.Equals(password)&&d.UserName.Equals(nameUser));
+            DTOUsers Scode = new DTOUsers(S);
+            long code = Scode.UserCode;
+            List<DTOFavoriteStoresForTheUser> h = GetFavoriteStoresForTheUser().Where(s => s.CodeStor == code).ToList();
             List<DTOStor> stores = new List<DTOStor>();
             foreach (var s in h)
             {
@@ -31,6 +35,7 @@ namespace BL
             return stores;
 
         }
+      
 
 
     }

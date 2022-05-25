@@ -41,16 +41,16 @@ namespace BL
         //פןנקציה שמקבלת שם  חנות ומביאה את כל בקטגוריות שלה 
         public static List<DTOCategory> GetAllCtegoryForStor(string nameStor)
         {
-            DTOStor Scode = db.GetDbSet<DTOStor>().FirstOrDefault(d => d.NameStor.Equals(nameStor));
+            List<Stor> list = db.GetDbSet<Stor>();
+            Stor S= list.FirstOrDefault(d => d.NameStor.Equals(nameStor));
+            DTOStor Scode = new DTOStor(S);
             long code = Scode.CodeStor;
             //רשימת הקודים של הקטגוריות לחנות שהתקבלה   
             List<DTOCategoryForStor> h = GetCategoryForStor().Where(s => s.CodeStor == code).ToList();//רשימת כל הקודים של הקטגורייות
             List<DTOCategory> categor = new List<DTOCategory>();//רשימה ריקה של קטגוריות
             foreach (var s in h)
             {
-              List <Category> all = db.GetDbSet<Category>().ToList();
-              List<DTOCategory> dtoList = DTOCategory.DTOlist(all);//רשימה של כל הקטגוריות בקניון 
-              categor.Add(dtoList.Find(store => store.CategoryCode == s.categoryCode));
+              categor.Add(new DTOCategory(db.GetDbSet<Category>().Find(store => store.CategoryCode == s.categoryCode)));
             }
             return categor;
         }

@@ -12,7 +12,7 @@ namespace DTO
     {
         public long CodeStor { get; set; }
         public long categoryCode { get; set; }
-        public string categoryName { get; set; }
+        public long CategoryCodeForStore { get; set; }
         public DTOCategoryForStor()
         {
 

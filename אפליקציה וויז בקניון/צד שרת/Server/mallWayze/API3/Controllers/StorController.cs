@@ -16,6 +16,7 @@ namespace API3.Controllers
         //מחזיר חנות על פי קוד
         [Route("api/Stor/GetCategoryByID/{id}")]
         [HttpGet]
+        //עובד
         public DTOStor GetStorByID(long id)
         {
             DTOStor dc = BL.ManagerStor.GetStor().FirstOrDefault(a => a.CodeStor == id);
@@ -23,7 +24,8 @@ namespace API3.Controllers
         }
         //פונקציה שמחזירה רשימה של כל החניות בקניון
         [Route("api/Stor/GetAllStor")]
-        
+        [HttpGet]
+        //עובד
         public List<DTOStor> GetAllStor()
         {
             return BL.ManagerStor.GetStor();
@@ -31,6 +33,7 @@ namespace API3.Controllers
         //מחזירה רשימה של כל החניות בקנייון שיש להם מבצעים 
         [Route("api/Stor/GetSaleStor")]
         [HttpGet]
+        //עובד
         public List<DTOStor> GetSaleStor()
         {
    //         Dijkstra dijkstra = MapSelectedStores( BL.ManagerStor.GetStorSale());

@@ -16,6 +16,7 @@ namespace API3.Controllers
     {   //פונקציה ששולפת את כל הקטגוריות בקניון 
         [Route("api/Category/GetCaterory")]
         [HttpGet]
+        //עובד
         public List<DTOCategory> GetCaterory()
         {
             List<DTOCategory> u = BL.ManagerCaterory.GetCategories();
@@ -24,6 +25,7 @@ namespace API3.Controllers
         //  מחזיר את הקטגוריה לפי המספר ID 
         [Route("api/Category/GetCategoryByID/{id}")]
         [HttpGet]
+        //עובד
         public DTOCategory GetCategoryByID(long id)
         {
             DTOCategory dc = BL.ManagerCaterory.GetCategories().FirstOrDefault(a=>a.CategoryCode==id);

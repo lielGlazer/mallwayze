@@ -19,11 +19,17 @@ export class StorsComponent implements OnInit {
 
    
   }
+  
 
   shoeAllStore(){
     this.db.getAllSore().subscribe(res =>{
       this.allStores=res;
     })
   }
-  
+  //פונקציה שמקבלת שם קטגוריה ומחזירה רשימה של חנויות 
+  gelAllStorsOfCategory(nameCategory=""){
+    this.db.gelAllStorOfCategory(nameCategory).subscribe(res =>{
+      this.allStores=res;
+    })
+  }
 }

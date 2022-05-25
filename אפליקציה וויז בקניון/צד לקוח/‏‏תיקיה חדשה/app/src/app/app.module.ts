@@ -16,12 +16,11 @@ import { SearchStorsComponent } from './component/search-stors/search-stors.comp
 import { SearchCategorysComponent } from './component/search-categorys/search-categorys.component';
 import { StorsComponent } from './component/stors/stors.component';
 import { RouteStorComponent } from './component/route-stor/route-stor.component';
-import { RouteCategoryComponent } from './component/route-category/route-category.component';
-import { RouteSmartComponent } from './component/route-smart/route-smart.component';
 import { StorDataComponent } from './component/stor-data/stor-data.component';
 import { ErrorComponent } from './component/error/error.component';
 import { OneStoreComponent } from './component/one-store/one-store.component';
-// import { OneStoreComponent } from './component/one-store/one-store.component';
+import { RouteOneStorComponent } from './component/route-one-stor/route-one-stor.component';
+ import { RouteCategoryComponent } from './component/route-category/route-category.component';
 
 
 
@@ -44,10 +43,10 @@ import { OneStoreComponent } from './component/one-store/one-store.component';
     StorsComponent,
     RouteStorComponent,
     RouteCategoryComponent,
-    RouteSmartComponent,
     StorDataComponent,
     ErrorComponent,
-   OneStoreComponent
+   OneStoreComponent,
+   RouteOneStorComponent
   
   ],
   imports: [

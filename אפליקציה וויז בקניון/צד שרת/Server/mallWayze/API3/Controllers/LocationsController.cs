@@ -13,8 +13,7 @@ namespace API3.Controllers
 {
     //[Route("api/location")]
     public class LocationsController : ApiController
-    {
-
+    {   //צריך לעבוד על זה כי זה לא ממש עובד
         //יהנו מסלול הפונקציה מקבלת שמות של חנויות(רשימת שמות)ומחזירה רשימת מיקומים בהתאם
         [Route("api/Locations/CreateSelectedStoresMap")]
         [HttpPost]
@@ -25,6 +24,7 @@ namespace API3.Controllers
         //מחזיר מיקום על פי שם של חנות 
         [Route("api/Locations/GetLocationForStore/{name}")]
         [HttpGet]
+        //עובד
         public DTOLocations GetLocationForStore(string name)
         {
             return BL.ManagerLocations.LocationForStor(name);
