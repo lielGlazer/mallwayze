@@ -27,9 +27,9 @@ export class StorsComponent implements OnInit {
     })
   }
   //פונקציה שמקבלת שם קטגוריה ומחזירה רשימה של חנויות 
-  gelAllStorsOfCategory(nameCategory=""){
-    this.db.gelAllStorOfCategory(nameCategory).subscribe(res =>{
-      this.allStores=res;
-    })
-  }
+  // gelAllStorsOfCategory(nameCategory=""){
+  //   this.db.gelAllStorOfCategory(nameCategory).subscribe(res =>{
+  //     this.allStores=res;
+  //   })
+  // }
 }
