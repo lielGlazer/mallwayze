@@ -36,6 +36,7 @@ namespace BL.BL
             //יצית הגרף החדש  - אתחול רשימה חדשה של קשתות וצמתים
             createSelectedStoresGraph(stores);
             //4 - חישוב מסלול בגרף החדש  - דיאקסטרה שני-עובד
+            DTOStor s = new DTOStor();
             Node end = createShortestPathForSelectedStores();
             //5 - מציאת הצמתים במסלול ע''י חזרה אחורה - נתקע בגלל הPREV
             List<Node> finalNodes = FindNodesOfShortestPath(end);
@@ -129,6 +130,9 @@ namespace BL.BL
         // המציאת המשלול הקצר והחזרת הצומת האחרונה במסלול - לצורך שחזור המסלול
         public static Node createShortestPathForSelectedStores()
         {
+            //יוצרים מידע שכאילו כבר קיים
+           
+
             Node lastNode = null;
             //נגדיר את הכניסה כנקודת המוצא
             Node start = selectedStoresGraphNodes["כניסה "];

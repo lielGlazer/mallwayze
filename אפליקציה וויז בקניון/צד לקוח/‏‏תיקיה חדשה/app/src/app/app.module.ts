@@ -9,7 +9,6 @@ import { CateroryComponent } from './component/caterory/caterory.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EnterComponent } from './component/enter/enter.component';
 import { RouteSelectionComponent } from './component/route-selection/route-selection.component';
 import { SearchComponent } from './component/search/search.component';
 import { SearchStorsComponent } from './component/search-stors/search-stors.component';
@@ -21,6 +20,8 @@ import { ErrorComponent } from './component/error/error.component';
 import { RouteOneStorComponent } from './component/route-one-stor/route-one-stor.component';
  import { RouteCategoryComponent } from './component/route-category/route-category.component';
 import { CategorysComponent } from './component/categorys/categorys.component';
+import { PathComponent } from './component/path/path.component';
+import { CanvasComponent } from './component/canvas/canvas.component';
 
 
 
@@ -35,7 +36,6 @@ import { CategorysComponent } from './component/categorys/categorys.component';
     HomeComponent,
     CateroryComponent,
     SignUpComponent,
-    EnterComponent,
     RouteSelectionComponent,
     SearchComponent,
     SearchStorsComponent,
@@ -46,7 +46,9 @@ import { CategorysComponent } from './component/categorys/categorys.component';
     StorDataComponent,
     ErrorComponent,
    RouteOneStorComponent,
-   CategorysComponent
+   CategorysComponent,
+   PathComponent,
+   CanvasComponent
   
   ],
   imports: [

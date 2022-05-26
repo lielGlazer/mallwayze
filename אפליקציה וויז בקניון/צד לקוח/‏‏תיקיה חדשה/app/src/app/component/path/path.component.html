@@ -1,0 +1,13 @@
+<!-- <div id="main"></div> -->
+<div class="row">
+    <div class="col-6">
+        <img #img src="assets/map.png" />
+        <canvas #canvas width="433" height="897" style="position:absolute; top:0; left:0;"></canvas>
+    </div>
+    <div class="col-6 ">
+        <h2>פירוט מסלול</h2>
+        <ul>
+            <li *ngFor="let s of shortestPath">{{s.name}}</li>
+        </ul>
+    </div>
+</div>

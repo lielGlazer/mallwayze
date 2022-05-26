@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CateroryComponent } from './component/caterory/caterory.component';
-import { EnterComponent } from './component/enter/enter.component';
 import { ErrorComponent } from './component/error/error.component';
 import { HomeComponent } from './component/home/home.component';
 import { RouteCategoryComponent } from './component/route-category/route-category.component';

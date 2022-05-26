@@ -30,5 +30,12 @@ export class DbService {
     
     return this.httpClient.post<User>("http://localhost:64724/api/Users/Login" , user );
   }
+  GetSORTETPAT(stores:Store[]):Observable<any[]>{
+    // const data=new FormData();
+    // data.append('user',JSON.stringify(user));
+    // console.log(data.get('user'));
+    
+    return this.httpClient.post<any[]>("http://localhost:64724/api/Users/Login" ,  stores);
+  }
   
 }
