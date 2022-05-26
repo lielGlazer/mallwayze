@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from 'src/app/models/Store';
-import { DbService } from 'src/app/serves/db.service';
+import { CatgoryStorService } from 'src/app/serves/catgory-stor.service';
 import { StoreService } from 'src/app/serves/store.service';
 
 @Component({
@@ -10,7 +10,7 @@ import { StoreService } from 'src/app/serves/store.service';
 })
 export class StorsComponent implements OnInit {
  allStores= new Array<Store>();
-  constructor(private db:DbService ) { 
+  constructor(private db:CatgoryStorService ) { 
 
   }
 
@@ -21,15 +21,5 @@ export class StorsComponent implements OnInit {
   }
   
 
-  shoeAllStore(){
-    this.db.getAllSore().subscribe(res =>{
-      this.allStores=res;
-    })
-  }
-  //פונקציה שמקבלת שם קטגוריה ומחזירה רשימה של חנויות 
-  gelAllStorsOfCategory(nameCategory=""){
-    this.db.gelAllStorOfCategory(nameCategory).subscribe(res =>{
-      this.allStores=res;
-    })
-  }
+  
 }

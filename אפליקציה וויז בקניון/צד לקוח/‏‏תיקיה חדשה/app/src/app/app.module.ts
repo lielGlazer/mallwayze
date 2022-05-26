@@ -21,6 +21,7 @@ import { ErrorComponent } from './component/error/error.component';
 import { OneStoreComponent } from './component/one-store/one-store.component';
 import { RouteOneStorComponent } from './component/route-one-stor/route-one-stor.component';
  import { RouteCategoryComponent } from './component/route-category/route-category.component';
+import { CategorysComponent } from './component/categorys/categorys.component';
 
 
 
@@ -46,7 +47,8 @@ import { RouteOneStorComponent } from './component/route-one-stor/route-one-stor
     StorDataComponent,
     ErrorComponent,
    OneStoreComponent,
-   RouteOneStorComponent
+   RouteOneStorComponent,
+   CategorysComponent
   
   ],
   imports: [

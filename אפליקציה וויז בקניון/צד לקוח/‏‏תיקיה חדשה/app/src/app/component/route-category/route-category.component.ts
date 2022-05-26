@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/Category';
-import { CategoryService } from 'src/app/serves/category.service';
+import { CatgoryStorService } from 'src/app/serves/catgory-stor.service';
 
 @Component({
   selector: 'app-route-category',
@@ -9,7 +9,7 @@ import { CategoryService } from 'src/app/serves/category.service';
 })
 export class RouteCategoryComponent implements OnInit {
   allStores= new Array<Category>();
-   constructor(private db:CategoryService ) { 
+   constructor(private db:CatgoryStorService ) { 
  
    }
   ngOnInit(): void {

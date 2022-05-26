@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from 'src/app/models/Store';
-import { DbService } from 'src/app/serves/db.service';
+import { CatgoryStorService } from 'src/app/serves/catgory-stor.service';
 import { StoreService } from 'src/app/serves/store.service';
 
 
@@ -18,7 +18,7 @@ export class OneStoreComponent implements OnInit {
   hm="assets/store/H&M.png"
   mango="assets/store/MANGO.png"
 
-  constructor(private dbService: StoreService) { }
+  constructor(private dbService: CatgoryStorService) { }
   @Input() thisStore: Store=new Store(-1,-1,'',false)
   ngOnInit(): void {
     getSelection()
