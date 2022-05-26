@@ -14,7 +14,7 @@ namespace BL.BL
         //הדאטה ביס של כל המערכת 
         static DBConection db = new DBConection();
         //הניתוב של הגרף
-        static string graphFilePath = @"C:\Users\student\Desktop\liel\צד שרת\routes.txt";// @"..\..\BL\Dijkstra\routes.txt";
+        static string graphFilePath = @"C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";// @"..\..\BL\Dijkstra\routes.txt";
         //אתחול רשימת הקשתות של הקומהה הראשונה בקניון 
         static List<Route> mallGraphRoutes = null;
         //אתחול המילון שמורכב משם צומת וצומת
@@ -28,16 +28,16 @@ namespace BL.BL
         {
             List<DTOStor> GETlist = new List<DTOStor>();
 
-            //1 - יצירת גרף של כל הקניון - קריאת הקשתות מקובץ  
+            //1 - יצירת גרף של כל הקניון - קריאת הקשתות מקובץ  -עובד
             mallGraphRoutes = createMallRoutes(graphFilePath);
-            //2 - יצירת הצמתים שנמצאים בכל הקניון
+            //2 - יצירת הצמתים שנמצאים בכל הקניון-עובד
             mallGraphNodes = createMallNodes();
-            //3 - יצירת גרף חדש של הקשתות בין החנויות הנבחרות  -  הפעלת הדיאקסטרה לכל חנות ברשימה ( שאר החנויות כיעד)
+            //3 - יצירת גרף חדש של הקשתות בין החנויות הנבחרות  -  הפעלת הדיאקסטרה לכל חנות ברשימה ( שאר החנויות כיעד)עובד
             //יצית הגרף החדש  - אתחול רשימה חדשה של קשתות וצמתים
             createSelectedStoresGraph(stores);
-            //4 - חישוב מסלול בגרף החדש  - דיאקסטרה שני
+            //4 - חישוב מסלול בגרף החדש  - דיאקסטרה שני-עובד
             Node end = createShortestPathForSelectedStores();
-            //5 - מציאת הצמתים במסלול ע''י חזרה אחורה
+            //5 - מציאת הצמתים במסלול ע''י חזרה אחורה - נתקע בגלל הPREV
             List<Node> finalNodes = FindNodesOfShortestPath(end);
             //החזרת הרשימה ללקוח על ידי המרה מNODEלDTOStor 
             foreach (var g in finalNodes)
@@ -57,8 +57,8 @@ namespace BL.BL
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(',');
-                    Stor s1 = db.GetDbSet<Stor>().FirstOrDefault(s => s.Locations.LocationCode == long.Parse(values[2]));
-                    Stor s2 = db.GetDbSet<Stor>().FirstOrDefault(s => s.Locations.LocationCode == long.Parse(values[1]));
+                    Stor s1 = db.GetDbSet<Stor>().ToList().FirstOrDefault(s => s.Locations.LocationCode == long.Parse(values[2]));
+                    Stor s2 = db.GetDbSet<Stor>().ToList().FirstOrDefault(s => s.Locations.LocationCode == long.Parse(values[1]));
 
                     routes.Add(new Route(new Node(new DTOStor(s1)), new Node(new DTOStor(s2)), double.Parse(values[0])));
                 }
@@ -80,7 +80,7 @@ namespace BL.BL
         //יצירת הגרף החדש =המסלול 
         public static void createSelectedStoresGraph(List<DTOStor> stores)//יצירת הגרף החדש
         {
-            Stor entrance = db.GetDbSet<Stor>().FirstOrDefault(s => s.NameStor.Equals("כניסה"));
+            Stor entrance = db.GetDbSet<Stor>().FirstOrDefault(s => s.NameStor.Equals("כניסה "));
             stores.Add(new DTOStor(entrance));
             //לכל חנות ברשימה הנבחרת
             for (int i = 0; i < stores.Count(); i++)
@@ -131,7 +131,7 @@ namespace BL.BL
         {
             Node lastNode = null;
             //נגדיר את הכניסה כנקודת המוצא
-            Node start = selectedStoresGraphNodes["כניסה"];
+            Node start = selectedStoresGraphNodes["כניסה "];
             //אין יעד - הדחאקסטרה צריך ליצור מסלול בין כל הצמתים
             Node end = null;
             //חישוב המרחק הקצר ע''י דייקסטרה

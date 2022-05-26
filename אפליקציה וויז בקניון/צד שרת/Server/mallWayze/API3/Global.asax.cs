@@ -1,4 +1,7 @@
-﻿using System;
+﻿using API3.Controllers;
+using BL.BL;
+using DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -18,6 +21,8 @@ namespace API3
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+          //  StorController stor = new StorController();
+          //  List<DTOStor> dTs= Dijkstra.MapSelectedStores(stor.GetSaleStor());
         }
     }
 }

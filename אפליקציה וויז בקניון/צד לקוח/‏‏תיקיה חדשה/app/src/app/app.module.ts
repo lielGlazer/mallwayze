@@ -18,7 +18,6 @@ import { StorsComponent } from './component/stors/stors.component';
 import { RouteStorComponent } from './component/route-stor/route-stor.component';
 import { StorDataComponent } from './component/stor-data/stor-data.component';
 import { ErrorComponent } from './component/error/error.component';
-import { OneStoreComponent } from './component/one-store/one-store.component';
 import { RouteOneStorComponent } from './component/route-one-stor/route-one-stor.component';
  import { RouteCategoryComponent } from './component/route-category/route-category.component';
 import { CategorysComponent } from './component/categorys/categorys.component';
@@ -46,7 +45,6 @@ import { CategorysComponent } from './component/categorys/categorys.component';
     RouteCategoryComponent,
     StorDataComponent,
     ErrorComponent,
-   OneStoreComponent,
    RouteOneStorComponent,
    CategorysComponent
   

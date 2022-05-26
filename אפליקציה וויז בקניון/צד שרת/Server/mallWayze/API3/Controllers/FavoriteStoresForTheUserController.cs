@@ -21,7 +21,7 @@ namespace API3.Controllers
             return  BL.ManagerFavoriteStoresForTheUser.GetFavoriteStoresForTheUser();  
         }
         //מחזיר רשימת חניות מודפות למשמתש
-        [Route("api/Users/GetAllStorFavoraite")]
+        [Route("api/FavoriteStoresForTheUser/GetAllStorFavoraite")]
         [HttpPost] 
         //לא יודעת מה בדיוק מחזירים וזה לא עובד 
         public List<DTOStor> GetAllStorFavoraite([FromBody]UserInformation o)

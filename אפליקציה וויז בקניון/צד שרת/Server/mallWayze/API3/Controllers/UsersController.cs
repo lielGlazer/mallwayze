@@ -50,15 +50,5 @@ namespace API3.Controllers
          
             return BL.ManagerUsers.LoginUser(o.UserName, o.Password);
         }
-
-        // PUT: api/Users/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Users/5
-        public void Delete(int id)
-        {
-        }
     }
 }

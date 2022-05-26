@@ -34,6 +34,7 @@ namespace DAL
         public virtual DbSet<FavoriteStoresForTheUser> FavoriteStoresForTheUser { get; set; }
         public DbSet<T> GetDbSet<T>() where T : class
         {
+          
             return this.Set<T>();
         }
 

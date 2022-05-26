@@ -1,10 +1,10 @@
 export class Category{
     CodeCategory: number;
-    NameStor: string=''
+    NameCategory: string=''
     
     constructor(c: number, n: string) {
         this.CodeCategory = c;
-        this.NameStor = n;
+        this.NameCategory = n;
        
     }
 }

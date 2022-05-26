@@ -8,7 +8,7 @@ import { CatgoryStorService } from 'src/app/serves/catgory-stor.service';
   styleUrls: ['./route-category.component.css']
 })
 export class RouteCategoryComponent implements OnInit {
-  allStores= new Array<Category>();
+  allCategory= new Array<Category>();
    constructor(private db:CatgoryStorService ) { 
  
    }
@@ -17,7 +17,7 @@ export class RouteCategoryComponent implements OnInit {
   }
   dostart(){
     this.db.getAllCaregory().subscribe(res =>{
-      this.allStores=res;
+      this.allCategory=res;
     })
 
 }

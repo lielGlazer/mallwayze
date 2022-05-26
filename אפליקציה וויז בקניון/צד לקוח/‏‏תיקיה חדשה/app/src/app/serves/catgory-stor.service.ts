@@ -13,7 +13,8 @@ export class CatgoryStorService {
   constructor(private httpClient:HttpClient) { }
 
   //מחזיר רשימה של כל החניות 
-  getAllSore(){
+  getAllSore(): Observable<Store[]>
+  {
     return this.httpClient.get<Store[]>("http://localhost:53154/api/Stor/GetAllStor");
   }
    //מחזיר רשימה של  כל הקטגוריות 
