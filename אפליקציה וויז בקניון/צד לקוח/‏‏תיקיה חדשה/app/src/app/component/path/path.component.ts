@@ -37,12 +37,12 @@ export class PathComponent implements OnInit {
     this.shortestPath = [
       {
         name: "כניסה",
-        xAxis: 300,
+        xAxis: 290,
         yAxis: 50
       },
       {
         name: "אופטיקנה",
-        xAxis: 230,
+        xAxis: 270,
         yAxis: 110
       },
        {
