@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-route-one-stor',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RouteOneStorComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+  routing(nav:string){
+    let fullpath='app-route-one-stor/'+nav
+    this.router.navigate([fullpath])
   }
 
 }

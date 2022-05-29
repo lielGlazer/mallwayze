@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import * as echarts from 'echarts';
 
 
@@ -18,7 +19,7 @@ export class PathComponent implements OnInit {
   // option:any;
   shortestPath: any;
 
-  constructor() {
+  constructor(private router:Router) {
     // this.option = {
     //   xAxis: {
     //     type: 'category',
@@ -68,6 +69,10 @@ export class PathComponent implements OnInit {
     // this.option && this.myChart.setOption(this.option);
     // this.drawStores();
     this.drawPath();
+  }
+  routing(nav:string){
+    let fullpath='route-selection/'+nav
+    this.router.navigate([fullpath])
   }
 
   drawStores(): void {

@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CateroryComponent } from './component/caterory/caterory.component';
 import { ErrorComponent } from './component/error/error.component';
 import { HomeComponent } from './component/home/home.component';
+import { PathComponent } from './component/path/path.component';
 import { RouteCategoryComponent } from './component/route-category/route-category.component';
 import { RouteOneStorComponent } from './component/route-one-stor/route-one-stor.component';
 import { RouteSelectionComponent } from './component/route-selection/route-selection.component';
@@ -54,11 +55,11 @@ const routes: Routes = [
     path: 'route-selection', children: [
       {path:'', pathMatch:'full' , component: RouteSelectionComponent},
       // מסלול לחנויות//
-      { path: 'route-stor', component: RouteStorComponent },
+      { path: 'route-stor', component: RouteStorComponent, children:[{path:'app-path',component:PathComponent}]},
       //מסלול לקטגוריות//
-      { path: 'route-category', component: RouteCategoryComponent },
+      { path: 'route-category', component: RouteCategoryComponent,children:[{path:'app-path',component:PathComponent}]},
       //מסלול לחנות בודדת//
-      { path: 'route-one-stor', component: RouteOneStorComponent }
+      { path: 'route-one-stor', component: RouteOneStorComponent ,children:[{path:'app-path',component:PathComponent}]},
     ]
   },
 
