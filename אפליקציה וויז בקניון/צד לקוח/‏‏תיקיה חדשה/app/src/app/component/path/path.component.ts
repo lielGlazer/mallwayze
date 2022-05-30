@@ -38,23 +38,19 @@ export class PathComponent implements OnInit {
     this.shortestPath = [
       {
         name: "כניסה",
-        xAxis: 290,
-        yAxis: 50
+        xAxis: 23,
+        yAxis: 2.5
       },
       {
-        name: "אופטיקנה",
-        xAxis: 270,
-        yAxis: 110
+        name: "מפעל הפייס",
+        xAxis: 23,
+        yAxis:4
       },
-       {
-        name: "מרקו",
-        xAxis: 230,
-        yAxis:150
-      },
+      
       {
-        name: "סגל",
-        xAxis: 200,
-        yAxis: 200
+        name: "זוהר פרחים ",
+        xAxis: 25,
+        yAxis:4.
       }
      
     ]
@@ -84,10 +80,10 @@ export class PathComponent implements OnInit {
   drawPath(): void {
 
     this.ctx.beginPath();
-    this.ctx.moveTo(this.shortestPath[0].xAxis, this.shortestPath[0].yAxis);
+    this.ctx.moveTo(this.shortestPath[0].xAxis*12, this.shortestPath[0].yAxis*19);
     for (let point of this.shortestPath) {
 
-      this.ctx.lineTo(point.xAxis, point.yAxis)
+      this.ctx.lineTo(point.xAxis*12, point.yAxis*19)
     }
    
     this.ctx.stroke();
