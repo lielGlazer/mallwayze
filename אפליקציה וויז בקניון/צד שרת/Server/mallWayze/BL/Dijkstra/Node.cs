@@ -23,5 +23,11 @@ namespace BL.BL
             this.Value = value;
             this.PreviousNode = previousNode;
         }
+
+        public override bool Equals(object obj)
+        {
+            Node n = (Node)obj;
+            return Store.CodeStor ==n.Store.CodeStor;
+        }
     }
 }

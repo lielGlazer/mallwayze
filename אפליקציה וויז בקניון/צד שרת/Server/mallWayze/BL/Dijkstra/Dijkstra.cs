@@ -181,6 +181,7 @@ namespace BL.BL
         //מחזירה את המרחק הקצר ביותר
         private static void CheckNode(List<Route> routes, Dictionary<string, Node> nodes, PrioQueue queue, List<Node> unvisited, Node destinationNode, ref Node lastNode)
         {
+            ///פה אני צריכה לעשות נקודת עצירה 
             //תנאי עצירה בחיפוש מסלול קצר בין כל הנקודות בגרף
             if (queue.Count == 0)
             {
@@ -193,7 +194,7 @@ namespace BL.BL
                 return;
             }
             //רשימת קשתות של צומת 
-            List<Route> neighborRoutes = routes.Where(s => s.From == queue.First.Value).ToList();
+            List<Route> neighborRoutes = routes.Where(s => s.From.Equals( queue.First.Value)).ToList();
             foreach (var r in neighborRoutes)
             {
                 //אם קוד היעד לא נמצא ברשימה שצריך לבקר בה סימן שביקרו בו - נדלג עליו

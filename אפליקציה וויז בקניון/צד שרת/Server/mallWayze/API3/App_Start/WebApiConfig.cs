@@ -22,7 +22,7 @@ namespace API3
             );
 
             config.Formatters.JsonFormatter.SupportedMediaTypes
-    .Add(new MediaTypeHeaderValue("text/html"));
+           .Add(new MediaTypeHeaderValue("text/html"));
 
 
         }

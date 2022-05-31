@@ -21,8 +21,14 @@ namespace API3
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-          //  StorController stor = new StorController();
-          //  List<DTOStor> dTs= Dijkstra.MapSelectedStores(stor.GetSaleStor());
+            StorController stor = new StorController();
+            List<DTOStor> list = stor.GetSaleStor();
+            List<DTOStor> list2 = new List<DTOStor>();
+            for (int i = 0; i < 2; i++)
+            {
+                list2.Add(list[i]);
+            }
+            List<DTOStor> dTs = Dijkstra.MapSelectedStores(list2);
         }
     }
 }

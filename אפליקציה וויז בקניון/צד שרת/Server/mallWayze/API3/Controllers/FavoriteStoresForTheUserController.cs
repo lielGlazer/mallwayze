@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using BL;
+using BL.BL;
 using BL.Models;
 using DTO;
 
@@ -28,6 +29,19 @@ namespace API3.Controllers
         {
             return  BL.ManagerFavoriteStoresForTheUser.GetAllStorForUser(o.UserName,o.Password);  
         }
-        
+
+
+        [Route("api/FavoriteStoresForTheUser/all")]
+        [HttpGet]
+        //עובד
+        public List<DTOStor> all()
+        {
+            StorController stor = new StorController();
+            List<DTOStor> dTs = Dijkstra.MapSelectedStores(stor.GetSaleStor());
+            return dTs;
+            
+        }
+
+
     }
 }
