@@ -14,7 +14,9 @@ namespace BL.BL
         //הדאטה ביס של כל המערכת 
         static DBConection db = new DBConection();
         //הניתוב של הגרף
-        static string graphFilePath = @"C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";// @"..\..\BL\Dijkstra\routes.txt";
+        static string graphFilePath = @"C:\Users\user\Documents\GitHub\mallwayze\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";
+            
+        //@"C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";// @"..\..\BL\Dijkstra\routes.txt";
         //אתחול רשימת הקשתות של הקומהה הראשונה בקניון 
         static List<Route> mallGraphRoutes = null;
         //אתחול המילון שמורכב משם צומת וצומת
@@ -87,6 +89,8 @@ namespace BL.BL
             for (int i = 0; i < stores.Count(); i++)
             {   //מאיפה להגיע מאיזה מקור
                 DTOStor from = stores[i];
+                
+             
                 //מוסיפה אותו לרשימת הצמתים בגרף החדש
                 selectedStoresGraphNodes.Add(from.NameStor, new Node(from));
                 //ניצור קשתות לשאר החנויות ברשימה

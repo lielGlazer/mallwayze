@@ -1,15 +1,24 @@
-<div *ngFor="let s of allStores" style="    margin: 20px;
+<div  *ngFor="let s of allStores" style="    margin: 20px;
 inset-block: auto;
 text-align: center;">
 
-    <div style="    width: 120px;
-    background-color: bisque;
-    text-align: center;
-    border-radius: 5%;">
-      <h5 class="card-title">{{s.NameStor}}</h5>
+    <div style="
+    color: cadetblue;
+    box-shadow: 0 16px 24px silver;
+    transition: 0.3s;
+    border-radius: 5px;
+    width: 10vw;
+    padding: 10px;
+    display: inline-block;
+    margin: 35px;
+    background-color: white;
+    margin-left: 20px;
+    margin-right: 20px">
+      <h5 class="card-title">    {{s.NameStor}}
+      </h5>
       <!-- <div *ngIf="s.Sale"?id="green":id="red"> -->
     </div>
-  
+   
 </div>
 
 
