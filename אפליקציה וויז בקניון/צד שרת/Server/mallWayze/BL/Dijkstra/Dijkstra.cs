@@ -14,8 +14,9 @@ namespace BL.BL
         //הדאטה ביס של כל המערכת 
         static DBConection db = new DBConection();
         //הניתוב של הגרף
-        static string graphFilePath = @"C:\Users\user\Documents\GitHub\mallwayze\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";
-            
+        static string graphFilePath = 
+        @"C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";// @"..\..\BL\Dijkstra\routes.txt";
+
         //@"C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";// @"..\..\BL\Dijkstra\routes.txt";
         //אתחול רשימת הקשתות של הקומהה הראשונה בקניון 
         static List<Route> mallGraphRoutes = null;
@@ -30,10 +31,11 @@ namespace BL.BL
         {
             List<DTOStor> GETlist = new List<DTOStor>();
 
-            //1 - יצירת גרף של כל הקניון - קריאת הקשתות מקובץ  -עובד
-            mallGraphRoutes = createMallRoutes(graphFilePath);
             //2 - יצירת הצמתים שנמצאים בכל הקניון-עובד
             mallGraphNodes = createMallNodes();
+            //1 - יצירת גרף של כל הקניון - קריאת הקשתות מקובץ  -עובד
+            mallGraphRoutes = createMallRoutes(graphFilePath);
+         
             //3 - יצירת גרף חדש של הקשתות בין החנויות הנבחרות  -  הפעלת הדיאקסטרה לכל חנות ברשימה ( שאר החנויות כיעד)עובד
             //יצית הגרף החדש  - אתחול רשימה חדשה של קשתות וצמתים
             createSelectedStoresGraph(stores);
@@ -63,7 +65,9 @@ namespace BL.BL
                     Stor s1 = db.GetDbSet<Stor>().ToList().FirstOrDefault(s => s.Locations.LocationCode == long.Parse(values[2]));
                     Stor s2 = db.GetDbSet<Stor>().ToList().FirstOrDefault(s => s.Locations.LocationCode == long.Parse(values[1]));
 
-                    routes.Add(new Route(new Node(new DTOStor(s1)), new Node(new DTOStor(s2)), double.Parse(values[0])));
+                    routes.Add(new Route(mallGraphNodes.FirstOrDefault(a => a.Value.Store.CodeStor == s1.CodeStor).Value,
+                        mallGraphNodes.FirstOrDefault(a => a.Value.Store.CodeStor == s2.CodeStor).Value,
+                       double.Parse(values[0])));
                 }
             }
             return routes;
@@ -214,6 +218,7 @@ namespace BL.BL
                     nodes[r.To.Store.NameStor].Value = travelDistance;
                     //הקודם 
                     nodes[r.To.Store.NameStor].PreviousNode = r.From;
+                    //  travelDistance צריך פה גם לעדכן שוב את ה
                 }
 
                 if (!queue.HasLetter(r.To))

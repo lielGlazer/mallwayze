@@ -1,1 +1,8 @@
-<app-path></app-path>
+<h1>ברוך הבא </h1>
+<h2 style="">הנך מתבקש ללחוץ על החנויות שברצונך להכניס למסלול  </h2>
+
+<div  *ngFor="let s of allStores" 
+ (click)="addToCart()">{{s.NameStor}}</div>
+ 
+
+

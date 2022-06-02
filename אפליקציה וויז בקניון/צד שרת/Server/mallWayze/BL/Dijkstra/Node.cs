@@ -17,12 +17,13 @@ namespace BL.BL
         //צומת קודם
         public Node PreviousNode { get; set; }//(הצומת הקודמת (שעל ידה נדע מהו המסלול הקצר ביותר בסוף האלגוריתם 
         //פעולה בונה צומת
-        public Node(DTOStor store, double value = int.MaxValue, Node previousNode = null)
+        public Node(DTOStor store, double value, Node previousNode )
         {
             this.Store = store;
             this.Value = value;
             this.PreviousNode = previousNode;
         }
+        public Node(DTOStor store) { this.Store = store; }
 
         public override bool Equals(object obj)
         {

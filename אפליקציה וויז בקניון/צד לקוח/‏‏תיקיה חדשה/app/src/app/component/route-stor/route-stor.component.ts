@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from 'src/app/models/Store';
+import { CatgoryStorService } from 'src/app/serves/catgory-stor.service';
 
 @Component({
   selector: 'app-route-stor',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RouteStorComponent implements OnInit {
 
-  constructor() { }
+  allStores= new Array<Store>();
+  stroeCard=new Array<Store>();
+  constructor(private db:CatgoryStorService ) { }
+  ngOnInit(): void 
+  {  this.db.getAllSore().subscribe(res =>
+    {
+    this.allStores=res;
+    })
+  }
+  addToCard(s:string){
 
-  ngOnInit(): void {
   }
 
 }
