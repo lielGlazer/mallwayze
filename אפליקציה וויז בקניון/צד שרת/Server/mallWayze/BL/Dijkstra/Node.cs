@@ -23,12 +23,17 @@ namespace BL.BL
             this.Value = value;
             this.PreviousNode = previousNode;
         }
-        public Node(DTOStor store) { this.Store = store; }
+        public Node(DTOStor store) {
+            this.Store = store;
+            this.Value = int.MaxValue;
+        }
 
         public override bool Equals(object obj)
         {
             Node n = (Node)obj;
             return Store.CodeStor ==n.Store.CodeStor;
         }
+
+       
     }
 }

@@ -17,9 +17,9 @@ namespace BL.BL
         static string graphFilePath =
 
 
-         @"C:\Users\user\Documents\GitHub\mallwayze\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";
+        //@"C:\Users\user\Documents\GitHub\mallwayze\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";
         //@"..\..\BL\Dijkstra\routes.txt";
-        //@"C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";// @"..\..\BL\Dijkstra\routes.txt";
+        @"C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";// @"..\..\BL\Dijkstra\routes.txt";
         //אתחול רשימת הקשתות של הקומהה הראשונה בקניון 
         static List<Route> mallGraphRoutes = null;
         //אתחול המילון שמורכב משם צומת וצומת
@@ -37,7 +37,7 @@ namespace BL.BL
             mallGraphNodes = createMallNodes();
             //1 - יצירת גרף של כל הקניון - קריאת הקשתות מקובץ  -עובד
             mallGraphRoutes = createMallRoutes(graphFilePath);
-         
+
             //3 - יצירת גרף חדש של הקשתות בין החנויות הנבחרות  -  הפעלת הדיאקסטרה לכל חנות ברשימה ( שאר החנויות כיעד)עובד
             //יצית הגרף החדש  - אתחול רשימה חדשה של קשתות וצמתים
             createSelectedStoresGraph(stores);
@@ -95,8 +95,8 @@ namespace BL.BL
             for (int i = 0; i < stores.Count(); i++)
             {   //מאיפה להגיע מאיזה מקור
                 DTOStor from = stores[i];
-                
-             
+
+
                 //מוסיפה אותו לרשימת הצמתים בגרף החדש
                 selectedStoresGraphNodes.Add(from.NameStor, new Node(from));
                 //ניצור קשתות לשאר החנויות ברשימה
@@ -114,7 +114,8 @@ namespace BL.BL
                     Route newRoute = new Route(start, end, 0);
                     //חישוב המרחק הקצר ע''י דייקסטרה
                     //השמת ערך 0 על הנקודה שבה אנחנו מתחילים 
-                    mallGraphNodes[start.Store.NameStor].Value = 0;
+                    if (i == 0)
+                        mallGraphNodes[start.Store.NameStor].Value = 0;
                     //בונה תור עדיפות למרחקים קצרים
                     PrioQueue queue = new PrioQueue();
                     //מוסיפה לתור את הצומת התחלה 
@@ -128,7 +129,8 @@ namespace BL.BL
                     }
                     Node lastNode = null;
                     //מקבלת  את המרחק הקצר שחוזר  - פב מתחילה הריקורסיה של הדיאקסטרה
-                    CheckNode(mallGraphRoutes, mallGraphNodes, queue, unvisited, end, ref lastNode);
+                    double finalDistance =0 ;
+                     CheckNode(mallGraphRoutes, mallGraphNodes, queue, unvisited, end, ref lastNode, ref finalDistance);
                     double shortestDistance = lastNode.Value;
                     //אתחול משקל הקשת למרחק הקצר שחזר
                     newRoute.Distance = shortestDistance;
@@ -141,7 +143,7 @@ namespace BL.BL
         public static Node createShortestPathForSelectedStores()
         {
             //יוצרים מידע שכאילו כבר קיים
-           
+
 
             Node lastNode = null;
             //נגדיר את הכניסה כנקודת המוצא
@@ -162,8 +164,8 @@ namespace BL.BL
             {//מוסיפה לרשימה את כל החניות בקומה 
                 unvisited.Add(n);
             }
-            CheckNode(selectedStoresGraphRoutes, selectedStoresGraphNodes, queue, unvisited, end, ref lastNode);
-
+            double distance =0;
+            CheckNode(selectedStoresGraphRoutes, selectedStoresGraphNodes, queue, unvisited, end, ref lastNode, ref distance);
             return lastNode;
         }
         //שחזור בעצמו 
@@ -189,22 +191,22 @@ namespace BL.BL
             return nodes;
         }
         //מחזירה את המרחק הקצר ביותר
-        private static void CheckNode(List<Route> routes, Dictionary<string, Node> nodes, PrioQueue queue, List<Node> unvisited, Node destinationNode, ref Node lastNode)
+        private static void CheckNode(List<Route> routes, Dictionary<string, Node> nodes, PrioQueue queue, List<Node> unvisited, Node destinationNode, ref Node lastNode, ref double dist)
         {
+            
             ///פה אני צריכה לעשות נקודת עצירה 
             //תנאי עצירה בחיפוש מסלול קצר בין כל הנקודות בגרף
             if (queue.Count == 0)
             {
-                return;
+                return ;
             }
             //תנאי עצירה בחיפוש מסלול קצר בין מקור ליעד
-            if (queue.First.Value == destinationNode)
+            if (lastNode != null && destinationNode != null && lastNode.Store.NameStor.Equals(destinationNode.Store.NameStor))
             {
-                lastNode = queue.First.Value;
-                return;
+                return ;
             }
             //רשימת קשתות של צומת 
-            List<Route> neighborRoutes = routes.Where(s => s.From.Equals( queue.First.Value)).ToList();
+            List<Route> neighborRoutes = routes.Where(s => s.From.Equals(queue.First.Value)).ToList();
             foreach (var r in neighborRoutes)
             {
                 //אם קוד היעד לא נמצא ברשימה שצריך לבקר בה סימן שביקרו בו - נדלג עליו
@@ -231,7 +233,8 @@ namespace BL.BL
             unvisited.Remove(queue.First.Value);
             lastNode = queue.First.Value;
             queue.RemoveFirst();
-            CheckNode(routes, nodes, queue, unvisited, destinationNode, ref lastNode);
+         
+            CheckNode(routes, nodes, queue, unvisited, destinationNode, ref lastNode, ref  dist);
             return;
         }
     }
