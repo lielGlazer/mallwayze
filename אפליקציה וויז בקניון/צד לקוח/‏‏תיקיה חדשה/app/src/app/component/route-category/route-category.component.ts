@@ -8,18 +8,26 @@ import { CatgoryStorService } from 'src/app/serves/catgory-stor.service';
   styleUrls: ['./route-category.component.css']
 })
 export class RouteCategoryComponent implements OnInit {
-  allCategory= new Array<Category>();
-   constructor(private db:CatgoryStorService ) { 
- 
-   }
-  ngOnInit(): void {
-    
-  }
-  dostart(){
-    this.db.getAllCaregory().subscribe(res =>{
-      this.allCategory=res;
-    })
+  allCategory: Array<Category> = new Array<Category>();
+  cardCategorys: Array<Category> = new Array<Category>();
+  constructor(private db: CatgoryStorService) {
 
-}
+  }
+  ngOnInit(): void {
+    this.db.getAllCaregory().subscribe(res => {
+      this.allCategory = res;
+      console.log("allCategory:" + this.allCategory);
+
+    },
+      err => {
+        console.log("error:" + err.message);
+
+      })
+
+  }
+  dostart() {
+
+
+  }
 
 }

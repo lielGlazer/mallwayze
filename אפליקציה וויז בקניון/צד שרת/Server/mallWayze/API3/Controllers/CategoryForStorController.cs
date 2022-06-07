@@ -6,14 +6,31 @@ using System.Net.Http;
 using System.Web.Http;
 using DTO;
 using BL;
+using System.Web.Http.Cors;
+
 
 
 namespace API3.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+
     public class CategoryForStorController : ApiController
-     {     
-    
-       //ממחזיר את כל הקטגוריות לחנות
+    {
+        //מקבל רשימה של קטגוריות ומחזיר רשימה של חנויות 
+        //[Route("api/Stor/GetStoresListByCategory/{category}")]
+        //[HttpGet]
+        //עובד
+        //public List<DTOStor> GetStoresListByCategory(List<DTOCategory> categorylist)
+        //{
+        //    List<DTOStor> p;
+        //    List<DTOStor> listStor = new List<DTOStor>();
+        //    for (int i = 0; i < categorylist.Count; i++)
+        //    {
+        //        p.Add(BL.ManagerCategoryForStor.GetAllStorOfXContaining(categorylist[i].NameCategory));
+        //    }
+        //    listStor = p;
+        //}
+        //ממחזיר את כל הקטגוריות לחנות
         [Route("api/CategoryForStor/GetCaterory")]
         [HttpGet]
         //עובד

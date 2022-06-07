@@ -1,27 +1,54 @@
-<div style="background-color: bisque;
+
+<style>
+#D{
 width: 100%;
 height: 500px;
-text-align: center;">
-<h1 style="text-align: center;margin-top: 15px;"> מסלול לפי חניות  </h1>
-<h2 style="">הנך מתבקש ללחוץ על החנויות שברצונך להכניס למסלול  </h2>
-<div>
-<button  *ngFor="let s of allStores" 
-style="
-    border: none;
-    color: cadetblue;
+text-align: center;
+}
+#b{
+    font-weight: bold;
+    font-size: smaller;
+    font: optional;
+    
+   border: coral solid 2px;
+    background-color: coral;
+     color: white;
     box-shadow: 0 16px 24px silver;
     transition: 0.3s;
     border-radius: 5px;
     width: 10vw;
     padding: 10px;
     display: inline-block;
-    margin: 35px;
-    background-color: white;
+    margin: 20px;
+   
     margin-left: 20px;
-    margin-right: 20px">
- 
+    margin-right: 20px"
+ }
+ #b:hover{
+    box-shadow: 0 16px 24px coral;
+
+    border:  whitesmoke solid 2px;
+     background-color: whitesmoke;
+     color:coral
+ }
+</style>
+<div id="D" >
+<h1 style="text-align: center;margin-top: 15px;"> מסלול לפי חניות  </h1>
+<h2 >הנך מתבקש ללחוץ על החנויות שברצונך להכניס למסלול  </h2>
+<div>
+    <!-- צריך בכל לחיצה על חניות להןסיף אןתה לסל  -->
+<button id="b"  *ngFor="let s of allStores" 
+(click)="addToCard(s.NameStor)" 
+>
+<!-- אני רוצה לעשות כאן אם בחנות יש מבצע הצבע ירוק -->
  {{s.NameStor}}</button>
  
 
+</div>
+</div>
+<div id="card">
+<p>רשימת החניות שנבחרו</p>
+<div *ngFor="let s of stroeCard">
+    <button>{{s.NameStor}}</button>
 </div>
 </div>

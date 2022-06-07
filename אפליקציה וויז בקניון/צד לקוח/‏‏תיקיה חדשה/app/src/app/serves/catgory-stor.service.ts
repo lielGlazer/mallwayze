@@ -9,25 +9,24 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CatgoryStorService {
- 
-  constructor(private httpClient:HttpClient) { }
+
+  constructor(private httpClient: HttpClient) { }
 
   //מחזיר רשימה של כל החניות 
-  getAllSore(): Observable<Store[]>
-  {
+  getAllSore(): Observable<Store[]> {
     return this.httpClient.get<Store[]>("http://localhost:53154/api/Stor/GetAllStor");
   }
-   //מחזיר רשימה של  כל הקטגוריות 
-  getAllCaregory(): Observable<Category[]>  {
-    return this.httpClient.get<Category[]>("http://localhost:64724/api/Category/GetCaterory");
+  //מחזיר רשימה של  כל הקטגוריות 
+  getAllCaregory(): Observable<Category[]> {
+    return this.httpClient.get<Array<Category>>("http://localhost:53154/api/Category/GetCaterory");
   }
   //מחזיר רשימה של חנויות לפי קטגוריות
-  gelAllStorOfCategory(nameCategory:string): Observable<Store[]>  {
-    return this.httpClient.get<Store[]>("http://localhost:53154/api/Stor/GetStoresByCategory/{nameCategory}");
+  gelAllStorOfCategory(nameCategory: string): Observable<Store[]> {
+    return this.httpClient.get<Store[]>("http://localhost:53154/api/Stor/GetStoresByCategory/"+nameCategory);
   }
   //מחזיר רשימת קטגוריות לפי חנות
-  gelAllCategoryOfStor(nameStor:string): Observable<Category[]>  {
-    return this.httpClient.get<Category[]>("http://localhost:53154/api/Stor/GetAllCategorysForStor/{nameStor}");
+  getAllCategoryOfStor(nameStor: string): Observable<Category[]> {
+    return this.httpClient.get<Category[]>("http://localhost:53154/api/Stor/GetAllCategorysForStor/"+nameStor);
   }
- 
+
 }

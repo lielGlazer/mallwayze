@@ -12,6 +12,8 @@ using System.Web.Http.Cors;
 
 namespace API3.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+
     public class CategoryController : ApiController
     {   //פונקציה ששולפת את כל הקטגוריות בקניון 
         [Route("api/Category/GetCaterory")]

@@ -19,7 +19,7 @@ export class RouteStorComponent implements OnInit {
     })
   }
   addToCard(s:string){
-    return;
+    // this.stroeCard[0]=;
   }
 
 }
