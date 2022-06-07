@@ -2,12 +2,26 @@
 width: 100%;
 height: 500px;
 text-align: center;">
-<h1 style="text-align: center;"> מסלול לפי חניות  </h1>
+<h1 style="text-align: center;margin-top: 15px;"> מסלול לפי חניות  </h1>
 <h2 style="">הנך מתבקש ללחוץ על החנויות שברצונך להכניס למסלול  </h2>
+<div>
+<button  *ngFor="let s of allStores" 
+style="
+    border: none;
+    color: cadetblue;
+    box-shadow: 0 16px 24px silver;
+    transition: 0.3s;
+    border-radius: 5px;
+    width: 10vw;
+    padding: 10px;
+    display: inline-block;
+    margin: 35px;
+    background-color: white;
+    margin-left: 20px;
+    margin-right: 20px">
+ 
+ {{s.NameStor}}</button>
+ 
 
-<!-- <div  *ngFor="let s of allStores" 
- (click)="addToCart()"
- >{{s.NameStor}}</div>
-  -->
-
+</div>
 </div>
