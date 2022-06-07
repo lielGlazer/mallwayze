@@ -21,4 +21,5 @@ export class RouteCategoryComponent implements OnInit {
     })
 
 }
+
 }

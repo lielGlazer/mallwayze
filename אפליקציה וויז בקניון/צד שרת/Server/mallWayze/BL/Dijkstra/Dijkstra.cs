@@ -14,9 +14,11 @@ namespace BL.BL
         //הדאטה ביס של כל המערכת 
         static DBConection db = new DBConection();
         //הניתוב של הגרף
-        static string graphFilePath = 
-        @"C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";// @"..\..\BL\Dijkstra\routes.txt";
+        static string graphFilePath =
 
+
+         @"C:\Users\user\Documents\GitHub\mallwayze\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";
+        //@"..\..\BL\Dijkstra\routes.txt";
         //@"C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";// @"..\..\BL\Dijkstra\routes.txt";
         //אתחול רשימת הקשתות של הקומהה הראשונה בקניון 
         static List<Route> mallGraphRoutes = null;

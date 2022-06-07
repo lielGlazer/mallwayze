@@ -19,4 +19,8 @@
  type="button" 
  [id]="category.CodeCategory" [value]="category.NameCategory.trim()"  
  class="btn btn-outline-info item"> -->
-  <h1>hbhbhbhb</h1>
+  <h1>מסלול לפי קטגוריות </h1>
+  <h3>בחר את הקטגוריות הרצויות</h3>
+  <div *ngFor="let c of allCategory">
+    <div>{{c.NameCategory}}</div>
+  </div>
