@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Store } from 'src/app/models/Store';
 import { CatgoryStorService } from 'src/app/serves/catgory-stor.service';
 
@@ -8,7 +8,7 @@ import { CatgoryStorService } from 'src/app/serves/catgory-stor.service';
   styleUrls: ['./route-stor.component.css']
 })
 export class RouteStorComponent implements OnInit {
-
+ cart="assets/cc.jpg";
   allStores= new Array<Store>();
   stroeCard=new Array<Store>();
   constructor(private db:CatgoryStorService ) { }
@@ -18,8 +18,10 @@ export class RouteStorComponent implements OnInit {
     this.allStores=res;
     })
   }
-  addToCard(s:string){
-    // this.stroeCard[0]=;
-  }
+  addToCard(s:Store) {
 
+    this.stroeCard.push(s);
+    // this.db.allStors.push(Event.(s));
+  }
+ 
 }

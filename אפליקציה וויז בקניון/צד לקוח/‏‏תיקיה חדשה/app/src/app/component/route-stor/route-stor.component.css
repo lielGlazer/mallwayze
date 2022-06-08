@@ -1,0 +1,31 @@
+#D{
+width: 100%;
+height: 500px;
+text-align: center;
+}
+#b{
+    font-weight: bold;
+    font-size: smaller;
+    font: optional;
+    
+   border: cadetblue solid 2px;
+    background-color: cadetblue;
+     color: white;
+    box-shadow: 0 16px 24px silver;
+    transition: 0.3s;
+    border-radius: 5px;
+    width: 10vw;
+    padding: 10px;
+    display: inline-block;
+    margin: 20px;
+   
+    margin-left: 20px;
+    margin-right: 20px
+ }
+ #b:hover{
+    box-shadow: 0 16px 24px cadetblue;
+
+    border:  whitesmoke solid 2px;
+     background-color: whitesmoke;
+     color:cadetblue
+ }

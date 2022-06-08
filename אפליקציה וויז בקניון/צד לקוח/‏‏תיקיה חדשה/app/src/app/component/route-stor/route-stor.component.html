@@ -1,44 +1,12 @@
 
-<style>
-#D{
-width: 100%;
-height: 500px;
-text-align: center;
-}
-#b{
-    font-weight: bold;
-    font-size: smaller;
-    font: optional;
-    
-   border: coral solid 2px;
-    background-color: coral;
-     color: white;
-    box-shadow: 0 16px 24px silver;
-    transition: 0.3s;
-    border-radius: 5px;
-    width: 10vw;
-    padding: 10px;
-    display: inline-block;
-    margin: 20px;
-   
-    margin-left: 20px;
-    margin-right: 20px"
- }
- #b:hover{
-    box-shadow: 0 16px 24px coral;
 
-    border:  whitesmoke solid 2px;
-     background-color: whitesmoke;
-     color:coral
- }
-</style>
 <div id="D" >
 <h1 style="text-align: center;margin-top: 15px;"> מסלול לפי חניות  </h1>
 <h2 >הנך מתבקש ללחוץ על החנויות שברצונך להכניס למסלול  </h2>
 <div>
     <!-- צריך בכל לחיצה על חניות להןסיף אןתה לסל  -->
 <button id="b"  *ngFor="let s of allStores" 
-(click)="addToCard(s.NameStor)" 
+(click)="addToCard(s)" 
 >
 <!-- אני רוצה לעשות כאן אם בחנות יש מבצע הצבע ירוק -->
  {{s.NameStor}}</button>
@@ -46,9 +14,23 @@ text-align: center;
 
 </div>
 </div>
-<div id="card">
+<!-- <div id="card">
 <p>רשימת החניות שנבחרו</p>
 <div *ngFor="let s of stroeCard">
     <button>{{s.NameStor}}</button>
 </div>
-</div>
+</div> -->
+<div class="card" style="width: 18rem;">
+    <img [src]=cart class="card-img-top"  width="500px" height="190px" >
+    <div class="card-body">
+      <h5 class="card-title">רשימת החניות שנברחרו :)</h5>
+    </div>
+    <ul class="list-group list-group-flush" >
+      <li *ngFor="let s of stroeCard" class="list-group-item">{{s.NameStor}}</li>
+      
+    </ul>
+    <p class="list-group-item">א'-ה': 10:00-22:00
+        ו' וערבי חג: 09:00-15:00
+        מוצ"ש ומוצאי חג: 30 דק' מצאת שבת – 23:00</p>
+    <button type="submit">למסלול</button>
+  </div>

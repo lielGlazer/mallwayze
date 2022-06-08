@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CatgoryStorService {
-
+  public allStors:Store[]=[]
   constructor(private httpClient: HttpClient) { }
 
   //מחזיר רשימה של כל החניות 

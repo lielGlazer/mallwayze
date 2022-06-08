@@ -35,14 +35,14 @@
     </button>
   </div>
 </div> -->
-<div *ngFor="let i of allCategories">
+<!-- <div *ngFor="let i of allCategories">
   <p>{{i.NameCategory}}</p>
-</div>
+</div> -->
 <!-- Button trigger modal -->
-<button (mouseover)="getAllCategoryOfStor(p.NameStor)" *ngFor="let p of allStores" id="b"  type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
- {{p.NameStor}}
- <p data-toggle="modal" data-target="#storDetailsModal">{{p.NameStor}}</p>
- <p data-toggle="modal" data-target="#storDetailsModal">{{p.Sale}}</p>
+<button *ngFor="let p of allStores" id="b" type="button" class="btn btn-primary" data-bs-toggle="modal"
+  data-bs-target="#exampleModal" (click)="saveStore(p)">
+  {{p.NameStor}}
+  <p data-toggle="modal" data-target="#storDetailsModal">{{p.Sale}}</p>
 </button>
 
 <!-- Modal -->
@@ -50,15 +50,27 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <h5 class="modal-title" id="exampleModalLabel">{{myStore?.NameStor}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-       <p></p>
+        <h4> store categories:</h4>
+        <div *ngFor="let i of allCategories">
+          <p>{{i.NameCategory}}</p>
+        </div>
+
+        <p>
+
+          {{myStore?.Sale?'יש מבצעים בחנות!':'אופס... מחיר מלא למוצרים'}}
+          <br>
+          {{myStore?.link}}
+
+        </p>
+        <h5>{{openNow()}}</h5>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
