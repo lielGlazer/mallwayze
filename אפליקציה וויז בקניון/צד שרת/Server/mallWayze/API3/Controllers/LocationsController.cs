@@ -8,9 +8,11 @@ using System.Net.Http;
 using System.Web.Http;
 using DTO;
 using BL;
+using System.Web.Http.Cors;
 
 namespace API3.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     //[Route("api/location")]
     public class LocationsController : ApiController
     {   //צריך לעבוד על זה כי זה לא ממש עובד

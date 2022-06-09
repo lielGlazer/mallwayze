@@ -24,13 +24,13 @@ namespace API3
             StorController stor = new StorController();
             List<DTOStor> list = stor.GetAllStor();
             List<DTOStor> list2 = new List<DTOStor>();
-            DTOStor s1 = list.FirstOrDefault(s => s.NameStor == "פנדורה ");
-            DTOStor s2 = list.FirstOrDefault(s => s.NameStor == "מובייל");
-            DTOStor s3 = list.FirstOrDefault(s => s.NameStor == "H&M");
-            list2.Add(s1);
-            list2.Add(s2);
-            list2.Add(s3);
-            List<DTOStor> dTs = Dijkstra.MapSelectedStores(list2);
+            //DTOStor s1 = list.FirstOrDefault(s => s.NameStor == "פנדורה ");
+            //DTOStor s2 = list.FirstOrDefault(s => s.NameStor == "מובייל");
+            //DTOStor s3 = list.FirstOrDefault(s => s.NameStor == "H&M");
+            //list2.Add(s1);
+            //list2.Add(s2);
+            //list2.Add(s3);
+            //List<DTOStor> dTs = Dijkstra.MapSelectedStores(list2);
         }
     }
 }

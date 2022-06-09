@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using BL;
 using BL.BL;
 using BL.Models;
@@ -12,6 +13,7 @@ using DTO;
 
 namespace API3.Controllers
 {
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class FavoriteStoresForTheUserController : ApiController
     {   //מחזיר את כל הרשימה
         [Route("api/FavoriteStoresForTheUser/GetCaterory")]
