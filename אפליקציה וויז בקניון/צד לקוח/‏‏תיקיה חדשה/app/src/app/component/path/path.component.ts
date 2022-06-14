@@ -19,6 +19,9 @@ export class PathComponent implements OnInit {
   shortestPath: any;
 
   constructor(private router:Router) {
+    const x = this.router.getCurrentNavigation();
+    console.log(x?.extras.state?.list); // should log out 'bar'
+
     // this.option = {
     //   xAxis: {
     //     type: 'category',

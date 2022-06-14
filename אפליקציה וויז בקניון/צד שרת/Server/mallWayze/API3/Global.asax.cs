@@ -21,9 +21,9 @@ namespace API3
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            StorController stor = new StorController();
-            List<DTOStor> list = stor.GetAllStor();
-            List<DTOStor> list2 = new List<DTOStor>();
+            //StorController stor = new StorController();
+            //List<DTOStor> list = stor.GetAllStor();
+            //List<DTOStor> list2 = new List<DTOStor>();
             //DTOStor s1 = list.FirstOrDefault(s => s.NameStor == "פנדורה ");
             //DTOStor s2 = list.FirstOrDefault(s => s.NameStor == "מובייל");
             //DTOStor s3 = list.FirstOrDefault(s => s.NameStor == "H&M");

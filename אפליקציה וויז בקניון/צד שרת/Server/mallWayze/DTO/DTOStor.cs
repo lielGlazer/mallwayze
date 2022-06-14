@@ -26,7 +26,7 @@ namespace DTO
             this.PlaceCode = (long)l.PlaceCode;
             this.NameStor = (string)l.NameStor;
             this.Sale = (bool)l.Sale;
-    //        this.Locations =new DTOLocations( l.Locations);
+           this.Locations =new DTOLocations( l.Locations);
         }
         public Stor ToTable(DTOStor l)
         {

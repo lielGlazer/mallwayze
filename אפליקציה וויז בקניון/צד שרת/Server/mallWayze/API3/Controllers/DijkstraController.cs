@@ -12,17 +12,17 @@ namespace API3.Controllers
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class DijkstraController : ApiController
     {
-      
-       
-            //פונקציה ששולפת את כל הקטגוריות בקניון 
-            [Route("api/dijktra/GetDijktra/{s}")]
-            [HttpGet]
-            //עובד
-            public List<DTOStor> GetDijktra(List<DTOStor> S)
-            {
+
+
+        //פונקציה ששולפת את כל הקטגוריות בקניון  
+        [HttpPost]
+        [Route("api/dijktra/GetDijktra")]
+        //עובד
+        public List<DTOStor> GetDijktra(List<DTOStor> S)
+        {
             return BL.BL.Dijkstra.MapSelectedStores(S);
-                   
-            }
+
         }
     }
+}
 

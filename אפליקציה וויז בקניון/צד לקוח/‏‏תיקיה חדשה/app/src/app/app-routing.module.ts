@@ -56,6 +56,7 @@ const routes: Routes = [
       {path:'', pathMatch:'full' , component: RouteSelectionComponent},
       // מסלול לחנויות//
       { path: 'route-stor', component: RouteStorComponent, children:[{path:'app-path',component:PathComponent}]},
+      { path: 'app-path', component: PathComponent},
       //מסלול לקטגוריות//
       { path: 'route-category', component: RouteCategoryComponent,children:[{path:'app-path',component:PathComponent}]},
       //מסלול לחנות בודדת//
