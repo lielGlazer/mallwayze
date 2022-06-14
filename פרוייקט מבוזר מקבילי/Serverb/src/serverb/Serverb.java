@@ -24,7 +24,7 @@ public class Serverb {
     private DataInputStream fromServer;
     private ServerSocket server;
     Socket socket;
-    static BlockingQueue<String> bar = new ArrayBlockingQueue<String>(4);//הבר 
+    static SynchQueue<String> bar = new SynchQueue<String>(4);//הבר 
 
     public Serverb() throws IOException {
 

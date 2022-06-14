@@ -94,6 +94,13 @@ public class fromWorker extends javax.swing.JFrame {
         String s= client.readFromServer();
         System.out.println(s);
         JOptionPane.showMessageDialog(null, s);
+        if(s.equals("כרגע אין מקום להכניס לבר, אתה בהמתנה")){
+             s= client.readFromServer();
+              if(!(s.equals("כרגע אין מקום להכניס לבר, אתה בהמתנה")))
+                    JOptionPane.showMessageDialog(null, s);
+        }
+       // System.out.println(s);
+     this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

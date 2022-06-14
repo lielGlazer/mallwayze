@@ -126,12 +126,14 @@ public class how extends javax.swing.JFrame {
         // TODO add your handling code here:
        client.writeToServer("עובד");
        new fromWorker(client).setVisible(true);
+       this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
        client.writeToServer("לקוח");
        new fromClient(client).setVisible(true);
+        this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

@@ -88,11 +88,20 @@ public class fromClient extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-          
-        client.writeToServer("להזמין");
+        
+      
+            client.writeToServer("להזמין");
         //טופס חדש שיציג את הבר
-        String read =client.readFromServer();
+        String read= client.readFromServer();
+        System.out.println(read);
         JOptionPane.showMessageDialog(null, read);
+        if(read.equals("כרגע אין מה לקחת , אתה בהמתנה")){
+             read= client.readFromServer();
+        //System.out.println(read);
+        if(!(read.equals("כרגע אין מקום להכניס לבר, אתה בהמתנה")))
+             JOptionPane.showMessageDialog(null, read);
+        }
+          this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

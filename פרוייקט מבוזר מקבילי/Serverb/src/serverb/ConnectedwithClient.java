@@ -73,7 +73,7 @@ public class ConnectedwithClient extends Thread{
                     din.readUTF();
                     try {
                         //הפעלת הפונקציה
-                        Serverb.bar.take();
+                        Serverb.bar.take(dout);
                         
                         dout.writeUTF("המגש שלך מוכן יש לך מה לקחת :)");
                         
@@ -106,7 +106,7 @@ public class ConnectedwithClient extends Thread{
 //                {
 //                    
 //                }
-               Serverb.bar.put("פיצה");
+               Serverb.bar.put("פיצה",dout);
                     try {
                         dout.writeUTF("הכנסת בהצלחה את המגש המוכן, תודה");
                     } catch (IOException ex) {
