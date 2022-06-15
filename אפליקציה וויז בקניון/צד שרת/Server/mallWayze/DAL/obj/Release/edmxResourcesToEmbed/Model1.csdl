@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="wayzeShoopModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryCode" />
+    </Key>
+    <Property Name="CategoryCode" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NameCategory" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CategoryForStor" Relationship="Self.FK_CategoryForStor_Category" FromRole="Category" ToRole="CategoryForStor" />
+  </EntityType>
+  <EntityType Name="CategoryForStor">
+    <Key>
+      <PropertyRef Name="CategoryCodeForStore" />
+    </Key>
+    <Property Name="CategoryCodeForStore" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="categoryCode" Type="Int64" Nullable="false" />
+    <Property Name="CodeStor" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Category" Relationship="Self.FK_CategoryForStor_Category" FromRole="CategoryForStor" ToRole="Category" />
+    <NavigationProperty Name="Stor" Relationship="Self.FK_CategoryForStor_Stor" FromRole="CategoryForStor" ToRole="Stor" />
+  </EntityType>
+  <EntityType Name="Locations">
+    <Key>
+      <PropertyRef Name="LocationCode" />
+    </Key>
+    <Property Name="LocationCode" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AxisX" Type="Double" />
+    <Property Name="AxisY" Type="Double" />
+    <Property Name="floor" Type="Int32" />
+    <NavigationProperty Name="Stor" Relationship="Self.FK_Stor_Locations" FromRole="Locations" ToRole="Stor" />
+  </EntityType>
+  <EntityType Name="Stor">
+    <Key>
+      <PropertyRef Name="CodeStor" />
+    </Key>
+    <Property Name="CodeStor" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PlaceCode" Type="Int64" />
+    <Property Name="NameStor" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="OpeningHours" Type="Time" Precision="7" />
+    <Property Name="ClosingHours" Type="Time" Precision="7" />
+    <Property Name="Sale" Type="Boolean" />
+    <NavigationProperty Name="CategoryForStor" Relationship="Self.FK_CategoryForStor_Stor" FromRole="Stor" ToRole="CategoryForStor" />
+    <NavigationProperty Name="Locations" Relationship="Self.FK_Stor_Locations" FromRole="Stor" ToRole="Locations" />
+    <NavigationProperty Name="FavoriteStoresForTheUser" Relationship="Self.FK_FavoriteParkingForTheUser_Stor" FromRole="Stor" ToRole="FavoriteStoresForTheUser" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserCode" />
+    </Key>
+    <Property Name="UserCode" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="FavoriteStoresForTheUser" Relationship="Self.FK_FavoriteParkingForTheUser_Users" FromRole="Users" ToRole="FavoriteStoresForTheUser" />
+  </EntityType>
+  <EntityType Name="FavoriteStoresForTheUser">
+    <Key>
+      <PropertyRef Name="FavoriteCode" />
+      <PropertyRef Name="CodeStor" />
+      <PropertyRef Name="UserCode" />
+    </Key>
+    <Property Name="FavoriteCode" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CodeStor" Type="Int64" Nullable="false" />
+    <Property Name="UserCode" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Stor" Relationship="Self.FK_FavoriteParkingForTheUser_Stor" FromRole="FavoriteStoresForTheUser" ToRole="Stor" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_FavoriteParkingForTheUser_Users" FromRole="FavoriteStoresForTheUser" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK_CategoryForStor_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="CategoryForStor" Type="Self.CategoryForStor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryCode" />
+      </Principal>
+      <Dependent Role="CategoryForStor">
+        <PropertyRef Name="categoryCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CategoryForStor_Stor">
+    <End Role="Stor" Type="Self.Stor" Multiplicity="1" />
+    <End Role="CategoryForStor" Type="Self.CategoryForStor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stor">
+        <PropertyRef Name="CodeStor" />
+      </Principal>
+      <Dependent Role="CategoryForStor">
+        <PropertyRef Name="CodeStor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stor_Locations">
+    <End Role="Locations" Type="Self.Locations" Multiplicity="0..1" />
+    <End Role="Stor" Type="Self.Stor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Locations">
+        <PropertyRef Name="LocationCode" />
+      </Principal>
+      <Dependent Role="Stor">
+        <PropertyRef Name="PlaceCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FavoriteParkingForTheUser_Stor">
+    <End Role="Stor" Type="Self.Stor" Multiplicity="1" />
+    <End Role="FavoriteStoresForTheUser" Type="Self.FavoriteStoresForTheUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Stor">
+        <PropertyRef Name="CodeStor" />
+      </Principal>
+      <Dependent Role="FavoriteStoresForTheUser">
+        <PropertyRef Name="CodeStor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FavoriteParkingForTheUser_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="FavoriteStoresForTheUser" Type="Self.FavoriteStoresForTheUser" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserCode" />
+      </Principal>
+      <Dependent Role="FavoriteStoresForTheUser">
+        <PropertyRef Name="UserCode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="wayzeShoopEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="CategoryForStor" EntityType="Self.CategoryForStor" />
+    <EntitySet Name="Locations" EntityType="Self.Locations" />
+    <EntitySet Name="Stor" EntityType="Self.Stor" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <EntitySet Name="FavoriteStoresForTheUser" EntityType="Self.FavoriteStoresForTheUser" />
+    <AssociationSet Name="FK_CategoryForStor_Category" Association="Self.FK_CategoryForStor_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="CategoryForStor" EntitySet="CategoryForStor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CategoryForStor_Stor" Association="Self.FK_CategoryForStor_Stor">
+      <End Role="Stor" EntitySet="Stor" />
+      <End Role="CategoryForStor" EntitySet="CategoryForStor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stor_Locations" Association="Self.FK_Stor_Locations">
+      <End Role="Locations" EntitySet="Locations" />
+      <End Role="Stor" EntitySet="Stor" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FavoriteParkingForTheUser_Stor" Association="Self.FK_FavoriteParkingForTheUser_Stor">
+      <End Role="Stor" EntitySet="Stor" />
+      <End Role="FavoriteStoresForTheUser" EntitySet="FavoriteStoresForTheUser" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FavoriteParkingForTheUser_Users" Association="Self.FK_FavoriteParkingForTheUser_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="FavoriteStoresForTheUser" EntitySet="FavoriteStoresForTheUser" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
