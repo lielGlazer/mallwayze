@@ -15,8 +15,6 @@ namespace BL.BL
         static DBConection db = new DBConection();
         //הניתוב של הגרף
         static string graphFilePath =
-
-
         //@"C:\Users\user\Documents\GitHub\mallwayze\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";
         //@"..\..\BL\Dijkstra\routes.txt";
         @"C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\Dijkstra\routes.txt";// @"..\..\BL\Dijkstra\routes.txt";
@@ -30,20 +28,13 @@ namespace BL.BL
         static Dictionary<string, Node> selectedStoresGraphNodes = new Dictionary<string, Node>();
         //מילון צמתים שיוצרים קשת
         static Dictionary<string, List<DTOStor>> realNodesOfSelectedStoresRoute = new Dictionary<string, List<DTOStor>>();
-
-
-
-
-
         //מקבלת רשימה של חניות למעבר ומחזירה את הרשימה הטובה =היעילה ביותר 
         public static List<StoreWithLocation> MapSelectedStores(List<DTOStor> stores)
         {
-
-            //2 - יצירת הצמתים שנמצאים בכל הקניון-עובד
+            //1 - יצירת הצמתים שנמצאים בכל הקניון-עובד
             mallGraphNodes = createMallNodes();
-            //1 - יצירת גרף של כל הקניון - קריאת הקשתות מקובץ  -עובד
+            //2 - יצירת גרף של כל הקניון - קריאת הקשתות מקובץ  -עובד
             mallGraphRoutes = createMallRoutes(graphFilePath);
-
             //3 - יצירת גרף חדש של הקשתות בין החנויות הנבחרות  -  הפעלת הדיאקסטרה לכל חנות ברשימה ( שאר החנויות כיעד)עובד
             //יצית הגרף החדש  - אתחול רשימה חדשה של קשתות וצמתים
             createSelectedStoresGraph(stores);
@@ -72,7 +63,6 @@ namespace BL.BL
                     var values = line.Split(',');
                     Stor s1 = db.GetDbSet<Stor>().ToList().FirstOrDefault(s => s.Locations.LocationCode == long.Parse(values[2]));
                     Stor s2 = db.GetDbSet<Stor>().ToList().FirstOrDefault(s => s.Locations.LocationCode == long.Parse(values[1]));
-
                     routes.Add(new Route(mallGraphNodes.FirstOrDefault(a => a.Value.Store.CodeStor == s1.CodeStor).Value,
                         mallGraphNodes.FirstOrDefault(a => a.Value.Store.CodeStor == s2.CodeStor).Value,
                        double.Parse(values[0])));
@@ -101,22 +91,16 @@ namespace BL.BL
             for (int i = 0; i < stores.Count(); i++)
             {   //מאיפה להגיע מאיזה מקור
                 DTOStor from = stores[i];
-
-
                 //מוסיפה אותו לרשימת הצמתים בגרף החדש
                 selectedStoresGraphNodes.Add(from.NameStor, new Node(from));
                 //ניצור קשתות לשאר החנויות ברשימה
                 for (int j = 0; j < stores.Count(); j++)
                 {
-
-
                     //כדי למנוע כפילויות - נדלג על החנות הנוכחית
                     if (i == j)
                         continue;
                     //לאיפה אני מגיעה
                     DTOStor to = stores[j];
-
-
                     //נגדיר חנות נוכחית בתור התחלה
                     Node start = new Node(from);
                     //נגדיר חנות אחרת ברשימה בתור יעד
@@ -146,8 +130,6 @@ namespace BL.BL
                     newRoute.Distance = shortestDistance;
                     //הוספה לרשימת הקשתות של הגרף החדש  את הקשת שחשבנו
                     selectedStoresGraphRoutes.Add(newRoute);
-
-
                     //שמירת החנויות שיצרו את הקשת המדומה-----------------------------------------------------------------------------**********************
                     realNodesOfSelectedStoresRoute.Add(from.NameStor + to.NameStor, new List<DTOStor>());
                     List<DTOStor> tempList = new List<DTOStor>();
@@ -162,7 +144,6 @@ namespace BL.BL
                     {
                         realNodesOfSelectedStoresRoute[from.NameStor + to.NameStor].Add(tempList[k]);
                     }
-
                     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                     System.Diagnostics.Debug.WriteLine("Creating route between {0} and {1}. Distance is:  {2}", from.NameStor, to.NameStor, newRoute.Distance);
                     foreach (var item in realNodesOfSelectedStoresRoute[from.NameStor + to.NameStor])
@@ -171,9 +152,6 @@ namespace BL.BL
                     }
                     System.Diagnostics.Debug.WriteLine("");
                     //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
                     //הכנת הצמתים בקניון למסלול הקצר הבא-----------------------------------------------------------------------------**********************
                     foreach (var n in mallGraphNodes.Values)
                     {
@@ -186,7 +164,6 @@ namespace BL.BL
         // המציאת המשלול הקצר והחזרת הצומת האחרונה במסלול - לצורך שחזור המסלול
         public static List<DTOStor> createShortestPathForSelectedStores()
         {
-
             //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
             System.Diagnostics.Debug.WriteLine("\n%%%%Graph before Dijxtra%%%%%");
             foreach (Node item in selectedStoresGraphNodes.Values)
@@ -198,12 +175,9 @@ namespace BL.BL
             List<DTOStor> stores = new List<DTOStor>();
             Node node = selectedStoresGraphNodes["כניסה "];
             stores.Add(selectedStoresGraphNodes["כניסה "].Store);
-
             while (selectedStoresGraphRoutes.Count>0)
             {
                 var routes = selectedStoresGraphRoutes.Where(r => r.From.Store.NameStor.Equals(node.Store.NameStor)).ToList();
-               
-
                 double min = int.MaxValue;
                 DTOStor minS = null;
                 foreach (var route in routes)
@@ -218,27 +192,20 @@ namespace BL.BL
                 //מחיקת החנות והקשתות
                 selectedStoresGraphNodes.Remove(node.Store.NameStor);
                 selectedStoresGraphRoutes.RemoveAll(r => r.From.Store.NameStor.Equals(node.Store.NameStor) || r.To.Store.NameStor.Equals(node.Store.NameStor));
-
                 //עדכון לקראת הלולאה הבאה
                 node = selectedStoresGraphNodes[minS.NameStor];
             }
-
             return stores;
-
         }
         //שחזור בעצמו 
         public static List<DTOStor> FindNodesOfShortestPath(List<DTOStor> stores)
         {
             List<DTOStor> fullStoresPath = new List<DTOStor>();
-
-
             fullStoresPath.Add(mallGraphNodes["כניסה "].Store);
-
             for (int i = 1; i < stores.Count; i++)
             {
                 string from = stores[i - 1].NameStor;
                 string to = stores[i].NameStor;
-
                 List<DTOStor> realStores = realNodesOfSelectedStoresRoute[from + to];
                 realStores.RemoveAt(0);
                 foreach (var s in realStores)
@@ -252,19 +219,12 @@ namespace BL.BL
         //מחזירה את המרחק הקצר ביותר
         private static void CheckNode(List<Route> routes, Dictionary<string, Node> nodes, PrioQueue queue, List<Node> unvisited, Node destinationNode, ref Node lastNode, ref double dist)
         {
-
-
-
             ///פה אני צריכה לעשות נקודת עצירה 
             //תנאי עצירה בחיפוש מסלול קצר בין כל הנקודות בגרף
             if (queue.Count == 0)
             {
                 return;
             }
-
-          
-
-
             //תנאי עצירה בחיפוש מסלול קצר בין מקור ליעד
             if (lastNode != null && destinationNode != null && lastNode.Store.NameStor.Equals(destinationNode.Store.NameStor))
             {
@@ -272,57 +232,32 @@ namespace BL.BL
             }
             //רשימת קשתות של צומת 
             List<Route> neighborRoutes = routes.Where(s => s.From.Equals(queue.First.Value)).ToList();
-
-          
-          
-
             foreach (var r in neighborRoutes)
             {
-
-
-
                 //אם קוד היעד לא נמצא ברשימה שצריך לבקר בה סימן שביקרו בו - נדלג עליו
                 if (!unvisited.Contains(r.To))
                 {
-
-                   
-
                     continue;
                 }
                 //מעדכנת מה המרחק עד לצומת הנוכחית - מה היה המרחק עד הגעה לצומת הנוחכית 
                 double travelDistance = nodes[queue.First.Value.Store.NameStor].Value + r.Distance;
-
-
-              
-
                 //בדיקה האם מה שחישבתי עכשיו יותר קצר ממה שקיים בצומת היעד עד עכשיו 
                 if (travelDistance < nodes[r.To.Store.NameStor].Value)
                 {
-                 
-
                     //אם כן -תעדכן 
                     nodes[r.To.Store.NameStor].Value = travelDistance;
                     //הקודם 
                     nodes[r.To.Store.NameStor].PreviousNode = r.From;
                     //  travelDistance צריך פה גם לעדכן שוב את ה
                 }
-
                 if (!queue.HasLetter(r.To))
                 {
-
-                  
-
                     queue.AddNodeWithPriority(r.To);
                 }
             }
             unvisited.Remove(queue.First.Value);
             lastNode = nodes[queue.First.Value.Store.NameStor];
             queue.RemoveFirst();
-
-
-
-          
-
             CheckNode(routes, nodes, queue, unvisited, destinationNode, ref lastNode, ref dist);
             return;
         }
