@@ -62,7 +62,7 @@ export class PathComponent implements OnInit {
       this.ctx.lineTo(this.calcPointXToCanvas(point.xPoint!), this.calcPointYToCanvas(point.yPoint!))
     console.log(this.calcPointXToCanvas(point.xPoint!), this.calcPointYToCanvas(point.yPoint!));
     }
-    this.ctx.strokeStyle = 'red';
+    this.ctx.strokeStyle = 'green';
     this.ctx.storkeWidth = 10;
     this.ctx.stroke();
   }
