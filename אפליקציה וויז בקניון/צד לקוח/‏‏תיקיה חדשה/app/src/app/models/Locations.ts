@@ -1,6 +1,7 @@
 
 
 export class Location{
+    locationId?:number;
     AxisX:number;
     Axisy:number;
     floor:number;

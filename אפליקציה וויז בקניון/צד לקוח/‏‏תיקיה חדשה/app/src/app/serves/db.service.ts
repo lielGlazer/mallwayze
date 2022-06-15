@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Store } from '../models/Store';
+import { StoreWithLocation } from '../models/StoreWithLocation';
 import { User } from '../models/User';
 
 @Injectable({
@@ -37,8 +38,11 @@ export class DbService {
     
     return this.httpClient.post<any[]>("http://localhost:53154/api/Users/Login" ,  stores);
   }
-  getPATH(path:Store[]):Observable<any[]>{
-    return this.httpClient.post<any[]>("http://localhost:53154/api/dijktra/GetDijktra" , path);
+
+  currentPath:StoreWithLocation[]=new Array<StoreWithLocation>();
+  getPATH(path:Store[]):Observable<StoreWithLocation[]>{
+  
+    return this.httpClient.post<StoreWithLocation[]>("http://localhost:53154/api/dijktra/GetDijktra" , path);
   }
   
 }

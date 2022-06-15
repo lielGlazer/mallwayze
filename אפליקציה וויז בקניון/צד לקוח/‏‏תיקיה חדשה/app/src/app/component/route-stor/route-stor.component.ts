@@ -14,7 +14,7 @@ export class RouteStorComponent implements OnInit {
   allStores = new Array<Store>();
   stroeCard = new Array<Store>();
 
-  constructor(private db: CatgoryStorService, private dbService: DbService, private router:Router) { }
+  constructor(private db: CatgoryStorService, private dbService: DbService, private router: Router) { }
   ngOnInit(): void {
     this.db.getAllSore().subscribe(res => {
       this.allStores = res;
@@ -25,17 +25,18 @@ export class RouteStorComponent implements OnInit {
     this.stroeCard.push(s);
     // this.db.allStors.push(Event.(s));
   }
-  createRotue(nav:string) {
+  createRotue(nav: string) {
     console.log(this.stroeCard);
     console.log("get route");
-    this.dbService.getPATH(this.stroeCard).subscribe(res=>{
-      console.log(res); 
-      let fullpath='route-selection/'+nav
+    this.dbService.getPATH(this.stroeCard).subscribe(res => {
+      console.log(res);
+      this.dbService.currentPath = res
+      let fullpath = 'route-selection/' + nav
       this.router.navigate([fullpath])
-         
+
 
     });
-    
+
   }
 
 

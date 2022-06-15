@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { StoreWithLocation } from 'src/app/models/StoreWithLocation';
+import { DbService } from 'src/app/serves/db.service';
 
 
 @Component({
@@ -16,90 +18,52 @@ export class PathComponent implements OnInit {
   private ctx: any;
 
   // option:any;
-  shortestPath: any;
+  shortestPath: StoreWithLocation[];
 
-  constructor(private router:Router) {
+  constructor(private router: Router, private dbService: DbService) {
     const x = this.router.getCurrentNavigation();
-    console.log(x?.extras.state?.list); // should log out 'bar'
+    //console.log(x?.extras.state?.list); // should log out 'bar'
+    this.shortestPath = dbService.currentPath;
+  
+    console.log(this.shortestPath);
+  }
 
-    // this.option = {
-    //   xAxis: {
-    //     type: 'category',
-    //     data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
-    //   },
-    //   yAxis: {
-    //     type: 'value'
-    //   },
-    //   series: [
-    //     {
-    //       data: [150, 230, 224, 218, 135, 147, 260],
-    //       type: 'line'
-    //     }
-    //   ]
-    // };
-    this.shortestPath = [
-      {
-        name: "כניסה",
-        xAxis: 23,
-        yAxis: 2.5
-      },
-      {
-        name: "מפעל הפייס",
-        xAxis: 23,
-        yAxis:4
-      },
-      
-      {
-        name: "זוהר פרחים ",
-        xAxis: 25,
-        yAxis:4.
-      }
-     
-    ]
+  calcPointXToCanvas(x: number) {
+      console.log(x , "=>" , (x * 433 / 18));
+  return (x * 433 / 18);
+    
+  }
 
+  calcPointYToCanvas(y: number) {
+    console.log(y , "=>" , 897 - (y * 897 / 41));
+
+    return 897 - (y * 897 / 41);
   }
 
   ngOnInit(): void {
 
     this.ctx = this.canvas.nativeElement.getContext('2d');
-    // this.chartDom = document.getElementById('main');
-    // this.myChart = echarts.init(this.chartDom);
-    // this.option && this.myChart.setOption(this.option);
-    // this.drawStores();
+    
     this.drawPath();
   }
-  routing(nav:string){
-    let fullpath='route-selection/'+nav
+  routing(nav: string) {
+    let fullpath = 'route-selection/' + nav
     this.router.navigate([fullpath])
   }
 
   drawStores(): void {
-
     this.ctx.drawImage(this.img, 0, 0);
-
   }
-
   drawPath(): void {
-
     this.ctx.beginPath();
-    this.ctx.moveTo(this.shortestPath[0].xAxis*12, this.shortestPath[0].yAxis*19);
-    for (let point of this.shortestPath) {
-
-      this.ctx.lineTo(point.xAxis*12, point.yAxis*19)
+    this.ctx.moveTo(this.calcPointXToCanvas(this.shortestPath[0].xPoint!), this.calcPointYToCanvas(this.shortestPath[0].yPoint!));
+    for (let i = 1; i < this.shortestPath.length; i++) {
+      const point = this.shortestPath[i];
+      this.ctx.lineTo(this.calcPointXToCanvas(point.xPoint!), this.calcPointYToCanvas(point.yPoint!))
+    console.log(this.calcPointXToCanvas(point.xPoint!), this.calcPointYToCanvas(point.yPoint!));
     }
-   
+    this.ctx.strokeStyle = 'red';
+    this.ctx.storkeWidth = 10;
     this.ctx.stroke();
-
-    // this method we'll implement soon to do the actual drawing
-    // this.ctx.drawOnCanvas(prevPos, currentPos);
-
-
-    // this.ctx.lineTo(125, 45);
-    // this.ctx.lineTo(45, 125);
-    // this.ctx.closePath();
-    // this.ctx.stroke();
   }
-
-
-
 }

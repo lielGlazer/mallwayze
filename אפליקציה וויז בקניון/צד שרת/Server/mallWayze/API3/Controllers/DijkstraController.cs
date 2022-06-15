@@ -18,7 +18,7 @@ namespace API3.Controllers
         [HttpPost]
         [Route("api/dijktra/GetDijktra")]
         //עובד
-        public List<DTOStor> GetDijktra(List<DTOStor> S)
+        public List<StoreWithLocation> GetDijktra(List<DTOStor> S)
         {
             return BL.BL.Dijkstra.MapSelectedStores(S);
 

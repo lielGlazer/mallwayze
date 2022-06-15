@@ -36,10 +36,10 @@ namespace API3.Controllers
         [Route("api/FavoriteStoresForTheUser/all")]
         [HttpGet]
         //עובד
-        public List<DTOStor> all()
+        public List<StoreWithLocation> all()
         {
             StorController stor = new StorController();
-            List<DTOStor> dTs = Dijkstra.MapSelectedStores(stor.GetSaleStor());
+            List<StoreWithLocation> dTs = Dijkstra.MapSelectedStores(stor.GetSaleStor());
             return dTs;
             
         }

@@ -19,10 +19,10 @@ namespace BL
             return dtoList;
         }
         //מקבלת רשימת חניות ומחזירה גרף קצר ביותר
-        public static List<DTOStor> CreatePath(List<DTOStor> stores)
+        public static List<StoreWithLocation> CreatePath(List<DTOStor> stores)
         {
             //להפעיל את הפונקציה המורכבת של הדיאקסטרה
-            List<DTOStor> mapStores= BL.Dijkstra.MapSelectedStores(stores);
+            List<StoreWithLocation> mapStores= BL.Dijkstra.MapSelectedStores(stores);
             return mapStores;
         }
         //מחזירה רשימה של כל החניות שיש בהם מבצעים

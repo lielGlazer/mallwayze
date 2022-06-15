@@ -19,7 +19,7 @@ namespace API3.Controllers
         //יהנו מסלול הפונקציה מקבלת שמות של חנויות(רשימת שמות)ומחזירה רשימת מיקומים בהתאם
         [Route("api/Locations/CreateSelectedStoresMap")]
         [HttpPost]
-        public List<DTOStor> CreateSelectedStoresMap(List<DTOStor> stores)
+        public List<StoreWithLocation> CreateSelectedStoresMap(List<DTOStor> stores)
         {
             return BL.ManagerStor.CreatePath(stores);
         }

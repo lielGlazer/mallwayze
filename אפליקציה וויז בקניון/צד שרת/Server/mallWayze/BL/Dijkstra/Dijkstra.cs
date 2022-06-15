@@ -36,7 +36,7 @@ namespace BL.BL
 
 
         //מקבלת רשימה של חניות למעבר ומחזירה את הרשימה הטובה =היעילה ביותר 
-        public static List<DTOStor> MapSelectedStores(List<DTOStor> stores)
+        public static List<StoreWithLocation> MapSelectedStores(List<DTOStor> stores)
         {
 
             //2 - יצירת הצמתים שנמצאים בכל הקניון-עובד
@@ -52,8 +52,12 @@ namespace BL.BL
             List<DTOStor> selectedStores = createShortestPathForSelectedStores();
             //5 - מציאת הצמתים במסלול ע''י חזרה אחורה - נתקע בגלל הPREV
             List<DTOStor> finalNodes = FindNodesOfShortestPath(selectedStores);
-
-            return finalNodes;
+            List<StoreWithLocation> storesWithLocation = new List<StoreWithLocation>();
+            foreach (var n in finalNodes)
+            {
+                storesWithLocation.Add(new StoreWithLocation(n.NameStor, n.Locations.AxisX, n.Locations.AxisY));
+            }
+            return storesWithLocation;
         }
 
         //המרחקים הקשתות יוצרת גרף של כל המרחקים בקניון
