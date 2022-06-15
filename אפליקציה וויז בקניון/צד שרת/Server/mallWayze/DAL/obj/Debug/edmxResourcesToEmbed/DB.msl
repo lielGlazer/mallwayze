@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="wayzeShoopModelStoreContainer" CdmEntityContainer="wayzeShoopEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="wayzeShoopModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryCode" ColumnName="CategoryCode" />
+          <ScalarProperty Name="NameCategory" ColumnName="NameCategory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryForStors">
+      <EntityTypeMapping TypeName="wayzeShoopModel.CategoryForStor">
+        <MappingFragment StoreEntitySet="CategoryForStor">
+          <ScalarProperty Name="CategoryCodeForStore" ColumnName="CategoryCodeForStore" />
+          <ScalarProperty Name="categoryCode" ColumnName="categoryCode" />
+          <ScalarProperty Name="CodeStor" ColumnName="CodeStor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FavoriteStoresForTheUsers">
+      <EntityTypeMapping TypeName="wayzeShoopModel.FavoriteStoresForTheUser">
+        <MappingFragment StoreEntitySet="FavoriteStoresForTheUser">
+          <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+          <ScalarProperty Name="CodeStor" ColumnName="CodeStor" />
+          <ScalarProperty Name="LikeStor" ColumnName="LikeStor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="wayzeShoopModel.Location">
+        <MappingFragment StoreEntitySet="Locations">
+          <ScalarProperty Name="LocationCode" ColumnName="LocationCode" />
+          <ScalarProperty Name="AxisX" ColumnName="AxisX" />
+          <ScalarProperty Name="AxisY" ColumnName="AxisY" />
+          <ScalarProperty Name="floor" ColumnName="floor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OpeningHours">
+      <EntityTypeMapping TypeName="wayzeShoopModel.OpeningHour">
+        <MappingFragment StoreEntitySet="OpeningHours">
+          <ScalarProperty Name="OpeningTimeCode" ColumnName="OpeningTimeCode" />
+          <ScalarProperty Name="OpeningHours" ColumnName="OpeningHours" />
+          <ScalarProperty Name="ClosingTime" ColumnName="ClosingTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OpeningHoursForDorkingDays">
+      <EntityTypeMapping TypeName="wayzeShoopModel.OpeningHoursForDorkingDay">
+        <MappingFragment StoreEntitySet="OpeningHoursForDorkingDay">
+          <ScalarProperty Name="OpeningHoursCodeForWorkingDay" ColumnName="OpeningHoursCodeForWorkingDay" />
+          <ScalarProperty Name="StoreCode" ColumnName="StoreCode" />
+          <ScalarProperty Name="WorkingDayCode" ColumnName="WorkingDayCode" />
+          <ScalarProperty Name="OpeningTimeCode1" ColumnName="OpeningTimeCode1" />
+          <ScalarProperty Name="OpeningTimeCode2" ColumnName="OpeningTimeCode2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stors">
+      <EntityTypeMapping TypeName="wayzeShoopModel.Stor">
+        <MappingFragment StoreEntitySet="Stor">
+          <ScalarProperty Name="CodeStor" ColumnName="CodeStor" />
+          <ScalarProperty Name="PlaceCode" ColumnName="PlaceCode" />
+          <ScalarProperty Name="NameStor" ColumnName="NameStor" />
+          <ScalarProperty Name="OpeningHours" ColumnName="OpeningHours" />
+          <ScalarProperty Name="ClosingHours" ColumnName="ClosingHours" />
+          <ScalarProperty Name="Sale" ColumnName="Sale" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="wayzeShoopModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="wayzeShoopModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkingDaysWeeks">
+      <EntityTypeMapping TypeName="wayzeShoopModel.WorkingDaysWeek">
+        <MappingFragment StoreEntitySet="WorkingDaysWeek">
+          <ScalarProperty Name="WorkingDayCode" ColumnName="WorkingDayCode" />
+          <ScalarProperty Name="NameOfWorkDay" ColumnName="NameOfWorkDay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

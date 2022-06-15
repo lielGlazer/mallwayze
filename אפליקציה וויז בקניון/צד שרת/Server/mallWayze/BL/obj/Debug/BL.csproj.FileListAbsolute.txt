@@ -1,0 +1,42 @@
+C:\Users\student\Desktop\liel\Server\mallWayze\BL\obj\Debug\BL.csprojAssemblyReference.cache
+C:\Users\student\Desktop\liel\Server\mallWayze\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\student\Desktop\liel\Server\mallWayze\BL\bin\Debug\BL.dll
+C:\Users\student\Desktop\liel\Server\mallWayze\BL\bin\Debug\BL.pdb
+C:\Users\student\Desktop\liel\Server\mallWayze\BL\bin\Debug\DAL.dll
+C:\Users\student\Desktop\liel\Server\mallWayze\BL\bin\Debug\DTO.dll
+C:\Users\student\Desktop\liel\Server\mallWayze\BL\bin\Debug\EntityFramework.dll
+C:\Users\student\Desktop\liel\Server\mallWayze\BL\bin\Debug\DAL.pdb
+C:\Users\student\Desktop\liel\Server\mallWayze\BL\bin\Debug\DAL.dll.config
+C:\Users\student\Desktop\liel\Server\mallWayze\BL\bin\Debug\DTO.pdb
+C:\Users\student\Desktop\liel\Server\mallWayze\BL\bin\Debug\EntityFramework.xml
+C:\Users\student\Desktop\liel\Server\mallWayze\BL\obj\Debug\BL.csproj.CopyComplete
+C:\Users\student\Desktop\liel\Server\mallWayze\BL\obj\Debug\BL.dll
+C:\Users\student\Desktop\liel\Server\mallWayze\BL\obj\Debug\BL.pdb
+C:\Users\student\Desktop\liel\צד שרת\Server\mallWayze\BL\obj\Debug\BL.csprojAssemblyReference.cache
+C:\Users\student\Desktop\liel\צד שרת\Server\mallWayze\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\student\Desktop\liel\צד שרת\Server\mallWayze\BL\obj\Debug\BL.dll
+C:\Users\student\Desktop\liel\צד שרת\Server\mallWayze\BL\obj\Debug\BL.pdb
+C:\Users\student\Desktop\liel\צד שרת\Server\mallWayze\BL\bin\Debug\BL.dll
+C:\Users\student\Desktop\liel\צד שרת\Server\mallWayze\BL\bin\Debug\BL.pdb
+C:\Users\student\Desktop\liel\צד שרת\Server\mallWayze\BL\bin\Debug\DAL.dll
+C:\Users\student\Desktop\liel\צד שרת\Server\mallWayze\BL\bin\Debug\DTO.dll
+C:\Users\student\Desktop\liel\צד שרת\Server\mallWayze\BL\bin\Debug\EntityFramework.dll
+C:\Users\student\Desktop\liel\צד שרת\Server\mallWayze\BL\bin\Debug\DAL.pdb
+C:\Users\student\Desktop\liel\צד שרת\Server\mallWayze\BL\bin\Debug\DAL.dll.config
+C:\Users\student\Desktop\liel\צד שרת\Server\mallWayze\BL\bin\Debug\DTO.pdb
+C:\Users\student\Desktop\liel\צד שרת\Server\mallWayze\BL\bin\Debug\EntityFramework.xml
+C:\Users\student\Desktop\liel\צד שרת\Server\mallWayze\BL\obj\Debug\BL.csproj.CopyComplete
+C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\bin\Debug\BL.dll
+C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\bin\Debug\BL.pdb
+C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\bin\Debug\DAL.dll
+C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\bin\Debug\DTO.dll
+C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\bin\Debug\EntityFramework.dll
+C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\bin\Debug\DAL.pdb
+C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\bin\Debug\DAL.dll.config
+C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\bin\Debug\DTO.pdb
+C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\bin\Debug\EntityFramework.xml
+C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\obj\Debug\BL.csprojAssemblyReference.cache
+C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\obj\Debug\BL.csproj.CopyComplete
+C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\obj\Debug\BL.dll
+C:\Users\student\Desktop\liel\אפליקציה וויז בקניון\צד שרת\Server\mallWayze\BL\obj\Debug\BL.pdb
