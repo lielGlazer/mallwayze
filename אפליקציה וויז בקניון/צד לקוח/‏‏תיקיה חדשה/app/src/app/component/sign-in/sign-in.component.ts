@@ -43,7 +43,7 @@ export class SignInComponent implements OnInit {
     this.dbService.signIn(user).subscribe(res => {
       console.log(res);
       if (res == null)
-        alert("שגיאת שרת אין אפשרות לחבר אותך מצטערים 😨😱😰");
+        alert('התחברת בהצלחה ');
       else {
         alert("התחברת בהצלחה! הקוד שלך הוא " + res.UserCode);
         user.UserCode = res.UserCode;

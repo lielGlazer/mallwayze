@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Category } from '../models/Category';
 import { Store } from '../models/Store';
 import { StoreWithLocation } from '../models/StoreWithLocation';
 import { User } from '../models/User';
@@ -43,6 +44,10 @@ export class DbService {
   getPATH(path:Store[]):Observable<StoreWithLocation[]>{
   
     return this.httpClient.post<StoreWithLocation[]>("http://localhost:53154/api/dijktra/GetDijktra" , path);
+  }
+  getPATHCatgor(path:Category[]):Observable<StoreWithLocation[]>{
+  
+    return this.httpClient.post<StoreWithLocation[]>("http://localhost:53154/api/Stor/GetStoresListByCategory" , path);
   }
   
 }

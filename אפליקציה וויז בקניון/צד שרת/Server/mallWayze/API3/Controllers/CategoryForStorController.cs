@@ -17,19 +17,23 @@ namespace API3.Controllers
     public class CategoryForStorController : ApiController
     {
         //מקבל רשימה של קטגוריות ומחזיר רשימה של חנויות 
-        //[Route("api/Stor/GetStoresListByCategory/{category}")]
-        //[HttpGet]
+        [Route("api/Stor/GetStoresListByCategory/{category}")]
+        [HttpGet]
         //עובד
-        //public List<DTOStor> GetStoresListByCategory(List<DTOCategory> categorylist)
-        //{
-        //    List<DTOStor> p;
-        //    List<DTOStor> listStor = new List<DTOStor>();
-        //    for (int i = 0; i < categorylist.Count; i++)
-        //    {
-        //        p.Add(BL.ManagerCategoryForStor.GetAllStorOfXContaining(categorylist[i].NameCategory));
-        //    }
-        //    listStor = p;
-        //}
+        public List<DTOStor> GetStoresListByCategory(List<DTOCategory> categorylist)
+        {
+            List<DTOStor> p=new List<DTOStor>();
+            for (int i = 0; i < categorylist.Count; i++)
+            {
+                List<DTOStor> sc = GetStoresByCategory(categorylist[i].NameCategory);
+                for (int j = 0; j < sc.Count; j++)
+                {
+                    p.Add(sc[i]);
+                }
+            }
+
+            return p;
+        }
         //ממחזיר את כל הקטגוריות לחנות
         [Route("api/CategoryForStor/GetCaterory")]
         [HttpGet]

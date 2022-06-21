@@ -37,14 +37,24 @@
   <h1 style="text-align: center;margin-top: 15px;"> מסלול לפי קטגוריות  </h1>
   <h2 style="">הנך מתבקש ללחוץ על הקטגוריות שאותם הינך מעוניין להוסיף למסלול     </h2>
   <div>
-  <button  id="b"  *ngFor="let s of allCategory" 
-  >{{s.NameCategory}}
-  </button>
+  <button  id="b"  *ngFor="let s of allCategory" (click)="addToCard(s)" >{{s.NameCategory}}</button>
   </div>
-  <div id="card">
-<p>רשימת הקטגוריות שנבחרו</p>
-<div *ngFor="let c of cardCategorys">
-    
- <button>{{c.NameCategory}}</button>
 
-</div>
+  <div id="card">
+    <div class="card" style="width: 18rem;">
+      <img [src]=cart class="card-img-top"  width="500px" height="190px" >
+      <div class="card-body">
+        <h5 class="card-title">רשימת החניות שנברחרו :)</h5>
+      </div>
+      <ul class="list-group list-group-flush" >
+        <p   *ngFor="let s of cardCategorys" >
+        <!-- אני רוצה לעשות כאן אם בחנות יש מבצע הצבע ירוק -->
+         {{s.NameCategory}}</p>
+        
+      </ul>
+      <p class="list-group-item">א'-ה': 10:00-22:00
+          ו' וערבי חג: 09:00-15:00
+          מוצ"ש ומוצאי חג: 30 דק' מצאת שבת – 23:00</p>
+      <button (click)="createRotue('app-path')">למסלול</button>
+  
+    </div>

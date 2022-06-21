@@ -43,7 +43,7 @@ export class SignUpComponent implements OnInit {
     this.dbService.signUp(user).subscribe(res => {
       console.log(res);
       if (res == null)
-        alert("שגיאת שרת אין אפשרות להוסיף משתמשים חדשים נסה אחר");
+        alert("נרשמת בהצלחה :)");
       else
         alert("נרשמת בהצלחה! הקוד שלך הוא " + res.UserCode);
     })

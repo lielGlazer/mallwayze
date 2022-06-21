@@ -29,6 +29,11 @@ namespace BL.BL
         //מילון צמתים שיוצרים קשת
         static Dictionary<string, List<DTOStor>> realNodesOfSelectedStoresRoute = new Dictionary<string, List<DTOStor>>();
         //מקבלת רשימה של חניות למעבר ומחזירה את הרשימה הטובה =היעילה ביותר 
+
+
+
+
+
         public static List<StoreWithLocation> MapSelectedStores(List<DTOStor> stores)
         {
             //1 - יצירת הצמתים שנמצאים בכל הקניון-עובד
@@ -41,16 +46,30 @@ namespace BL.BL
             //4 - חישוב מסלול בגרף החדש  - דיאקסטרה שני-עובד
             DTOStor s = new DTOStor();
             List<DTOStor> selectedStores = createShortestPathForSelectedStores();
-            //5 - מציאת הצמתים במסלול ע''י חזרה אחורה - נתקע בגלל הPREV
+            //5 - מציאת הצמתים במסלול ע''י חזרה אחורה - 
             List<DTOStor> finalNodes = FindNodesOfShortestPath(selectedStores);
             List<StoreWithLocation> storesWithLocation = new List<StoreWithLocation>();
+            List<DTOStor> strSale = new List<DTOStor>();
             foreach (var n in finalNodes)
             {
+                strSale.Add(n);
                 storesWithLocation.Add(new StoreWithLocation(n.NameStor, n.Locations.AxisX, n.Locations.AxisY));
             }
+            List<DTOStor> Sale=   strSale.Where(r => r.Sale).ToList();
+            List<DTOStor> NoSale= strSale.Where(r => r.Sale=false).ToList();
+            List<DTOStor> NewPathSale=new List<DTOStor>();
+            foreach (var n in Sale)
+            {
+                NewPathSale.Add(n);
+            }
+            foreach (var n in NoSale)
+            {
+                NewPathSale.Add(n);
+            }
+            
+            createSalePATH(NewPathSale);
             return storesWithLocation;
         }
-
         //המרחקים הקשתות יוצרת גרף של כל המרחקים בקניון
         public static List<Route> createMallRoutes(string path)//
         {
@@ -70,6 +89,7 @@ namespace BL.BL
             }
             return routes;
         }
+
         //הצמתים יוצרת גרף של כל החנויות בקניון
         public static Dictionary<string, Node> createMallNodes()
         {
@@ -82,6 +102,7 @@ namespace BL.BL
             }
             return nodes;
         }
+
         //יצירת הגרף החדש =המסלול 
         public static void createSelectedStoresGraph(List<DTOStor> stores)//יצירת הגרף החדש
         {
@@ -161,7 +182,9 @@ namespace BL.BL
                 }
             }
         }
-        // המציאת המשלול הקצר והחזרת הצומת האחרונה במסלול - לצורך שחזור המסלול
+
+        //המציאת המשלול הקצר והחזרת הצומת האחרונה במסלול - לצורך שחזור המסלול     
+        //החישוב של המסלול הקצר עמצו על ידי מעבר על כל אופציה קצרה ובדיקה מה הכי טוב עד לסוף הרשימה 
         public static List<DTOStor> createShortestPathForSelectedStores()
         {
             //%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -197,26 +220,36 @@ namespace BL.BL
             }
             return stores;
         }
+
         //שחזור בעצמו 
         public static List<DTOStor> FindNodesOfShortestPath(List<DTOStor> stores)
         {
             List<DTOStor> fullStoresPath = new List<DTOStor>();
             fullStoresPath.Add(mallGraphNodes["כניסה "].Store);
+
+            //עובר על כל החניות הרצויות 
+
             for (int i = 1; i < stores.Count; i++)
             {
+                //חנות נוכחית
                 string from = stores[i - 1].NameStor;
+                //חנות יעד קרובה
                 string to = stores[i].NameStor;
+                //  ועל ידי הכנסת שני החניות מתקבלת רשימה של כל הצמתים שיוצרים את הקשת הנוכחית (מילוי הרשימה - קיים מילון שבו יש שם של שני צמתים (חניות  
                 List<DTOStor> realStores = realNodesOfSelectedStoresRoute[from + to];
                 realStores.RemoveAt(0);
+                //מעבר על כל הרשימה של הצמתים שיוצרים את הקשת  -וממלאת את הרשימה של כל המתים 
                 foreach (var s in realStores)
                 {
                     fullStoresPath.Add(s);
                 }
             }
-
+            //מחזיר את המסלול המלא הקצר 
             return fullStoresPath;
         }
+
         //מחזירה את המרחק הקצר ביותר
+        //מעבר על הגרף הגדול-ממשקל אותו מסדר אותו 
         private static void CheckNode(List<Route> routes, Dictionary<string, Node> nodes, PrioQueue queue, List<Node> unvisited, Node destinationNode, ref Node lastNode, ref double dist)
         {
             ///פה אני צריכה לעשות נקודת עצירה 
@@ -248,7 +281,7 @@ namespace BL.BL
                     nodes[r.To.Store.NameStor].Value = travelDistance;
                     //הקודם 
                     nodes[r.To.Store.NameStor].PreviousNode = r.From;
-                    //  travelDistance צריך פה גם לעדכן שוב את ה
+                  
                 }
                 if (!queue.HasLetter(r.To))
                 {
@@ -261,5 +294,16 @@ namespace BL.BL
             CheckNode(routes, nodes, queue, unvisited, destinationNode, ref lastNode, ref dist);
             return;
         }
+
+      public static List<StoreWithLocation> createSalePATH(List<DTOStor> SALE)
+        {
+            List<StoreWithLocation> ss = new List<StoreWithLocation>();
+
+            return ss;
+        }
+
+
     }
+
+
 }
