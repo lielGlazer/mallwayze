@@ -1,6 +1,6 @@
 https://echarts.apache.org/examples/en/editor.html?c=heatmap-bmap
 
-
+דפדפן שחור
 
 
 bbbbbbuggg
