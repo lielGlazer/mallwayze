@@ -41,9 +41,7 @@ export class PathComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
     this.ctx = this.canvas.nativeElement.getContext('2d');
-    
     this.drawPath();
   }
   routing(nav: string) {
@@ -62,8 +60,9 @@ export class PathComponent implements OnInit {
       this.ctx.lineTo(this.calcPointXToCanvas(point.xPoint!), this.calcPointYToCanvas(point.yPoint!))
     console.log(this.calcPointXToCanvas(point.xPoint!), this.calcPointYToCanvas(point.yPoint!));
     }
-    this.ctx.strokeStyle = 'green';
+    this.ctx.strokeStyle = 'purple';
     this.ctx.storkeWidth = 10;
     this.ctx.stroke();
   }
+
 }

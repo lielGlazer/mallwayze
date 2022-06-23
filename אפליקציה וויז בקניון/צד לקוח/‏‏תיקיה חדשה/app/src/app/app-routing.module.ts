@@ -8,9 +8,7 @@ import { RouteCategoryComponent } from './component/route-category/route-categor
 import { RouteOneStorComponent } from './component/route-one-stor/route-one-stor.component';
 import { RouteSelectionComponent } from './component/route-selection/route-selection.component';
 import { RouteStorComponent } from './component/route-stor/route-stor.component';
-import { SearchCategorysComponent } from './component/search-categorys/search-categorys.component';
-import { SearchStorsComponent } from './component/search-stors/search-stors.component';
-import { SearchComponent } from './component/search/search.component';
+
 import { SignInComponent } from './component/sign-in/sign-in.component';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { StorDataComponent } from './component/stor-data/stor-data.component';
@@ -21,17 +19,8 @@ import { UserComponent } from './component/user/user.component';
 const routes: Routes = [
   //דף הבית//
   { path: '', pathMatch: 'full', component: HomeComponent },
-  //חיפוש//
-  {
-    path: 'search', component: SearchComponent, children: [
-      {
-        path: 'search-stor', component: SearchStorsComponent, children: [
-          { path: 'stor-data', component: StorDataComponent }
-        ]
-      },
-      { path: 'search-category', component: SearchCategorysComponent }
-    ]
-  },
+ 
+ 
   //כל החניות //
   { path: 'all-stor', component: StorsComponent },
   // //כניסה.//

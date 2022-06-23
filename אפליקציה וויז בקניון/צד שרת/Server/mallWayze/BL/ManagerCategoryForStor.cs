@@ -55,5 +55,20 @@ namespace BL
             return categor;
         }
 
+        public static List<DTOStor> listCategoeryOFstor(List<DTOCategory> categorylist)
+        {
+            List<DTOStor> p = new List<DTOStor>();
+            for (int i = 0; i < categorylist.Count; i++)
+            {
+                List<DTOStor> sc = GetAllStorOfXContaining(categorylist[i].NameCategory);
+                for (int j = 0; j < sc.Count; j++)
+                {
+                    p.Add(sc[i]);
+                }
+            }
+
+            return p;
+
+        }
     }
 }

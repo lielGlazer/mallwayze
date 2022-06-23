@@ -38,6 +38,19 @@ export class RouteStorComponent implements OnInit {
     });
 
   }
+  createSALERotue(nav: string) {
+    console.log(this.stroeCard);
+    console.log("get route");
+    this.dbService.getSalePATH(this.stroeCard).subscribe(res => {
+      console.log(res);
+      this.dbService.currentPath = res
+      let fullpath = 'route-selection/' + nav
+      this.router.navigate([fullpath])
+
+
+    });
+
+  }
 
 
 }

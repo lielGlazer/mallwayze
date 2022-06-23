@@ -36,7 +36,7 @@ namespace API3.Controllers
         //עובד
         public List<DTOStor> GetSaleStor()
         {
-   //         Dijkstra dijkstra = MapSelectedStores( BL.ManagerStor.GetStorSale());
+    //        Dijkstra dijkstra = MapSelectedStores(BL.ManagerStor.GetStorSale());
             return BL.ManagerStor.GetStorSale();
         }
     }

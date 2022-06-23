@@ -31,8 +31,18 @@ namespace BL.BL
         //מקבלת רשימה של חניות למעבר ומחזירה את הרשימה הטובה =היעילה ביותר 
 
 
+       static List<DTOStor> NewPathSale = new List<DTOStor>();
 
+        public static List<StoreWithLocation> pathOrginl(List<DTOStor> stores)
+        {
+           return MapSelectedStores(stores);
+        }
 
+        public static List<StoreWithLocation> pathSale(List<DTOStor> stores)
+        {
+            MapSelectedStores(stores);
+            return  createSalePATH(NewPathSale);
+        }
 
         public static List<StoreWithLocation> MapSelectedStores(List<DTOStor> stores)
         {
@@ -50,18 +60,21 @@ namespace BL.BL
             List<DTOStor> finalNodes = FindNodesOfShortestPath(selectedStores);
             List<StoreWithLocation> storesWithLocation = new List<StoreWithLocation>();
             List<DTOStor> strSale = new List<DTOStor>();
+            //עובר על כל המסלול ומכניס לשני הרשימות - הרשימה הרגיה ורשימה לפי מבצעים 
             foreach (var n in finalNodes)
             {
                 strSale.Add(n);
                 storesWithLocation.Add(new StoreWithLocation(n.NameStor, n.Locations.AxisX, n.Locations.AxisY));
             }
-            List<DTOStor> Sale=   strSale.Where(r => r.Sale).ToList();
-            List<DTOStor> NoSale= strSale.Where(r => r.Sale=false).ToList();
-            List<DTOStor> NewPathSale=new List<DTOStor>();
+            //מיון מה במבצע ומה לא 
+            List<DTOStor> Sale=   strSale.Where(r => r.Sale==true).ToList();
+            List<DTOStor> NoSale= strSale.Where(r => r.Sale==false).ToList();
+            //מכניסים קודם לפי מבצע 
             foreach (var n in Sale)
             {
                 NewPathSale.Add(n);
             }
+            //אחר כך להכניס את כל החניות שאין בהם מבצע 
             foreach (var n in NoSale)
             {
                 NewPathSale.Add(n);
@@ -299,6 +312,10 @@ namespace BL.BL
         {
             List<StoreWithLocation> ss = new List<StoreWithLocation>();
 
+            foreach (var n in SALE)
+            {
+                ss.Add(new StoreWithLocation(n.NameStor, n.Locations.AxisX, n.Locations.AxisY));
+            }
             return ss;
         }
 

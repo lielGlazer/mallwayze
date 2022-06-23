@@ -10,18 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignUpComponent } from './component/sign-up/sign-up.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouteSelectionComponent } from './component/route-selection/route-selection.component';
-import { SearchComponent } from './component/search/search.component';
-import { SearchStorsComponent } from './component/search-stors/search-stors.component';
-import { SearchCategorysComponent } from './component/search-categorys/search-categorys.component';
 import { StorsComponent } from './component/stors/stors.component';
 import { RouteStorComponent } from './component/route-stor/route-stor.component';
 import { StorDataComponent } from './component/stor-data/stor-data.component';
 import { ErrorComponent } from './component/error/error.component';
 import { RouteOneStorComponent } from './component/route-one-stor/route-one-stor.component';
  import { RouteCategoryComponent } from './component/route-category/route-category.component';
-import { CategorysComponent } from './component/categorys/categorys.component';
+
 import { PathComponent } from './component/path/path.component';
-import { CanvasComponent } from './component/canvas/canvas.component';
+
 
 
 
@@ -37,18 +34,14 @@ import { CanvasComponent } from './component/canvas/canvas.component';
     CateroryComponent,
     SignUpComponent,
     RouteSelectionComponent,
-    SearchComponent,
-    SearchStorsComponent,
-    SearchCategorysComponent,
     StorsComponent,
     RouteStorComponent,
     RouteCategoryComponent,
     StorDataComponent,
     ErrorComponent,
    RouteOneStorComponent,
-   CategorysComponent,
    PathComponent,
-   CanvasComponent
+   
   
   ],
   imports: [

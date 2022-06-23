@@ -16,11 +16,11 @@ export class SignUpComponent implements OnInit {
 
   ngOnInit(): void {
 
+
     this.signUpForm = new FormGroup(
       {
         userName: new FormControl('', Validators.compose([Validators.required, Validators.maxLength(8)])),
-        password: new FormControl('')
-      }
+        password: new FormControl('', [Validators.required]),   }
     )
 
   }

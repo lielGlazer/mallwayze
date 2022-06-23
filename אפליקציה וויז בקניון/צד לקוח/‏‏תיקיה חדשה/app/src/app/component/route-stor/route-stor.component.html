@@ -20,7 +20,17 @@
     <button>{{s.NameStor}}</button>
 </div>
 </div> -->
-<div class="card" style="width: 18rem;">
+
+<div  style="position: relative;
+display: flex;
+flex-direction: column;
+min-width: 0;
+word-wrap: break-word;
+background-color: #fff;
+background-clip: border-box;
+border: 1pxsolidrgba(0,0,0,.125);
+border-radius: 0.25rem;
+text-align: center;width: 18rem;">
     <img [src]=cart class="card-img-top"  width="500px" height="190px" >
     <div class="card-body">
       <h5 class="card-title">רשימת החניות שנברחרו :)</h5>
@@ -32,6 +42,7 @@
     <p class="list-group-item">א'-ה': 10:00-22:00
         ו' וערבי חג: 09:00-15:00
         מוצ"ש ומוצאי חג: 30 דק' מצאת שבת – 23:00</p>
-    <button (click)="createRotue('app-path')">למסלול</button>
+    <button (click)="createRotue('app-path')"> מסלול קצר </button>
+    <button (click)="createSALERotue('app-path')">מסלול לפי מבצעים </button>
 
   </div>

@@ -11,6 +11,9 @@ import { User } from '../models/User';
 })
 export class DbService {
  constructor(private httpClient:HttpClient) { }
+
+ currentPath:StoreWithLocation[]=new Array<StoreWithLocation>();
+
   //מחזיר לכל משתמש את הרשימה של החניות האהובות עליו עליו 
   getListStorOfUser(user:User): Observable<Store[]> {
     return  this.httpClient.post<Store[]>("http://localhost:53154/api/Users/GetAllUser", user);
@@ -40,14 +43,18 @@ export class DbService {
     return this.httpClient.post<any[]>("http://localhost:53154/api/Users/Login" ,  stores);
   }
 
-  currentPath:StoreWithLocation[]=new Array<StoreWithLocation>();
+  
   getPATH(path:Store[]):Observable<StoreWithLocation[]>{
   
     return this.httpClient.post<StoreWithLocation[]>("http://localhost:53154/api/dijktra/GetDijktra" , path);
   }
+  getSalePATH(path:Store[]):Observable<StoreWithLocation[]>{
+  
+    return this.httpClient.post<StoreWithLocation[]>("http://localhost:53154/api/dijktra/GetSaleDijktra" , path);
+  }
   getPATHCatgor(path:Category[]):Observable<StoreWithLocation[]>{
   
-    return this.httpClient.post<StoreWithLocation[]>("http://localhost:53154/api/Stor/GetStoresListByCategory" , path);
+    return this.httpClient.post<StoreWithLocation[]>("http://localhost:53154/api/dijktra/GetDIJCategor" , path);
   }
   
 }
